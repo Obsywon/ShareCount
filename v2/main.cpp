@@ -36,9 +36,6 @@ int main(int argc, char *argv[]) {
         model.connecterUtilisateur(pseudo,email,mdp);
     }
 
-    model.creerGroupe("Groupe 1");
-    print(model.groupesToString());
-
 
 
 

@@ -3,11 +3,10 @@
 //
 
 #include "Utilisateur.hpp"
+#include "../Utilisateur.hpp"
 
-Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""){
-    m_groupes = GestionnaireGroupes();
 
-}
+Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""){}
 
 /**
  * Représente un compte utilisateur
@@ -15,9 +14,7 @@ Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""),
  * @param p string Prénom
  */
 Utilisateur::Utilisateur(const std::string pseudo, const std::string email, const std::string mdp):
-m_pseudo(pseudo), m_email(email), m_password(mdp){
-    m_groupes = GestionnaireGroupes();
-}
+m_pseudo(pseudo), m_email(email), m_password(mdp){}
 
 Utilisateur::~Utilisateur(){
     //std::cout << "Utilisateur détruit \n";
@@ -47,9 +44,6 @@ void Utilisateur::setMdp(std::string mdp) {
     m_password = mdp;
 }
 
-std::string Utilisateur::getPseudo() {
-    return std::string();
-}
 
 std::string Utilisateur::toString(){
     std::string temp = m_pseudo;
@@ -59,15 +53,11 @@ std::string Utilisateur::toString(){
     return temp;
 }
 
-GestionnaireGroupes* Utilisateur::getGestionnaire() {
-    GestionnaireGroupes* ptr = &m_groupes;
-    return ptr;
+std::string Utilisateur::getPseudo() {
+    return std::string();
 }
 
 
-
-
-
-
-
-
+GestionnaireGroupes Utilisateur::getGestionnaire() {
+    return nullptr;
+}

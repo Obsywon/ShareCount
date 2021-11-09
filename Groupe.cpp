@@ -2,7 +2,7 @@
 // Created by guy on 09/11/2021.
 //
 
-#include "groupe.hpp"
+#include "Groupe.hpp"
 
 Groupe::Groupe() : m_nom(""){
 }

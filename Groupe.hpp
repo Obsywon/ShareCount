@@ -4,8 +4,9 @@
 
 #ifndef SHARECOUNT_GROUPE_HPP
 #define SHARECOUNT_GROUPE_HPP
+#include <string>
 
-#include "Utilisateur.hpp"
+
 
 class Groupe {
 private:

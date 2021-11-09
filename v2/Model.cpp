@@ -4,6 +4,7 @@
 
 #include "Model.hpp"
 
+#include <cctype>
 #include <utility>
 
 Model::Model(){}
@@ -41,17 +42,6 @@ bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
 void Model::connecterUtilisateur(std::string pseudo, std::string email, std::string mdp) {
     // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
     m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp));
-    m_groupes = *m_user.getGestionnaire();
 }
 
-std::string Model::groupesToString() {
-    return m_groupes.toString();
 }
-
-void Model::creerGroupe(std::string nom) {
-    m_groupes.ajouterGroupe(std::move(nom), &m_user);
-}
-
-
-
-

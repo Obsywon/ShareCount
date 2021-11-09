@@ -5,9 +5,10 @@
 #ifndef SHARECOUNT_UTILISATEUR_HPP
 #define SHARECOUNT_UTILISATEUR_HPP
 
-#include "GestionnaireGroupes.hpp"
 #include <cstdlib>
+#include <string>
 #include <iostream>
+
 
 class Utilisateur {
 private:
@@ -16,7 +17,6 @@ private:
     std::string m_pseudo;
     std::string m_password;
     std::string m_email;
-    GestionnaireGroupes m_groupes;
 
 public:
 
@@ -30,16 +30,18 @@ public:
     Utilisateur(const std::string pseudo, const std::string email, const std::string mdp);
     ~Utilisateur();
 
+
     void setNom(std::string n);
     void setPrenom(std::string p);
     void setPseudo (std::string pseudo);
     void setMdp (std::string mdp);
 
-    GestionnaireGroupes* getGestionnaire();
     std::string getNom();
     std::string getPrenom();
     std::string getPseudo();
+
     std::string toString();
+
 };
 
 

@@ -7,8 +7,7 @@
 
 #include "Utilisateur.hpp"
 #include "regex"
-#include <cctype>
-
+#include "GestionnaireGroupes.h"
 
 class Model {
 private:
@@ -63,9 +62,10 @@ public:
     void connecterUtilisateur (std::string pseudo, std::string email, std::string mdp);
 
     std::string userToString();
-    std::string  groupesToString();
 
-    void creerGroupe (std::string nom);
+
+
+
 
 
 };
