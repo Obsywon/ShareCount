@@ -4,7 +4,6 @@
 
 #include "Model.hpp"
 #include <cctype>
-#include <QString>
 
 Model::Model(){}
 

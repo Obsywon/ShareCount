@@ -11,8 +11,11 @@ find_package(Qt5 COMPONENTS
         Core
         REQUIRED)
 
-add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp tests/tests.cpp tests/tests.hpp)
+add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp)
+
 target_link_libraries(ShareCount
         Qt5::Core
         )
 
+
+add_executable(tests tests/tests.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp)
