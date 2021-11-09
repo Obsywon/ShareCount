@@ -15,7 +15,7 @@ Utilisateur::Utilisateur(const std::string pseudo, const std::string email, cons
 m_pseudo(pseudo), m_email(email), m_password(mdp){}
 
 Utilisateur::~Utilisateur(){
-    std::cout << "Utilisateur détruit \n";
+    //std::cout << "Utilisateur détruit \n";
 }
 
 void Utilisateur::setNom(const std::string n){

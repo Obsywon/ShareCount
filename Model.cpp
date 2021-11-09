@@ -4,33 +4,43 @@
 
 #include "Model.hpp"
 #include <cctype>
+#include <utility>
 
 Model::Model(){}
 
-bool Model::estValideMdP(const std::string mdp) {
-    bool test = false;
+bool Model::estValideMdP(const std::string& mdp) {
+    bool test = true;
     if (!mdp.empty()){
         for (char i : mdp){
-            if (std::isspace(i) || std::isblank(i)){
-                test = true;
+            if (std::isblank(i)){
+                test = false;
             }
         }
     }
     return test;
 }
 
-bool Model::estValideEmail(const std::string email) {
+bool Model::estValideEmail(const std::string& email) {
     const std::regex pattern (R"((\w+)(\.|_)?(\w*)@(\w+)(\.(\w+))+)");
     return std::regex_match(email, pattern);
 }
 
-bool Model::inscrireUtilisateur(const std::string pseudo, const std::string email, const std::string mdp) {
-    m_user = Utilisateur(pseudo, email, mdp);
-    return false;
+bool Model::inscrireUtilisateur(std::string pseudo, std::string email, std::string mdp) {
+    m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp));
+    return true;
 }
 
-const std::string Model::userToString() {
+std::string Model::userToString() {
     return m_user.toString();
+}
+
+bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
+    return true; // "Existe toujours" pour le moment
+}
+
+void Model::connecterUtilisateur(std::string pseudo, std::string email, std::string mdp) {
+    // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
+    m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp));
 }
 
 

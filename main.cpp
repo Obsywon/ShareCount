@@ -16,8 +16,28 @@ void print(const std::string &msg) {
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
     Model model = Model();
-    model.inscrireUtilisateur("pseudo", "email@email.com", "test01");
-    print(model.userToString());
+
+    // String de tests
+    std::string pseudo = "test";
+    std::string mdp = "test";
+    std::string email = "test@test.com";
+
+    // Test de validité des éléments sensibles + inscription effective
+    if (model.estValideMdP(mdp) && model.estValideEmail(email)){
+        model.inscrireUtilisateur("pseudo", "email@email.com", "test01");
+        print(model.userToString());
+    }else{
+        print(mdp); print (email);
+        print("Inscription utilisateur impossible : mot de passe ou e-mail invalide");
+    }
+
+    // "test" pour retrouver un compte et le connecter:
+    if (model.compteExiste(pseudo, mdp)){
+        model.connecterUtilisateur(pseudo,email,mdp);
+    }
+
+
+
 
 
 

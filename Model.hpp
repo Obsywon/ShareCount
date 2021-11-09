@@ -7,12 +7,12 @@
 
 #include "Utilisateur.hpp"
 #include "regex"
+#include "GestionnaireGroupes.h"
 
 class Model {
 private:
     Utilisateur m_user;
-
-
+    GestionnaireGroupes m_groupes;
 
 public:
 
@@ -26,14 +26,14 @@ public:
      * @param mdp string
      * @return bool
      */
-    bool estValideMdP (const std::string mdp);
+    bool estValideMdP (const std::string& mdp);
 
     /**
      * Vérifie si l'e-mail entrée est valide
      * @param email string
      * @return bool
      */
-    bool estValideEmail (const std::string email);
+    bool estValideEmail (const std::string& email);
 
     /**
      * Inscrire un utilisateur
@@ -42,9 +42,26 @@ public:
      * @param mdp mdp
      * @return bool true si utilisateur est bien inscris
      */
-    bool inscrireUtilisateur (const std::string pseudo, const std::string email, const std::string mdp);
+    bool inscrireUtilisateur (std::string pseudo, std::string email, std::string mdp);
 
-    const std::string userToString();
+    /**
+     * Vérifie si un utilisateur existe bien dans la base de données
+     * @param pseudo string
+     * @param mdp string
+     * @return bool
+     */
+    bool compteExiste (const std::string& pseudo, const std::string& mdp);
+
+    /**
+     * Connecte et charge le compte utilisateur indiqué (A RETRAVAILLER!!!
+     * lorsqu'un moyen d'enregistrer les données sera implémenté)
+     * @param pseudo string
+     * @param email string
+     * @param mdp string
+     */
+    void connecterUtilisateur (std::string pseudo, std::string email, std::string mdp);
+
+    std::string userToString();
 
 
 
