@@ -2,10 +2,10 @@
 // Created by guy on 09/11/2021.
 //
 
-#ifndef SHARECOUNT_MODEL_H
-#define SHARECOUNT_MODEL_H
+#ifndef SHARECOUNT_MODEL_HPP
+#define SHARECOUNT_MODEL_HPP
 
-#include "Utilisateur.h"
+#include "Utilisateur.hpp"
 #include "regex"
 
 class Model {
@@ -44,6 +44,9 @@ public:
      */
     bool inscrireUtilisateur (const std::string pseudo, const std::string email, const std::string mdp);
 
+    const std::string userToString();
+
+
 
 
 
@@ -51,4 +54,4 @@ public:
 };
 
 
-#endif //SHARECOUNT_MODEL_H
+#endif //SHARECOUNT_MODEL_HPP
