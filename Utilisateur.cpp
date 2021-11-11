@@ -46,7 +46,7 @@ void Utilisateur::setMdp(std::string mdp) {
 }
 
 std::string Utilisateur::getPseudo() {
-    return std::string();
+    return m_pseudo;
 }
 
 std::string Utilisateur::toString(){

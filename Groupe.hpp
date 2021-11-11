@@ -18,7 +18,7 @@ public:
     Groupe(std::string nom);
     void creerEvenement(std::string nom,std::string dateDeb,std::string dateFin);
     void ajouterMembre(const Utilisateur* u);
-    std::string toString();
+    std::string toString() const;
 };
 
 

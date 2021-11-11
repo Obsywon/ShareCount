@@ -14,7 +14,7 @@ void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
 }
 
 std::string GestionnaireGroupes::toString() {
-    std::string s = "";
+    std::string s = "Gestionnaire groupes : \n";
     for (Groupe g: m_groupes){
         s += g.toString();
     }

@@ -14,7 +14,7 @@ private:
 public:
     GestionnaireEvenement();
     void creerEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
-    std::string toString();
+    std::string toString() const;
 
     /**
      * Récupère l'evenement indiqué

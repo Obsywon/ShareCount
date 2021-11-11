@@ -1,7 +1,7 @@
 #include "GestionnaireGroupes.hpp"
 
 GestionnaireGroupes::GestionnaireGroupes() {
-    m_groupes = std::unordered_map<std::string,Groupe>(20);
+    m_groupes = std::unordered_map<std::string,Groupe>();
 }
 
 void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
@@ -14,11 +14,12 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
 }
 
 std::string GestionnaireGroupes::toString() {
-    std::string s = "";
-    auto it = m_groupes.begin();
-    while (it != m_groupes.end()){
-       s.append(it->second.toString());
+    std::string s = "Gestionnaire groupes : \n";
+
+    for (const std::pair<const std::string, Groupe>& it : m_groupes){
+        s.append(it.second.toString()).append("\n\n");
     }
+
     return s;
 }
 

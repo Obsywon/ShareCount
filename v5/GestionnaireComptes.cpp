@@ -1,19 +1,21 @@
 #include "GestionnaireComptes.hpp"
 
 GestionnaireComptes::GestionnaireComptes(){
-    m_comptes = std::vector<Utilisateur>(20);
+    m_comptes = std::vector<Utilisateur>();
 }
 
-void GestionnaireComptes::ajouterCompte (Utilisateur u){
-    m_comptes.push_back(u);
+void GestionnaireComptes::ajouterCompte (const Utilisateur *u){
+    m_comptes.push_back(*u);
 
 }
 
-std::string GestionnaireComptes::toString(){
-    std::string temp;
+std::string GestionnaireComptes::toString() const {
+    std::string temp = "Comptes du groupe : \n";
     int i = 0;
     for (Utilisateur u: m_comptes) {
-        temp.append(std::to_string(i)).append(" - ").append(u.getPseudo()).append(" - Mail : ").append(u.getEmail());
+        temp.append(" - ");
+        temp.append(std::to_string(i)).append(": ").append(u.getPseudo()).append(" - Mail : ").append(u.getEmail());
+        temp += "\n";
         i++;
     }
 
@@ -35,3 +37,5 @@ std::vector<std::string> GestionnaireComptes::listMails(){
     }
     return list;
 }
+
+

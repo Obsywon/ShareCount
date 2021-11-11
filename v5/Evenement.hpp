@@ -1,9 +1,6 @@
-//
-// Created by guy on 11/11/2021.
-//
-
 #ifndef SHARECOUNT_EVENEMENT_HPP
 #define SHARECOUNT_EVENEMENT_HPP
+
 #include <string>
 #include <utility>
 

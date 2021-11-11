@@ -13,7 +13,10 @@ void Groupe::creerEvenement(std::string nom, std::string dateDeb, std::string da
 void Groupe::ajouterMembre(const Utilisateur* u){
        gesCom.ajouterCompte(u);
 }
-std::string Groupe::toString() {
-    std::string s = m_nom;
+std::string Groupe::toString() const {
+    std::string s = "Groupe ";
+    s.append(m_nom).append(" : \n");
+    s.append(gesCom.toString()).append("\n");
+    s.append(ges.toString()).append("\n");
     return s;
 }

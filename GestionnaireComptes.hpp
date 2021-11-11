@@ -19,7 +19,7 @@ public:
      */
     void ajouterCompte(const Utilisateur* u);
 
-    std::string toString();
+    std::string toString() const;
 
     std::vector<std::string> listPseudos();
     std::vector<std::string> listMails();

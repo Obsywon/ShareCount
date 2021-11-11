@@ -53,16 +53,21 @@ std::string Model::groupesToString() {
 
 std::string Model::toString(){
     std::string temp = userToString();
-    temp.append("\n").append(m_groupes.toString());
+    temp.append("\n");
+    temp.append(m_groupes.toString());
     return temp;
 }
 
 void Model::creerGroupe(std::string nom) {
-    m_groupes.ajouterGroupe(std::move(nom), &m_user);
+    m_groupes.ajouterGroupe(nom, &m_user);
 }
 
 void Model::ajouterMembreAGroupe(std::string idGroupe, const Utilisateur *u){
     m_groupes.ajoutMembreAGroupe(idGroupe,u);
+}
+
+void Model::creerEvenement(std::string IDgroupe, std::string nom, std::string dateDeb,std::string dateFin) {
+    m_groupes.ajouterEvenemenent(IDgroupe, nom, dateDeb, dateFin);
 }
 
 

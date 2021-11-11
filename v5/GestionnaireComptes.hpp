@@ -2,6 +2,8 @@
 #define GESTIONNAIRECOMPTES_HPP
 
 #include "Utilisateur.hpp"
+#include <vector>
+
 
 class GestionnaireComptes
 {
@@ -15,9 +17,9 @@ public:
      * @brief ajouterCompte permet d'ajouter un compte au gestionnaire
      * @param u Utilisateur
      */
-    void ajouterCompte(Utilisateur u);
+    void ajouterCompte(const Utilisateur* u);
 
-    std::string toString();
+    std::string toString() const;
 
     std::vector<std::string> listPseudos();
     std::vector<std::string> listMails();

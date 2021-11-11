@@ -17,7 +17,7 @@ GestionnaireEvenement& GestionnaireEvenement::getEvenement(int indice){
     return reinterpret_cast<GestionnaireEvenement &>(m_evenement.at(indice));
 }
 
-std::string GestionnaireEvenement::toString() {
+std::string GestionnaireEvenement::toString() const {
     std::string s = "";
     for (Evenement e: m_evenement){
         s += e.toString();

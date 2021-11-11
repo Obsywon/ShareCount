@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <QApplication>
 #include <QDebug>
 #include <QPushButton>
@@ -16,12 +15,12 @@ void print(const std::string &msg) {
 }
 
 int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
     Model model = Model();
 
     // String de tests
-    std::string pseudo = "test";
-    std::string mdp = "test";
+    std::string pseudo = "pseudo";
+    std::string mdp = "mdp";
     std::string email = "test@test.com";
 
     // Test de validité des éléments sensibles + inscription effective
@@ -39,7 +38,10 @@ int main(int argc, char *argv[]) {
     }
 
     model.creerGroupe("Groupe 1");
-    print(model.groupesToString());
+    Utilisateur t = Utilisateur("moi", "e@t.fr", "..", nullptr);
+    model.ajouterMembreAGroupe("Groupe 1", &t);
+    model.creerEvenement("Groupe 1", "event", "01/01/2000", "02/01/2000");
+    print(model.toString());
 
     // Interface exemplaire
     QPushButton button("Hello world!", nullptr);
