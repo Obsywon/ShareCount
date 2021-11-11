@@ -1,4 +1,4 @@
-#include "gestionnairecomptes.hpp"
+#include "GestionnaireComptes.hpp"
 
 GestionnaireComptes::GestionnaireComptes(){
     m_comptes = std::vector<Utilisateur>(20);
