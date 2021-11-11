@@ -4,12 +4,16 @@
 
 #include "Evenement.hpp"
 
-Evenement::Evenement(): m_nom(""), m_dateDeb(""), m_dateFin("") {
+Evenement::Evenement() = default;
 
-}
-Evenement::Evenement(std::string nom, std::string dateDeb, std::string dateFin): m_nom(nom), m_dateDeb(dateDeb), m_dateFin(dateFin){
+Evenement::Evenement(std::string nom, std::string dateDeb, std::string dateFin): m_nom(std::move(nom)), m_dateDeb(std::move(dateDeb)), m_dateFin(std::move(dateFin)) {
+
 }
 
 std::string Evenement::toString() {
-    return std::string();
+    std::string temp = m_nom;
+    temp.append(" ").append(m_dateDeb).append(m_dateFin);
+    return temp;
 }
+
+

@@ -18,6 +18,9 @@ public:
     void ajouterCompte(Utilisateur u);
 
     std::string toString();
+
+    std::vector<std::string> listPseudos();
+    std::vector<std::string> listMails();
 };
 
 #endif // GESTIONNAIRECOMPTES_HPP
