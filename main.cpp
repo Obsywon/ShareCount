@@ -1,5 +1,7 @@
 #include <QCoreApplication>
+#include <QApplication>
 #include <QDebug>
+#include <QPushButton>
 #include "Model.hpp"
 
 /**
@@ -15,6 +17,7 @@ void print(const std::string &msg) {
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
+    QApplication b (argc, argv);
     Model model = Model();
 
     // String de tests
@@ -39,10 +42,14 @@ int main(int argc, char *argv[]) {
     model.creerGroupe("Groupe 1");
     print(model.groupesToString());
 
+    QPushButton button("Hello world!", nullptr);
+    button.resize(200, 100);
+    button.show();
 
 
 
 
 
-    return QCoreApplication::exec();
+
+    return QApplication::exec();
 }

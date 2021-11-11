@@ -13,6 +13,10 @@ void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
     m_groupes.push_back(g);
 }
 
+GestionnaireGroupes& GestionnaireGroupes::getGroupe (int indice){
+    return reinterpret_cast<GestionnaireGroupes &>(m_groupes.at(indice));
+}
+
 std::string GestionnaireGroupes::toString() {
     std::string s = "";
     for (Groupe g: m_groupes){

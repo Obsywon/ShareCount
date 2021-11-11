@@ -19,6 +19,13 @@ public:
     GestionnaireGroupes();
     void ajouterGroupe (std::string nom, const Utilisateur* u) ;
     std::string toString();
+
+    /**
+     * Récupère le groupe indiqué
+     * @param indice int
+     * @return référence à Groupe
+     */
+    GestionnaireGroupes& getGroupe(int indice);
 };
 
 
