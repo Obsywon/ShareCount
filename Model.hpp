@@ -5,7 +5,7 @@
 #ifndef SHARECOUNT_MODEL_HPP
 #define SHARECOUNT_MODEL_HPP
 
-#include "Utilisateur.hpp"
+#include "GestionnaireGroupes.hpp"
 #include "regex"
 #include <cctype>
 
@@ -69,6 +69,8 @@ public:
 
     std::string evenementsToString();
     void creerEvenement (std::string nom);
+
+    void ajouterMembreAGroupe(std::string idGroupe,const Utilisateur* u);
 
 
 };

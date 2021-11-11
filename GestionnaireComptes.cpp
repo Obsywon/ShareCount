@@ -4,8 +4,8 @@ GestionnaireComptes::GestionnaireComptes(){
     m_comptes = std::vector<Utilisateur>(20);
 }
 
-void GestionnaireComptes::ajouterCompte (Utilisateur u){
-    m_comptes.push_back(u);
+void GestionnaireComptes::ajouterCompte (const Utilisateur *u){
+    m_comptes.push_back(*u);
 
 }
 
@@ -35,3 +35,5 @@ std::vector<std::string> GestionnaireComptes::listMails(){
     }
     return list;
 }
+
+

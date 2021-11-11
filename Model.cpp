@@ -52,6 +52,8 @@ void Model::creerGroupe(std::string nom) {
     m_groupes.ajouterGroupe(std::move(nom), &m_user);
 }
 
-
+void Model::ajouterMembreAGroupe(std::string idGroupe, const Utilisateur *u){
+    m_groupes.ajoutMembreAGroupe(idGroupe,u);
+}
 
 

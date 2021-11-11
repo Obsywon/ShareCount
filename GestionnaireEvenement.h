@@ -17,7 +17,7 @@ private:
 
 public:
     GestionnaireEvenement();
-    void creerEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
+    void ajouterEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
     std::string toString();
 
     /**

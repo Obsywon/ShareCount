@@ -15,7 +15,7 @@ public:
      * @brief ajouterCompte permet d'ajouter un compte au gestionnaire
      * @param u Utilisateur
      */
-    void ajouterCompte(Utilisateur u);
+    void ajouterCompte(const Utilisateur* u);
 
     std::string toString();
 
