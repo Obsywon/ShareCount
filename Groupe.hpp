@@ -1,7 +1,3 @@
-//
-// Created by guy on 09/11/2021.
-//
-
 #ifndef SHARECOUNT_GROUPE_HPP
 #define SHARECOUNT_GROUPE_HPP
 #include <string>

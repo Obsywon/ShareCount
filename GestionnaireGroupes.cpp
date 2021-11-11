@@ -1,7 +1,3 @@
-//
-// Created by guy on 09/11/2021.
-//
-
 #include "GestionnaireGroupes.hpp"
 
 GestionnaireGroupes::GestionnaireGroupes() {

@@ -1,3 +1,7 @@
+//
+// Created by Louis on 11/11/2021.
+//
+
 #ifndef SHARECOUNT_GESTIONNAIREEVENEMENT_HPP
 #define SHARECOUNT_GESTIONNAIREEVENEMENT_HPP
 
@@ -13,7 +17,7 @@ private:
 
 public:
     GestionnaireEvenement();
-    void creerEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
+    void ajouterEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
     std::string toString();
 
     /**
