@@ -67,6 +67,9 @@ public:
 
     void creerGroupe (std::string nom);
 
+    std::string evenementsToString();
+    void creerEvenement (std::string nom);
+
 
 };
 

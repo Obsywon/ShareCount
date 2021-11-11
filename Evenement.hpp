@@ -8,6 +8,7 @@
 
 
 class Evenement {
+public:
     Evenement();
     Evenement(std::string nom);
 
