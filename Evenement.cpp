@@ -4,12 +4,10 @@
 
 #include "Evenement.hpp"
 
-Evenement::Evenement() {
+Evenement::Evenement(): m_nom(""), m_dateDeb(""), m_dateFin("") {
 
 }
-
-Evenement::Evenement(std::string nom) {
-
+Evenement::Evenement(std::string nom, std::string dateDeb, std::string dateFin): m_nom(nom), m_dateDeb(dateDeb), m_dateFin(dateFin){
 }
 
 std::string Evenement::toString() {

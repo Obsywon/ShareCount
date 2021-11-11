@@ -39,6 +39,11 @@ std::string Utilisateur::getPrenom(){
     return m_prenom;
 }
 
+std::string Utilisateur::getEmail(){
+    return m_email;
+}
+
+
 void Utilisateur::setPseudo(std::string pseudo) {
     m_pseudo = pseudo;
 }

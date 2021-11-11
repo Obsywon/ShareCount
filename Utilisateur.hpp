@@ -39,6 +39,7 @@ public:
     std::string getNom();
     std::string getPrenom();
     std::string getPseudo();
+    std::string getEmail();
     std::string toString();
 };
 
