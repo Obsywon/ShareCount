@@ -4,18 +4,16 @@
 #include <unordered_map>
 #include "Groupe.hpp"
 
-class Utilisateur;
-
 class GestionnaireGroupes {
 private:
     std::unordered_map<std::string,Groupe> m_groupes;
-    Utilisateur* user;
 
 public:
     GestionnaireGroupes();
     void ajouterGroupe (std::string nom, const Utilisateur* u) ;
     void ajouterEvenemenent (std::string idGroupe,std::string nom, std::string dateDeb,std::string dateFin);
     void ajoutMembreAGroupe(std::string idGroupe,const Utilisateur* u);
+    unsigned long taille();
     std::string toString();
 
 

@@ -1,8 +1,6 @@
 #include "Utilisateur.hpp"
 
-Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""){
-    m_groupes = GestionnaireGroupes();
-
+Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""), m_groupes(nullptr){
 }
 
 /**
@@ -10,9 +8,8 @@ Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""),
  * @param n string Nom
  * @param p string Prénom
  */
-Utilisateur::Utilisateur(const std::string pseudo, const std::string email, const std::string mdp):
-m_pseudo(pseudo), m_email(email), m_password(mdp){
-    m_groupes = GestionnaireGroupes();
+Utilisateur::Utilisateur(const std::string pseudo, const std::string email, const std::string mdp, GestionnaireGroupes* gg):
+m_pseudo(pseudo), m_email(email), m_password(mdp), m_groupes(gg){
 }
 
 Utilisateur::~Utilisateur(){
@@ -61,8 +58,7 @@ std::string Utilisateur::toString(){
 }
 
 GestionnaireGroupes* Utilisateur::getGestionnaire() {
-    GestionnaireGroupes* ptr = &m_groupes;
-    return ptr;
+    return m_groupes;
 }
 
 

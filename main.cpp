@@ -1,5 +1,5 @@
-#include <QCoreApplication>
 #include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QPushButton>
 #include "Model.hpp"
@@ -39,7 +39,8 @@ int main(int argc, char *argv[]) {
     }
 
     model.creerGroupe("Groupe 1");
-    print(model.groupesToString());
+    print(model.toString());
+    print("ahhh");
 
     // Interface exemplaire
     QPushButton button("Hello world!", nullptr);

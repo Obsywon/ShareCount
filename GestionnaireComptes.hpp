@@ -2,6 +2,8 @@
 #define GESTIONNAIRECOMPTES_HPP
 
 #include "Utilisateur.hpp"
+#include <vector>
+
 
 class GestionnaireComptes
 {

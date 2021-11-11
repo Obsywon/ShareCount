@@ -1,5 +1,6 @@
 #ifndef SHARECOUNT_EVENEMENT_HPP
 #define SHARECOUNT_EVENEMENT_HPP
+
 #include <string>
 #include <utility>
 

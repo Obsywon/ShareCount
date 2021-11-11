@@ -69,6 +69,7 @@ public:
     void ajouterMembreAGroupe(std::string idGroupe,const Utilisateur* u);
 
 
+    std::string toString();
 };
 
 

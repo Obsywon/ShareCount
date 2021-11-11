@@ -15,7 +15,7 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
 
 std::string GestionnaireGroupes::toString() {
     std::string s = "";
-    std::unordered_map<std::string,Groupe>::iterator it = m_groupes.begin();
+    auto it = m_groupes.begin();
     while (it != m_groupes.end()){
        s.append(it->second.toString());
     }
@@ -28,4 +28,8 @@ void GestionnaireGroupes::ajouterEvenemenent(std::string idGroupe, std::string n
 
 void GestionnaireGroupes::ajoutMembreAGroupe(std::string idGroupe, const Utilisateur *u){
         m_groupes.at(idGroupe).ajouterMembre(u);
+}
+
+unsigned long GestionnaireGroupes::taille() {
+    return m_groupes.size();
 }
