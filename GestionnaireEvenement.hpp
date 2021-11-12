@@ -12,8 +12,23 @@ private:
     Utilisateur* user;
 
 public:
+    /**
+     * Collection d'événements connus par un groupe
+     */
     GestionnaireEvenement();
+
+    /**
+     * Génère un événement lié à un groupe de clients
+     * @param nom nom de l'évenement
+     * @param dateDebut Date de début
+     * @param dateFin Date de fin
+     */
     void creerEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
+
+    /**
+     * Détaille les événements connus par le gestionnaire
+     * @return String
+     */
     std::string toString() const;
 
     /**

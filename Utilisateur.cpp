@@ -3,11 +3,6 @@
 Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""), m_groupes(nullptr){
 }
 
-/**
- * Représente un compte utilisateur
- * @param n string Nom
- * @param p string Prénom
- */
 Utilisateur::Utilisateur(const std::string pseudo, const std::string email, const std::string mdp, GestionnaireGroupes* gg):
 m_pseudo(pseudo), m_email(email), m_password(mdp), m_groupes(gg){
 }
@@ -57,9 +52,6 @@ std::string Utilisateur::toString(){
     return temp;
 }
 
-GestionnaireGroupes* Utilisateur::getGestionnaire() {
-    return m_groupes;
-}
 
 
 

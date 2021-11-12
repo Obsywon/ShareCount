@@ -19,9 +19,22 @@ public:
      */
     void ajouterCompte(const Utilisateur* u);
 
+    /**
+     * Détaille le contenu du gestionnaire de compte
+     * @return String
+     */
     std::string toString() const;
 
+    /**
+     * Liste les pseudos connus par le gestionnaire de compte
+     * @return string
+     */
     std::vector<std::string> listPseudos();
+
+    /**
+     * Liste les e-mails connus par le gestionnaire de compte
+     * @return string
+     */
     std::vector<std::string> listMails();
 };
 

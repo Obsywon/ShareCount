@@ -7,10 +7,19 @@ class FabriqueID
 
 public:
     static FabriqueID* getInstance();
+
+    /**
+     * Récupère un identifiant unique
+     * @return string
+     */
     std::string getId();
 
 private :
     FabriqueID(){};
+
+    /**
+     * Fabrique d'identifiants
+     */
     FabriqueID(FabriqueID const&);
     FabriqueID& operator=(FabriqueID const&);
     static FabriqueID* f_instance;

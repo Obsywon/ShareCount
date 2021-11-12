@@ -9,3 +9,8 @@ FabriqueID* FabriqueID::getInstance(){
     }
     return f_instance;
 }
+
+std::string FabriqueID::getId() {
+    counterId++;
+    return std::to_string(counterId);
+}

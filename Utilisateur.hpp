@@ -27,16 +27,54 @@ public:
     Utilisateur(const std::string pseudo, const std::string email, const std::string mdp, GestionnaireGroupes* gg);
     ~Utilisateur();
 
+    /**
+     * Donne un nom à l'utilisateur
+     * @param n string nom
+     */
     void setNom(std::string n);
+
+    /**
+     * Donne un prénom à l'utilisateur
+     * @param p string prénom
+     */
     void setPrenom(std::string p);
+
+    /**
+     * Modifie le pseudo de l'utilisateur
+     * @param pseudo String pseudo
+     */
     void setPseudo (std::string pseudo);
+
+    /**
+     * Modifie le mot de passe de l'utilisateur
+     * @param mdp string mot de passe
+     */
     void setMdp (std::string mdp);
 
-    GestionnaireGroupes* getGestionnaire();
+    /**
+     * @return string nom de l'utilisateur
+     */
     std::string getNom();
+
+    /**
+     * @return string prénom de l'utilisateur
+     */
     std::string getPrenom();
+
+    /**
+     * @return string pseudo de l'utilisateur
+     */
     std::string getPseudo();
+
+    /**
+     * @return string email de l'utilisateur
+     */
     std::string getEmail();
+
+    /**
+     * Détaille les données de l'utilisateur
+     * @return string
+     */
     std::string toString();
 };
 

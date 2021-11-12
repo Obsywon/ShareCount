@@ -58,17 +58,45 @@ public:
      */
     void connecterUtilisateur (std::string pseudo, std::string email, std::string mdp);
 
+    /**
+     * Détaille les informations connus (sans le mdp) de l'utilisateur local
+     * @return string
+     */
     std::string userToString();
+
+    /**
+     * Détaille les groupes auxquels l'utilisateur local appartient
+     * @return string
+     */
     std::string  groupesToString();
 
+    /**
+     * Créer un nouveau groupe
+     * @param nom string nom du groupe
+     */
     void creerGroupe (std::string nom);
 
-    std::string evenementsToString();
+    /**
+     * Créer un événement dans un groupe particulier
+     * @param IDgroupe string identifiant du groupe visé
+     * @param nom Nom de l'événement
+     * @param dateDeb Date de début
+     * @param dateFin Date de fin
+     */
     void creerEvenement (std::string IDgroupe, std::string nom, std::string dateDeb,std::string dateFin);
 
+    /**
+     * Ajoute un utilisateur à un groupe
+     * @param idGroupe Identifiant du groupe visé
+     * @param u Utilisateur à inscrire au groupe
+     */
     void ajouterMembreAGroupe(std::string idGroupe,const Utilisateur* u);
 
 
+    /**
+     * Détaille toutes les informations connues par le modèle
+     * @return string
+     */
     std::string toString();
 };
 
