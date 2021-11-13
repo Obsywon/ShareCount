@@ -13,7 +13,11 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp Evenement.cpp Evenement.hpp GestionnaireEvenement.cpp GestionnaireEvenement.hpp GestionnaireComptes.hpp GestionnaireComptes.cpp FabriqueID.cpp FabriqueID.hpp)
+add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp
+        GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp
+        Evenement.cpp Evenement.hpp GestionnaireEvenement.cpp GestionnaireEvenement.hpp
+        GestionnaireComptes.hpp GestionnaireComptes.cpp FabriqueID.cpp FabriqueID.hpp
+        mainwindow.cpp mainwindow.h mainwindow.ui)
 
 target_link_libraries(ShareCount
         Qt5::Core

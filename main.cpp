@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QPushButton>
 #include "Model.hpp"
+#include "mainwindow.h"
 
 /**
  * Affiche un message sur la console
@@ -44,9 +45,8 @@ int main(int argc, char *argv[]) {
     print(model.toString());
 
     // Interface exemplaire
-    QPushButton button("Hello world!", nullptr);
-    button.resize(200, 100);
-    button.show();
+    MainWindow w;
+    w.show();
 
     return QApplication::exec();
 }
