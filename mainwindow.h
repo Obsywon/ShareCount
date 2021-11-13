@@ -27,6 +27,8 @@ private slots:
 
     void on_connecter_clicked();
 
+    void on_b_groupes_clicked();
+
 private:
     Ui::MainWindow *ui;
     Model m_model;

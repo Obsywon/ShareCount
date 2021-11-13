@@ -86,6 +86,7 @@ void MainWindow::on_seconnecter_clicked()
  */
 void MainWindow::on_connecter_clicked()
 {
+
     QString QMdp = ui->co_mdp->text();
     QString QPseudo = ui->co_pseudo->text();
     QString error = QString("Erreur : ");
@@ -99,7 +100,8 @@ void MainWindow::on_connecter_clicked()
         if (connect){
             m_model.connecterUtilisateur(QPseudo.toStdString(), "" ,QMdp.toStdString()); // Partie e-mail à retravailler
             print2(m_model.toString());
-            //ui->pages->setCurrentIndex(3);
+            ui->pages->setCurrentIndex(3);
+
         }else{
             error.append("Erreur lors de la connection.");
             ui->co_err->setText(error);
@@ -108,5 +110,11 @@ void MainWindow::on_connecter_clicked()
     }
 
 
+}
+
+
+void MainWindow::on_b_groupes_clicked()
+{
+    ui->pages->setCurrentIndex(4);
 }
 
