@@ -29,8 +29,19 @@ private slots:
 
     void on_b_groupes_clicked();
 
+    void on_ok_event_clicked();
+
+    void on_ok_groupes_clicked();
+
+    void on_ajout_event_clicked();
+
+    void on_ajout_groupe_clicked();
+
 private:
     Ui::MainWindow *ui;
     Model m_model;
+    std::string m_id_groupe;
+
+    void updateGroups();
 };
 #endif // MAINWINDOW_H

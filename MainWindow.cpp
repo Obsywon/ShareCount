@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "MainWindow.hpp"
 #include "ui_mainwindow.h"
 /**
  * Affiche un message sur la console
@@ -12,8 +12,7 @@ void print2(const std::string &msg) {
 }
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     m_model = Model();
@@ -100,6 +99,8 @@ void MainWindow::on_connecter_clicked()
         if (connect){
             m_model.connecterUtilisateur(QPseudo.toStdString(), "" ,QMdp.toStdString()); // Partie e-mail à retravailler
             print2(m_model.toString());
+            m_model.creerGroupe("Groupe 1");
+            updateGroups();
             ui->pages->setCurrentIndex(3);
 
         }else{
@@ -112,9 +113,63 @@ void MainWindow::on_connecter_clicked()
 
 }
 
+void MainWindow::updateGroups(){
+     std::vector <std::string> liste = m_model.listeNoms();
+     m_id_groupe = liste[0];
+
+     /*
+     int i=0;
+     for (auto kv : liste){
+         QLabel temp (new QString(kv));
+        ui->groupes->addWidget(&temp, i, Qt::Alignment());
+        i++;
+     }
+     */
+}
+
 
 void MainWindow::on_b_groupes_clicked()
 {
     ui->pages->setCurrentIndex(4);
+}
+
+
+void MainWindow::on_ok_event_clicked()
+{
+    updateGroups();
+    QString nom = ui->nom_event->text();
+    QDate dateDeb = ui->dateDeb->date();
+    QDate dateFin = ui->dateFin->date();
+    print2(dateDeb.toString("dd.MM.yyyy").toStdString());
+    m_model.creerEvenement(m_id_groupe,nom.toStdString(), dateDeb.toString("dd.MM.yyyy").toStdString(), dateFin.toString("dd.MM.yyyy").toStdString());
+    ui->pages->setCurrentIndex(3);
+
+}
+
+
+
+
+void MainWindow::on_ok_groupes_clicked()
+{
+    QString nom = ui->nom_groupe->text();
+     m_model.creerGroupe(nom.toStdString());
+     print2("GROUPES : ");
+     print2(m_model.groupesToString());
+     ui->pages->setCurrentIndex(3);
+
+
+}
+
+
+void MainWindow::on_ajout_event_clicked()
+{
+    ui->pages->setCurrentIndex(6);
+
+}
+
+
+void MainWindow::on_ajout_groupe_clicked()
+{
+    ui->pages->setCurrentIndex(5);
 }
 
