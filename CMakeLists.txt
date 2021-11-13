@@ -17,7 +17,8 @@ add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Mod
         GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp
         Evenement.cpp Evenement.hpp GestionnaireEvenement.cpp GestionnaireEvenement.hpp
         GestionnaireComptes.hpp GestionnaireComptes.cpp FabriqueID.cpp FabriqueID.hpp
-        mainwindow.cpp mainwindow.h mainwindow.ui)
+        mainwindow.cpp mainwindow.h mainwindow.ui
+        )
 
 target_link_libraries(ShareCount
         Qt5::Core

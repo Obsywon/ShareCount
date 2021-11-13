@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "Model.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 class MainWindow : public QMainWindow
 {
@@ -17,9 +19,16 @@ public:
 
 private slots:
 
-    void on_pb_Inscription_clicked();
+    void on_inscrire_clicked();
+
+    void on_sinscrire_clicked();
+
+    void on_seconnecter_clicked();
+
+    void on_connecter_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Model m_model;
 };
 #endif // MAINWINDOW_H
