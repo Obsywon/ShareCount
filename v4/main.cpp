@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <QApplication>
 #include <QDebug>
 #include <QPushButton>
@@ -16,7 +15,7 @@ void print(const std::string &msg) {
 }
 
 int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
     Model model = Model();
 
     // String de tests

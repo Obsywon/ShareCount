@@ -3,7 +3,6 @@
 //
 
 #include "Utilisateur.hpp"
-#include "../Utilisateur.hpp"
 
 
 Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""){}
@@ -55,9 +54,4 @@ std::string Utilisateur::toString(){
 
 std::string Utilisateur::getPseudo() {
     return std::string();
-}
-
-
-GestionnaireGroupes Utilisateur::getGestionnaire() {
-    return nullptr;
 }

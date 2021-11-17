@@ -2,6 +2,7 @@
 #define SHARECOUNT_GESTIONNAIREGROUPES_HPP
 
 #include <unordered_map>
+#include <vector>
 #include "Groupe.hpp"
 
 class GestionnaireGroupes {
@@ -56,6 +57,18 @@ public:
      * @return référence à Groupe
      */
     GestionnaireGroupes& getGroupe(std::string idGroupe);
+
+    /**
+     * @brief liste IDs
+     * @return Vector
+     */
+    std::vector<std::string> listeIDs();
+
+    /**
+     * @brief liste des noms de groupes
+     * @return Vector
+     */
+    std::vector<std::string> listeNoms();
 };
 
 

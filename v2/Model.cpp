@@ -43,5 +43,3 @@ void Model::connecterUtilisateur(std::string pseudo, std::string email, std::str
     // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
     m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp));
 }
-
-}

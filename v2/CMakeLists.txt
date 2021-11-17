@@ -18,4 +18,3 @@ target_link_libraries(ShareCount
         )
 
 
-add_executable(tests tests/tests.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp)

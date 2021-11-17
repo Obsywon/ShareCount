@@ -54,3 +54,4 @@ std::vector <std::string> GestionnaireGroupes::listeNoms(){
     }
     return ids;
 }
+

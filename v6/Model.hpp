@@ -98,6 +98,19 @@ public:
      * @return string
      */
     std::string toString();
+
+    /**
+     * @brief Liste des ids du gstionnaire de groupe
+     * @return vector
+     */
+std::vector <std::string> listeIDs();
+
+/**
+ * @brief Liste des noms du gstionnaire de groupe
+ * @return vector
+ */
+std::vector <std::string> listeNoms();
+
 };
 
 

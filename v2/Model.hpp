@@ -7,12 +7,10 @@
 
 #include "Utilisateur.hpp"
 #include "regex"
-#include "GestionnaireGroupes.h"
 
 class Model {
 private:
     Utilisateur m_user;
-    GestionnaireGroupes m_groupes;
 
 public:
 

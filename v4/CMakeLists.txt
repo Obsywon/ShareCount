@@ -10,7 +10,7 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt5 COMPONENTS
         Core
         Gui
-        Widgets
+        Qt5Widgets
         REQUIRED)
 
 add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp Evenement.cpp Evenement.hpp)
@@ -22,4 +22,3 @@ target_link_libraries(ShareCount
         )
 
 
-add_executable(tests tests/tests.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp Evenement.cpp Evenement.hpp GestionnaireEvenement.cpp GestionnaireEvenement.hpp)

@@ -3,6 +3,7 @@
 #include <string>
 #include "GestionnaireEvenement.hpp"
 #include "GestionnaireComptes.hpp"
+#include "FabriqueID.hpp"
 
 
 
@@ -47,6 +48,11 @@ public:
      * @return Id d'un groupe
      */
     std::string getId() const;
+
+    /**
+     * @return Nom d'un groupe
+     */
+    std::string getNom() const;
 
     /**
      * Ajoute un identifiant au groupe

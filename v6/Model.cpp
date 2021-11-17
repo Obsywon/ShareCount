@@ -70,4 +70,12 @@ void Model::creerEvenement(std::string IDgroupe, std::string nom, std::string da
     m_groupes.ajouterEvenemenent(IDgroupe, nom, dateDeb, dateFin);
 }
 
+std::vector <std::string> Model::listeIDs(){
+    return m_groupes.listeIDs();
+}
+
+std::vector <std::string> Model::listeNoms(){
+    return m_groupes.listeNoms();
+}
+
 

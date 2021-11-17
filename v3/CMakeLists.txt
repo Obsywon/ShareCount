@@ -17,5 +17,3 @@ target_link_libraries(ShareCount
         Qt5::Core
         )
 
-
-add_executable(tests tests/tests.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Model.hpp GestionnaireGroupes.cpp GestionnaireGroupes.hpp Groupe.cpp Groupe.hpp)

@@ -6,7 +6,7 @@ GestionnaireGroupes::GestionnaireGroupes() {
 
 void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
     Groupe g = Groupe(nom);
-    m_groupes[nom] = g;
+    m_groupes[g.getId()] = g;
 }
 
 GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
@@ -24,7 +24,7 @@ std::string GestionnaireGroupes::toString() {
 }
 
 void GestionnaireGroupes::ajouterEvenemenent(std::string idGroupe, std::string nom, std::string dateDeb, std::string dateFin){
-    m_groupes.at(idGroupe).creerEvenement(nom,dateDeb,dateFin);
+    m_groupes[idGroupe].creerEvenement(nom,dateDeb,dateFin);
 }
 
 void GestionnaireGroupes::ajoutMembreAGroupe(std::string idGroupe, const Utilisateur *u){
@@ -33,4 +33,24 @@ void GestionnaireGroupes::ajoutMembreAGroupe(std::string idGroupe, const Utilisa
 
 unsigned long GestionnaireGroupes::taille() {
     return m_groupes.size();
+}
+
+std::vector <std::string> GestionnaireGroupes::listeIDs(){
+    std::vector <std::string> ids;
+    ids.reserve(m_groupes.size());
+
+    for(auto kv : m_groupes) {
+        ids.push_back(kv.second.getId());
+    }
+    return ids;
+}
+
+std::vector <std::string> GestionnaireGroupes::listeNoms(){
+    std::vector <std::string> ids;
+    ids.reserve(m_groupes.size());
+
+    for(auto kv : m_groupes) {
+        ids.push_back(kv.second.getNom());
+    }
+    return ids;
 }

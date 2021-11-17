@@ -4,6 +4,7 @@ Groupe::Groupe() : m_nom(""){
 }
 
 Groupe::Groupe(std::string nom):m_nom(nom) {
+    m_id = FabriqueID::getInstance()->getId();
 }
 
 void Groupe::creerEvenement(std::string nom, std::string dateDeb, std::string dateFin){
@@ -26,6 +27,10 @@ std::string Groupe::toString() const {
 
 std::string Groupe::getId() const {
     return m_id;
+}
+
+std::string Groupe::getNom() const {
+    return m_nom;
 }
 
 void Groupe::setId(std::string id) {
