@@ -45,7 +45,7 @@ private slots:
 
 private:
     Ui::AjoutEvent *ui;
-    Model* m_model;
+    Model* m_model{};
 };
 
 #endif // AJOUTEVENT_HPP

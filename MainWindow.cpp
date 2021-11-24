@@ -17,17 +17,17 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), m_model(m)
 {
     ui->setupUi(this);
-    Launch* m_launch = new Launch(m_model, this);
-    Connect* m_connect = new Connect(m_model, this);
-    Inscription* m_inscription = new Inscription(m_model, this);
-    GestionGroupes* m_groupes = new GestionGroupes(m_model, this);
-    GestionEvents* m_events = new GestionEvents(m_model, this);
-    AjoutGroupe* m_addGroup = new AjoutGroupe (m_model, this);
-    AjoutEvent* m_addEvent = new AjoutEvent (m_model, this);
+    m_launch = new Launch(m_model, this);
+    m_connection = new Connect(m_model, this);
+    m_inscription = new Inscription(m_model, this);
+    m_groupes = new GestionGroupes(m_model, this);
+    m_events = new GestionEvents(m_model, this);
+    m_addGroup = new AjoutGroupe (m_model, this);
+    m_addEvent = new AjoutEvent (m_model, this);
 
 
     ui->pages->insertWidget(LAUNCH, m_launch);
-    ui->pages->insertWidget(CONNECT, m_connect);
+    ui->pages->insertWidget(CONNECT, m_connection);
     ui->pages->insertWidget(INSCRIPTION, m_inscription);
     ui->pages->insertWidget(GROUPES, m_groupes);
     ui->pages->insertWidget(EVENTS, m_events);
@@ -38,7 +38,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     connect(m_launch, SIGNAL(inscrire()), this, SLOT(afficherInscription()));
     connect(m_launch, SIGNAL(connecter()), this, SLOT(afficherConnection()));
     connect(m_inscription, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
-    connect(m_connect, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_connection, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
     connect(m_groupes, SIGNAL(ajoutGroupe()), this, SLOT(afficherAjoutGroupe()));
     connect(m_groupes, SIGNAL(evenement()), this, SLOT(afficherEvenement()));
     connect(m_addGroup, SIGNAL(groupes()), this, SLOT(afficherGroupes()));

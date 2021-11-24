@@ -101,7 +101,7 @@ std::string Utilisateur::getPseudo() {
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
  * @version v6 (Dernière modification)
  */
-std::string Utilisateur::toString(){
+std::string Utilisateur::toString() const {
     std::string temp = m_pseudo;
     temp.append(" ");
     temp.append(m_prenom).append(" ").append(m_nom).append(" ").append("\n");

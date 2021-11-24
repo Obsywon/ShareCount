@@ -12,9 +12,9 @@ GestionnaireGroupes::GestionnaireGroupes() {
      * @param nom Nom du groupe
      * @param u Utilisateur à ajouter
      * * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
+void GestionnaireGroupes::ajouterGroupe(const std::string &nom, const Utilisateur* u) {
     Groupe g = Groupe(nom);
     m_groupes[g.getId()] = g;
 }
@@ -23,9 +23,9 @@ void GestionnaireGroupes::ajouterGroupe(std::string nom, const Utilisateur* u) {
      * @param indice string identifiant
      * @return référence à Groupe
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
+GestionnaireGroupes& GestionnaireGroupes::getGroupe (const std::string& idGroupe){
     return reinterpret_cast<GestionnaireGroupes &>(m_groupes.at(idGroupe));
 }
 
@@ -35,16 +35,16 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
  * @authors Guillaume Vautrin, Louis Jacques
 * @version v6 (Dernière modification)
 */
-std::unordered_map <std::string, Groupe>* GestionnaireGroupes::getTousLesGroupesConnus(){
+std::unordered_map<std::string, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus() {
     return &m_groupes;
 }
     /**
      * Détaille tous les groupes dans lequel l'utilisateur est inscrit
      * @return String
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-std::string GestionnaireGroupes::toString() {
+std::string GestionnaireGroupes::toString() const {
     std::string s = "Gestionnaire groupes : \n";
 
     for (const std::pair<const std::string, Groupe>& it : m_groupes){
@@ -60,17 +60,18 @@ std::string GestionnaireGroupes::toString() {
  * @param dateDeb Date de début
  * @param dateFin Date de fin
 * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
 */
-void GestionnaireGroupes::ajouterEvenemenent(std::string idGroupe, std::string nom, std::string dateDeb, std::string dateFin){
+void GestionnaireGroupes::ajouterEvenemenent(const std::string& idGroupe, const std::string& nom, const std::string& dateDeb, const std::string &dateFin){
     m_groupes[idGroupe].creerEvenement(nom,dateDeb,dateFin);
 }
     /**
      * Ajout d'un membre à un groupe connu
      * @param idGroupe string identifiant du groupe
      * @param u Utilisateur à ajouter au groupe
+   * @version v8 (Dernière modification)  : const ajouté
      */
-void GestionnaireGroupes::ajoutMembreAGroupe(std::string idGroupe, const Utilisateur *u){
+void GestionnaireGroupes::ajoutMembreAGroupe(const std::string& idGroupe, const Utilisateur *u){
         m_groupes.at(idGroupe).ajouterMembre(u);
 }
     /**
@@ -87,13 +88,13 @@ unsigned long GestionnaireGroupes::taille() {
      * @brief liste IDs
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-std::vector <std::string> GestionnaireGroupes::listeIDs(){
+std::vector <std::string> GestionnaireGroupes::listeIDs() const {
     std::vector <std::string> ids;
     ids.reserve(m_groupes.size());
 
-    for(auto kv : m_groupes) {
+    for(const auto& kv : m_groupes) {
         ids.push_back(kv.second.getId());
     }
     return ids;
@@ -103,13 +104,13 @@ std::vector <std::string> GestionnaireGroupes::listeIDs(){
      * @brief liste des noms de groupes
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-std::vector <std::string> GestionnaireGroupes::listeNoms(){
+std::vector <std::string> GestionnaireGroupes::listeNoms() const {
     std::vector <std::string> ids;
     ids.reserve(m_groupes.size());
 
-    for(auto kv : m_groupes) {
+    for(const auto& kv : m_groupes) {
         ids.push_back(kv.second.getNom());
     }
     return ids;

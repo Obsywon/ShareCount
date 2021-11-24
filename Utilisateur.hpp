@@ -130,7 +130,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    std::string toString();
+    std::string toString() const;
 };
 
 

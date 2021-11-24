@@ -31,7 +31,7 @@ public:
 /**
  * Créer le modèle, classe facade
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+* @version v1 (Dernière modification)
 */
 Model();
 
@@ -40,7 +40,7 @@ Model();
  * @param mdp string
  * @return bool
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool estValideMdP (const std::string& mdp);
 
@@ -49,7 +49,7 @@ bool estValideMdP (const std::string& mdp);
  * @param email string
  * @return bool
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool estValideEmail (const std::string& email);
 
@@ -60,9 +60,9 @@ bool estValideEmail (const std::string& email);
  * @param mdp mdp
  * @return bool true si utilisateur est bien inscris
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-bool inscrireUtilisateur (std::string pseudo, std::string email, std::string mdp);
+bool inscrireUtilisateur (const std::string& seudo, const std::string& email, const std::string& mdp);
 
 /**
  * Vérifie si un utilisateur existe bien dans la base de données
@@ -70,7 +70,7 @@ bool inscrireUtilisateur (std::string pseudo, std::string email, std::string mdp
  * @param mdp string
  * @return bool
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool compteExiste (const std::string& pseudo, const std::string& mdp);
 
@@ -81,33 +81,33 @@ bool compteExiste (const std::string& pseudo, const std::string& mdp);
  * @param email string
  * @param mdp string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-void connecterUtilisateur (std::string pseudo, std::string email, std::string mdp);
+void connecterUtilisateur (const std::string& pseudo, const std::string& email, const std::string& mdp);
 
 /**
  * Détaille les informations connus (sans le mdp) de l'utilisateur local
  * @return string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-std::string userToString();
+std::string userToString() const;
 
 /**
  * Détaille les groupes auxquels l'utilisateur local appartient
  * @return string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-std::string  groupesToString();
+std::string  groupesToString() const;
 
 /**
  * Créer un nouveau groupe
  * @param nom string nom du groupe
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-void creerGroupe (std::string nom);
+void creerGroupe (const std::string& nom);
 
 /**
  * Créer un événement dans un groupe particulier
@@ -116,49 +116,50 @@ void creerGroupe (std::string nom);
  * @param dateDeb Date de début
  * @param dateFin Date de fin
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-void creerEvenement (std::string IDgroupe, std::string nom, std::string dateDeb,std::string dateFin);
+void creerEvenement (const std::string& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
 /**
  * Ajoute un utilisateur à un groupe
  * @param idGroupe Identifiant du groupe visé
  * @param u Utilisateur à inscrire au groupe
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-void ajouterMembreAGroupe(std::string idGroupe,const Utilisateur* u);
+void ajouterMembreAGroupe(const std::string& idGroupe, const Utilisateur* u);
 
 
 /**
  * Détaille toutes les informations connues par le modèle
  * @return string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+ * @version v8 (Dernière modification)  : const ajouté
  */
-std::string toString();
+std::string toString() const;
 
 /**
  * @brief Liste des ids du gstionnaire de groupe
  * @return vector
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
  */
-std::vector <std::string> listeIDs();
+std::vector <std::string> listeIDs() const;
 
 /**
  * @brief Liste des noms du gstionnaire de groupe
  * @return vector
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
+
  */
-std::vector <std::string> listeNoms();
+std::vector <std::string> listeNoms() const;
 
 /**
  * Récupère tous les groupes connus
  * @return Groupes (hashmap)
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+* @version v7 (Dernière modification)
  */
 std::unordered_map<std::string, Groupe> *getTousLesGroupesConnus();
 

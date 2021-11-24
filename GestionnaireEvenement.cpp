@@ -13,9 +13,9 @@ GestionnaireEvenement::GestionnaireEvenement() {
      * @param dateDebut Date de début
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-void GestionnaireEvenement::creerEvenement(std::string nom, std::string dateDebut, std::string dateFin) {
+void GestionnaireEvenement::creerEvenement(const std::string& nom, const std::string& dateDebut, const std::string &dateFin) {
     Evenement e = Evenement(nom, dateDebut, dateFin);
     m_evenement.push_back(e);
 }
@@ -23,9 +23,9 @@ void GestionnaireEvenement::creerEvenement(std::string nom, std::string dateDebu
      * @brief Détaille les événements connus par le gestionnaire
      * @return String
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-GestionnaireEvenement& GestionnaireEvenement::getEvenement(int indice){
+GestionnaireEvenement& GestionnaireEvenement::getEvenement(const int& indice){
     return reinterpret_cast<GestionnaireEvenement &>(m_evenement.at(indice));
 }
     /**
@@ -33,7 +33,7 @@ GestionnaireEvenement& GestionnaireEvenement::getEvenement(int indice){
      * @param indice int
      * @return référence à Evenement
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
 std::string GestionnaireEvenement::toString() const {
     std::string s = "Gestionnaire événements : \n";

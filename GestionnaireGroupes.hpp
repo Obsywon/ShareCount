@@ -32,9 +32,9 @@ public:
      * @param nom Nom du groupe
      * @param u Utilisateur à ajouter
      * * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    void ajouterGroupe(std::string nom, const Utilisateur *u);
+    void ajouterGroupe(const std::string& nom, const Utilisateur *u);
 
 /**
  * @brief Ajoute un événement à un groupe précis
@@ -43,22 +43,23 @@ public:
  * @param dateDeb Date de début
  * @param dateFin Date de fin
 * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+ * @version v8 (Dernière modification)  : const ajouté
 */
-    void ajouterEvenemenent(std::string idGroupe, std::string nom, std::string dateDeb, std::string dateFin);
+    void ajouterEvenemenent(const std::string& idGroupe, const std::string& nom, const std::string& dateDeb, const std::string &dateFin);
 
     /**
      * Ajout d'un membre à un groupe connu
      * @param idGroupe string identifiant du groupe
      * @param u Utilisateur à ajouter au groupe
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    void ajoutMembreAGroupe(std::string idGroupe, const Utilisateur *u);
+    void ajoutMembreAGroupe(const std::string& idGroupe, const Utilisateur *u);
 
     /**
      * Nombre de groupes auxquel l'utilisateur appartient
      * @return unsigned long
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v6 (Dernière modification)
      */
     unsigned long taille();
 
@@ -66,9 +67,9 @@ public:
      * Détaille tous les groupes dans lequel l'utilisateur est inscrit
      * @return String
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    std::string toString();
+    std::string toString() const;
 
 
     /**
@@ -76,33 +77,33 @@ public:
      * @param indice string identifiant
      * @return référence à Groupe
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    GestionnaireGroupes &getGroupe(std::string idGroupe);
+    GestionnaireGroupes &getGroupe(const std::string& idGroupe);
 
     /**
      * @brief liste IDs
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    std::vector<std::string> listeIDs();
+    std::vector<std::string> listeIDs() const;
 
     /**
      * @brief liste des noms de groupes
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+* @version v8 (Dernière modification) : const ajouté
      */
-    std::vector<std::string> listeNoms();
+    std::vector<std::string> listeNoms() const;
 
     /**
      * Récupère l'ensemble des groupes connus
      * @return unordered_map <ID, Groupe>
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    std::unordered_map<std::string, Groupe> *getTousLesGroupesConnus();
+    std::unordered_map<std::string, Groupe> * getTousLesGroupesConnus();
 
 };
 

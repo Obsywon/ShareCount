@@ -41,15 +41,15 @@ public:
      * @param dateDebut Date de début
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-    void creerEvenement (std::string nom,std::string dateDebut,std::string dateFin) ;
+    void creerEvenement (const std::string& nom, const std::string& dateDebut, const std::string& dateFin) ;
 
     /**
      * @brief Détaille les événements connus par le gestionnaire
      * @return String
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
     std::string toString() const;
 
@@ -58,9 +58,9 @@ public:
      * @param indice int
      * @return référence à Evenement
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-    GestionnaireEvenement& getEvenement(int indice);
+    GestionnaireEvenement& getEvenement(const int& indice);
 };
 
 

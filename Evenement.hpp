@@ -24,18 +24,18 @@ public:
      * @param dateDeb Date de début de l'événement
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v4 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-    Evenement(std::string nom, std::string dateDeb, std::string dateFin);
+    Evenement(const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
 
     /**
      * Détaille le contenu d'un événement
      * @return string
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v4 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
-    std::string toString();
+    std::string toString() const;
 };
 
 
