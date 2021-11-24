@@ -78,4 +78,8 @@ std::vector <std::string> Model::listeNoms(){
     return m_groupes.listeNoms();
 }
 
+std::unordered_map<std::string, Groupe> *Model::getTousLesGroupesConnus() {
+    return m_groupes.getTousLesGroupesConnus();
+}
+
 

@@ -2,11 +2,20 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Model.hpp"
+#include "Launch.hpp"
+#include "Connect.hpp"
+#include "Inscription.hpp"
+#include "GestionGroupes.hpp"
+#include "GestionEvents.hpp"
+#include "AjoutGroupe.hpp"
+#include "AjoutEvent.hpp"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+enum pages {LAUNCH, CONNECT, INSCRIPTION, GROUPES, EVENTS, ADDGROUP, ADDEVENT};
 
 
 class MainWindow : public QMainWindow
@@ -14,34 +23,29 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(Model* m, QWidget *parent = nullptr);
     ~MainWindow();
-
-private slots:
-
-    void on_inscrire_clicked();
-
-    void on_sinscrire_clicked();
-
-    void on_seconnecter_clicked();
-
-    void on_connecter_clicked();
-
-    void on_b_groupes_clicked();
-
-    void on_ok_event_clicked();
-
-    void on_ok_groupes_clicked();
-
-    void on_ajout_event_clicked();
-
-    void on_ajout_groupe_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Model m_model;
-    std::string m_id_groupe;
+    Model *m_model;
+    Launch *m_launch;
+    Inscription *m_inscription;
+    Connect *m_connection;
+    GestionGroupes* m_groupes;
+    GestionEvents* m_events;
+    AjoutGroupe* m_addGroup;
+    AjoutEvent* m_addEvent;
 
-    void updateGroups();
+    void changerPage(int i);
+
+public slots:
+    void afficherInscription();
+    void afficherConnection();
+    void afficherGroupes();
+    void afficherAjoutGroupe();
+    void afficherEvenement();
+    void afficherAjoutEvent();
+
 };
 #endif // MAINWINDOW_H

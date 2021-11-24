@@ -1,175 +1,84 @@
 #include "MainWindow.hpp"
 #include "ui_mainwindow.h"
+
 /**
  * Affiche un message sur la console
  * @param msg string à afficher
  */
+/*
 void print2(const std::string &msg) {
     QString ps = QString();
     ps = QString::fromStdString(msg);
     qDebug("%s", qUtf8Printable(ps));
 
-}
+}*/
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(Model* m, QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow), m_model(m)
 {
     ui->setupUi(this);
-    m_model = Model();
+    Launch* m_launch = new Launch(m_model, this);
+    Connect* m_connect = new Connect(m_model, this);
+    Inscription* m_inscription = new Inscription(m_model, this);
+    GestionGroupes* m_groupes = new GestionGroupes(m_model, this);
+    GestionEvents* m_events = new GestionEvents(m_model, this);
+    AjoutGroupe* m_addGroup = new AjoutGroupe (m_model, this);
+    AjoutEvent* m_addEvent = new AjoutEvent (m_model, this);
 
+
+    ui->pages->insertWidget(LAUNCH, m_launch);
+    ui->pages->insertWidget(CONNECT, m_connect);
+    ui->pages->insertWidget(INSCRIPTION, m_inscription);
+    ui->pages->insertWidget(GROUPES, m_groupes);
+    ui->pages->insertWidget(EVENTS, m_events);
+    ui->pages->insertWidget(ADDGROUP, m_addGroup);
+    ui->pages->insertWidget(ADDEVENT, m_addEvent);
+
+
+    connect(m_launch, SIGNAL(inscrire()), this, SLOT(afficherInscription()));
+    connect(m_launch, SIGNAL(connecter()), this, SLOT(afficherConnection()));
+    connect(m_inscription, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_connect, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_groupes, SIGNAL(ajoutGroupe()), this, SLOT(afficherAjoutGroupe()));
+    connect(m_groupes, SIGNAL(evenement()), this, SLOT(afficherEvenement()));
+    connect(m_addGroup, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_events, SIGNAL(addEvent()), this, SLOT(afficherAjoutEvent()));
+    connect(m_addEvent, SIGNAL(groupes()), this, SLOT(afficherEvenement()));
+
+
+    changerPage(LAUNCH);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-/**
- * @brief Sert à demander l'inscription d'un utilisateur
- */
-void MainWindow::on_inscrire_clicked()
-{
-    QString p, mdp, email, err;
-    p = ui->in_pseudo->text();
-    mdp = ui->in_mdp->text();
-    email = ui->in_email->text();
-    bool error = false;
-
-    err = QString("Erreur : ");
-
-
-    // Texte à afficher si l'email est invalide
-    if (!m_model.estValideEmail(email.toStdString())){
-        err.append("Addresse e-mail invalide. ");
-        error = true;
-    }
-
-    // Texte à afficher si le mdp est invalide
-    if (!m_model.estValideMdP(mdp.toStdString())){
-        err.append("Mot de passe invalide.");
-        error = true;
-    }
-
-    // Affichage du message d'erreur
-    ui->in_erreur->setVisible(error);
-    if (error == true){
-        ui->in_erreur->setText("Erreur : adresse e-mail invalide.");
-    }else{
-        m_model.inscrireUtilisateur(p.toStdString(), email.toStdString(), mdp.toStdString());
-        print2(m_model.toString());
-        ui->pages->setCurrentIndex(1);
-
-    }
+void MainWindow::changerPage (int i){
+    ui->pages->setCurrentIndex(i);
+    ui->pages->currentWidget()->show();
+}
+void MainWindow::afficherInscription(){
+    changerPage(INSCRIPTION);
 }
 
-/**
- * @brief Permet d'aller à la page d'inscription
- */
-void MainWindow::on_sinscrire_clicked()
-{
-    ui->pages->setCurrentIndex(2);
+void MainWindow::afficherConnection(){
+    changerPage(CONNECT);
 }
 
-
-/**
- * @brief Permet d'aller à la page de connection
- */
-void MainWindow::on_seconnecter_clicked()
-{
-    ui->pages->setCurrentIndex(1);
-
+void MainWindow::afficherGroupes(){
+    changerPage(GROUPES);
 }
 
-/**
- * @brief Permet de se connecter, si possible
- */
-void MainWindow::on_connecter_clicked()
-{
-
-    QString QMdp = ui->co_mdp->text();
-    QString QPseudo = ui->co_pseudo->text();
-    QString error = QString("Erreur : ");
-    if (QPseudo.isEmpty() || QMdp.isEmpty()){
-        error.append("Champs vides. ");
-        ui->co_err->setText(error);
-        ui->co_err->setVisible(true);
-    }else{
-        ui->co_err->setVisible(false);
-        bool connect = m_model.compteExiste(QPseudo.toStdString(), QMdp.toStdString());
-        if (connect){
-            m_model.connecterUtilisateur(QPseudo.toStdString(), "" ,QMdp.toStdString()); // Partie e-mail à retravailler
-            print2(m_model.toString());
-            m_model.creerGroupe("Groupe 1");
-            updateGroups();
-            ui->pages->setCurrentIndex(3);
-
-        }else{
-            error.append("Erreur lors de la connection.");
-            ui->co_err->setText(error);
-            ui->co_err->setVisible(true);
-        }
-    }
-
-
+void MainWindow::afficherAjoutGroupe(){
+    changerPage(ADDGROUP);
 }
 
-void MainWindow::updateGroups(){
-     std::vector <std::string> liste = m_model.listeNoms();
-     m_id_groupe = liste[0];
-
-     /*
-     int i=0;
-     for (auto kv : liste){
-         QLabel temp (new QString(kv));
-        ui->groupes->addWidget(&temp, i, Qt::Alignment());
-        i++;
-     }
-     */
+void MainWindow::afficherEvenement(){
+    changerPage(EVENTS);
 }
 
-
-void MainWindow::on_b_groupes_clicked()
-{
-    ui->pages->setCurrentIndex(4);
+void MainWindow::afficherAjoutEvent(){
+    changerPage(ADDEVENT);
 }
 
-
-void MainWindow::on_ok_event_clicked()
-{
-    updateGroups();
-    QString nom = ui->nom_event->text();
-    QDate dateDeb = ui->dateDeb->date();
-    QDate dateFin = ui->dateFin->date();
-    print2(dateDeb.toString("dd.MM.yyyy").toStdString());
-    m_model.creerEvenement(m_id_groupe,nom.toStdString(), dateDeb.toString("dd.MM.yyyy").toStdString(), dateFin.toString("dd.MM.yyyy").toStdString());
-    ui->pages->setCurrentIndex(3);
-
-}
-
-
-
-
-void MainWindow::on_ok_groupes_clicked()
-{
-    QString nom = ui->nom_groupe->text();
-     m_model.creerGroupe(nom.toStdString());
-     print2("GROUPES : ");
-     print2(m_model.groupesToString());
-     ui->pages->setCurrentIndex(3);
-
-
-}
-
-
-void MainWindow::on_ajout_event_clicked()
-{
-    ui->pages->setCurrentIndex(6);
-
-}
-
-
-void MainWindow::on_ajout_groupe_clicked()
-{
-    ui->pages->setCurrentIndex(5);
-}
 

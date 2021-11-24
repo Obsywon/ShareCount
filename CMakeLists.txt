@@ -18,6 +18,13 @@ add_executable(ShareCount main.cpp Utilisateur.cpp Utilisateur.hpp Model.cpp Mod
         Evenement.cpp Evenement.hpp GestionnaireEvenement.cpp GestionnaireEvenement.hpp
         GestionnaireComptes.hpp GestionnaireComptes.cpp FabriqueID.cpp FabriqueID.hpp
         MainWindow.cpp MainWindow.hpp mainwindow.ui
+        Launch.cpp Launch.hpp launch.ui
+        Inscription.cpp Inscription.hpp inscription.ui
+        Connect.cpp Connect.hpp connect.ui
+        GestionGroupes.cpp GestionGroupes.hpp gestiongroupes.ui
+        GestionEvents.cpp GestionEvents.hpp gestionevents.ui
+        AjoutGroupe.cpp AjoutGroupe.hpp ajoutgroupe.ui
+        AjoutEvent.cpp AjoutEvent.hpp ajoutevent.ui
         )
 
 target_link_libraries(ShareCount

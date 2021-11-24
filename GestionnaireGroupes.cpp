@@ -13,6 +13,10 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (std::string idGroupe){
     return reinterpret_cast<GestionnaireGroupes &>(m_groupes.at(idGroupe));
 }
 
+std::unordered_map <std::string, Groupe>* GestionnaireGroupes::getTousLesGroupesConnus(){
+    return &m_groupes;
+}
+
 std::string GestionnaireGroupes::toString() {
     std::string s = "Gestionnaire groupes : \n";
 

@@ -111,6 +111,12 @@ std::vector <std::string> listeIDs();
  */
 std::vector <std::string> listeNoms();
 
+/**
+ * Récupère tous les groupes connus
+ * @return Groupes (hashmap)
+ */
+std::unordered_map<std::string, Groupe> *getTousLesGroupesConnus();
+
 };
 
 

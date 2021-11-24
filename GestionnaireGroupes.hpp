@@ -7,7 +7,7 @@
 
 class GestionnaireGroupes {
 private:
-    std::unordered_map<std::string,Groupe> m_groupes;
+    std::unordered_map<std::string, Groupe> m_groupes;
 
 public:
     /**
@@ -20,7 +20,7 @@ public:
      * @param nom Nom du groupe
      * @param u Utilisateur à ajouter
      */
-    void ajouterGroupe (std::string nom, const Utilisateur* u) ;
+    void ajouterGroupe(std::string nom, const Utilisateur *u);
 
     /**
      * Ajoute un événement à un groupe précis
@@ -29,14 +29,14 @@ public:
      * @param dateDeb Date de début
      * @param dateFin Date de fin
      */
-    void ajouterEvenemenent (std::string idGroupe,std::string nom, std::string dateDeb,std::string dateFin);
+    void ajouterEvenemenent(std::string idGroupe, std::string nom, std::string dateDeb, std::string dateFin);
 
     /**
      * Ajout d'un membre à un groupe connu
      * @param idGroupe string identifiant du groupe
      * @param u Utilisateur à ajouter au groupe
      */
-    void ajoutMembreAGroupe(std::string idGroupe,const Utilisateur* u);
+    void ajoutMembreAGroupe(std::string idGroupe, const Utilisateur *u);
 
     /**
      * Nombre de groupes auxquel l'utilisateur appartient
@@ -56,7 +56,7 @@ public:
      * @param indice string identifiant
      * @return référence à Groupe
      */
-    GestionnaireGroupes& getGroupe(std::string idGroupe);
+    GestionnaireGroupes &getGroupe(std::string idGroupe);
 
     /**
      * @brief liste IDs
@@ -69,7 +69,13 @@ public:
      * @return Vector
      */
     std::vector<std::string> listeNoms();
-};
 
+    /**
+     * Récupère l'ensemble des groupes connus
+     * @return unordered_map <ID, Groupe>
+     */
+    std::unordered_map<std::string, Groupe> *getTousLesGroupesConnus();
+
+};
 
 #endif //SHARECOUNT_GESTIONNAIREGROUPES_HPP
