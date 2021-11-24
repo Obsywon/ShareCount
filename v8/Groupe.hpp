@@ -42,9 +42,9 @@ public:
      * Groupe regroupant l'ensemble de participants, d'événements et diverses informations les concernant
      * @param nom Nom du groupe
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-    Groupe(std::string nom);
+    explicit Groupe(const std::string& nom);
 
     /**
      * Créer un événement lié à un groupe d'utilisateurs
@@ -52,15 +52,15 @@ public:
      * @param dateDeb Date de début de l'évenement
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-    void creerEvenement(std::string nom,std::string dateDeb,std::string dateFin);
+    void creerEvenement(const std::string& nom,const std::string& dateDeb,const std::string& dateFin);
 
     /**
      * Ajoute un membre à un groupe
      * @param u Utilisateur
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification)  : const ajouté
      */
     void ajouterMembre(const Utilisateur* u);
 
@@ -68,21 +68,21 @@ public:
      * Détails le contenu d'un groupe
      * @return string
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
     std::string toString() const;
 
     /**
      * @return Id d'un groupe
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
     std::string getId() const;
 
     /**
      * @return Nom d'un groupe
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
     std::string getNom() const;
 
@@ -90,9 +90,9 @@ public:
      * Ajoute un identifiant au groupe
      * @param id string
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
      */
-    void setId(std::string id);
+    void setId(const std::string& id);
 };
 
 

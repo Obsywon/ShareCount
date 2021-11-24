@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(Model* m, QWidget *parent = nullptr);
+    explicit MainWindow(Model* m, QWidget *parent = nullptr);
     ~MainWindow();
 
 private:

@@ -31,7 +31,7 @@ public:
      * @brief ajouterCompte permet d'ajouter un compte au gestionnaire
      * @param u Utilisateur
      * @author Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
     void ajouterCompte(const Utilisateur* u);
 
@@ -39,7 +39,7 @@ public:
      * @brief le contenu du gestionnaire de compte
      * @return String
      * @author Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : const ajouté
      */
     std::string toString() const;
 
@@ -47,7 +47,7 @@ public:
      * Liste les pseudos connus par le gestionnaire de compte
      * @return string
      * @author Guillaume Vautrin, Louis Jacques
-     * @version v6 (Dernière modification)
+     * @version v8 (Dernière modification) : typage auto ajouté
      */
     std::vector<std::string> listPseudos();
 

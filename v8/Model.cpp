@@ -15,7 +15,7 @@ Model::Model(){
  * @param mdp string
  * @return bool
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool Model::estValideMdP(const std::string& mdp) {
     bool test = true;
@@ -34,7 +34,7 @@ bool Model::estValideMdP(const std::string& mdp) {
  * @param email string
  * @return bool
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool Model::estValideEmail(const std::string& email) {
     const std::regex pattern (R"((\w+)(\.|_)?(\w*)@(\w+)(\.(\w+))+)");
@@ -48,13 +48,13 @@ bool Model::estValideEmail(const std::string& email) {
  * @param mdp mdp
  * @return bool true si utilisateur est bien inscris
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-bool Model::inscrireUtilisateur(std::string pseudo, std::string email, std::string mdp) {
+bool Model::inscrireUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
     if (m_groupes.taille() > 0){
         m_groupes = GestionnaireGroupes();
     }
-    m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp), &m_groupes);
+    m_user = Utilisateur(pseudo, email, mdp, &m_groupes);
     return true;
 }
 
@@ -64,7 +64,7 @@ bool Model::inscrireUtilisateur(std::string pseudo, std::string email, std::stri
  * @param mdp string
  * @return bool
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
 bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
     return true; // "Existe toujours" pour le moment
@@ -77,23 +77,23 @@ bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
  * @param email string
  * @param mdp string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-void Model::connecterUtilisateur(std::string pseudo, std::string email, std::string mdp) {
+void Model::connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
     // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
     if (m_groupes.taille() > 0){
         m_groupes = GestionnaireGroupes();
     }
-    m_user = Utilisateur(std::move(pseudo), std::move(email), std::move(mdp), &m_groupes);
+    m_user = Utilisateur(pseudo, email, mdp, &m_groupes);
 }
 
 /**
  * Détaille les informations connus (sans le mdp) de l'utilisateur local
  * @return string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-std::string Model::userToString() {
+std::string Model::userToString() const{
     return m_user.toString();
 }
 
@@ -101,9 +101,9 @@ std::string Model::userToString() {
  * Détaille les groupes auxquels l'utilisateur local appartient
  * @return string
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+   * @version v8 (Dernière modification)  : const ajouté
  */
-std::string Model::groupesToString() {
+std::string Model::groupesToString() const {
     return m_groupes.toString();
 }
 
@@ -114,7 +114,7 @@ std::string Model::groupesToString() {
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
 * @version v8 (Dernière modification)
  */
-void Model::creerGroupe(std::string nom) {
+void Model::creerGroupe(const std::string& nom) {
     m_groupes.ajouterGroupe(nom, &m_user);
 }
 
@@ -127,7 +127,7 @@ void Model::creerGroupe(std::string nom) {
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
 * @version v8 (Dernière modification)
  */
-void Model::creerEvenement(std::string IDgroupe, std::string nom, std::string dateDeb,std::string dateFin) {
+void Model::creerEvenement(const std::string& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
     m_groupes.ajouterEvenemenent(IDgroupe, nom, dateDeb, dateFin);
 }
 
@@ -139,7 +139,7 @@ void Model::creerEvenement(std::string IDgroupe, std::string nom, std::string da
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
 * @version v8 (Dernière modification)
  */
-void Model::ajouterMembreAGroupe(std::string idGroupe, const Utilisateur *u){
+void Model::ajouterMembreAGroupe(const std::string& idGroupe, const Utilisateur *u){
     m_groupes.ajoutMembreAGroupe(idGroupe,u);
 }
 
@@ -149,7 +149,7 @@ void Model::ajouterMembreAGroupe(std::string idGroupe, const Utilisateur *u){
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
 * @version v8 (Dernière modification)
  */
-std::string Model::toString(){
+std::string Model::toString() const{
     std::string temp = userToString();
     temp.append("\n");
     temp.append(m_groupes.toString());
@@ -160,9 +160,9 @@ std::string Model::toString(){
  * @brief Liste des ids du gstionnaire de groupe
  * @return vector
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+ * @version v8 (Dernière modification)  : const ajouté
  */
-std::vector <std::string> Model::listeIDs(){
+std::vector <std::string> Model::listeIDs() const{
     return m_groupes.listeIDs();
 }
 
@@ -170,9 +170,9 @@ std::vector <std::string> Model::listeIDs(){
  * @brief Liste des noms du gstionnaire de groupe
  * @return vector
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+ * @version v8 (Dernière modification)  : const ajouté
  */
-std::vector <std::string> Model::listeNoms(){
+std::vector <std::string> Model::listeNoms() const{
     return m_groupes.listeNoms();
 }
 

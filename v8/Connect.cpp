@@ -13,9 +13,10 @@
  * @version v8 (Dernière modification)
  */
 Connect::Connect(Model* m, QWidget *parent) :
+    m_model (m),
     QWidget(parent),
-    ui(new Ui::Connect),
-    m_model (m)
+    ui(new Ui::Connect)
+
 {
     ui->setupUi(this);
 }

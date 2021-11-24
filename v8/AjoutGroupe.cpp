@@ -10,9 +10,9 @@
  * @version v8 (Dernière modification)
  */
 AjoutGroupe::AjoutGroupe(Model* m, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::AjoutGroupe),
-    m_model(m)
+        m_model (m),
+        QWidget(parent),
+        ui(new Ui::AjoutGroupe)
 {
     ui->setupUi(this);
 }
