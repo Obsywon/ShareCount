@@ -10,9 +10,10 @@
  * @version v8 (Dernière modification)
  */
 AjoutEvent::AjoutEvent(Model* m, QWidget *parent) :
-    m_model(m),
     QWidget(parent),
-    ui(new Ui::AjoutEvent)
+    ui(new Ui::AjoutEvent),
+    m_model(m)
+
 {
     ui->setupUi(this);
 }
