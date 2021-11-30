@@ -1,6 +1,6 @@
 #include "Utilisateur.hpp"
 
-Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""), m_password(""), m_groupes(nullptr){
+Utilisateur::Utilisateur() : m_id(), m_nom(""), m_prenom(""), m_pseudo(""), m_password(""), m_email(""), m_groupes(nullptr){
 }
 
     /**
@@ -9,15 +9,25 @@ Utilisateur::Utilisateur() : m_nom(""), m_prenom(""), m_email(""), m_pseudo(""),
      * @param email E-mail utilisé pour s'enregistrer
      * @param mdp Mot de passe permettant la connection
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-     * @version v6 (Dernière modification)
+     * @version v9 (Dernière modification): ajout ID
      */
-Utilisateur::Utilisateur(const std::string pseudo, const std::string email, const std::string mdp, GestionnaireGroupes* gg):
-m_pseudo(pseudo), m_email(email), m_password(mdp), m_groupes(gg){
+Utilisateur::Utilisateur(const int& id, const std::string& pseudo, const std::string& email, const std::string& mdp, GestionnaireGroupes* gg):
+m_id(id), m_pseudo(pseudo), m_password(mdp), m_email(email), m_groupes(gg){
 }
 
 Utilisateur::~Utilisateur(){
     //std::cout << "Utilisateur détruit \n";
 }
+
+void Utilisateur::setId(int& id){
+    m_id = id;
+}
+
+
+int Utilisateur::getId() const{
+    return m_id;
+}
+
 
     /**
      * Donne un nom à l'utilisateur
@@ -25,7 +35,7 @@ Utilisateur::~Utilisateur(){
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-void Utilisateur::setNom(const std::string n){
+void Utilisateur::setNom(const std::string& n){
     m_nom = n;
 }
 
@@ -35,7 +45,7 @@ void Utilisateur::setNom(const std::string n){
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-void Utilisateur::setPrenom(const std::string p){
+void Utilisateur::setPrenom(const std::string& p){
     m_prenom = p;
 }
 
@@ -72,7 +82,7 @@ std::string Utilisateur::getEmail(){
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-void Utilisateur::setPseudo(std::string pseudo) {
+void Utilisateur::setPseudo(const std::string& pseudo) {
     m_pseudo = pseudo;
 }
 
@@ -82,7 +92,7 @@ void Utilisateur::setPseudo(std::string pseudo) {
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-void Utilisateur::setMdp(std::string mdp) {
+void Utilisateur::setMdp(const std::string& mdp) {
     m_password = mdp;
 }
 

@@ -43,7 +43,6 @@ SOURCES += \
     Evenement.cpp
 
 HEADERS += \
-        main.hpp \
     Model.hpp \
     Groupe.hpp \
     Launch.hpp \

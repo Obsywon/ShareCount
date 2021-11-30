@@ -104,6 +104,19 @@
     <string>Se connecter</string>
    </property>
   </widget>
+  <widget class="QLabel" name="co_err">
+   <property name="geometry">
+    <rect>
+     <x>36</x>
+     <y>240</y>
+     <width>301</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

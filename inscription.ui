@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Se connecter</string>
+    <string>S'inscrire</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="in_pseudo">
@@ -125,6 +125,19 @@
    </property>
    <property name="text">
     <string>Adresse e-mail :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="in_erreur">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>330</y>
+     <width>281</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

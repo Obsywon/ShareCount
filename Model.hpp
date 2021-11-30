@@ -4,12 +4,13 @@
 #include "GestionnaireGroupes.hpp"
 #include "regex"
 #include <cctype>
-
+#include <utility>
+#include "Database.hpp"
 
 /**
- * Créer le modèle, classe facade
+ * Créer le modèle, classe facade et initialise la base de données
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+* @version v9 (Dernière modification) : initialise la base de données
 */
 class Model {
 private:
@@ -25,6 +26,13 @@ private:
 * @version v8 (Dernière modification)
 */
     GestionnaireGroupes m_groupes;
+
+/**
+* @brief Base de données
+* @authors Guillaume Vautrin, Louis Jacques, David Borgondo
+* @version v9 (Dernière modification) ajout
+*/
+    Database m_db;
 
 public:
 

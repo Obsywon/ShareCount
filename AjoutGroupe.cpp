@@ -22,8 +22,15 @@ AjoutGroupe::~AjoutGroupe()
     delete ui;
 }
 
+/**
+ * @brief déclenche l'ajout d'un groupe dans le modèle et le passage vers la gestion des groupes
+  * @authors Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
 void AjoutGroupe::on_ok_clicked()
 {
+    QString nom = ui->nom_groupe->text();
+    m_model->creerGroupe(nom.toStdString());
     emit groupes();
 }
 

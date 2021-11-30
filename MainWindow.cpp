@@ -17,6 +17,9 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), m_model(m)
 {
     ui->setupUi(this);
+
+
+    // Génération des interfaces
     m_launch = new Launch(m_model, this);
     m_connection = new Connect(m_model, this);
     m_inscription = new Inscription(m_model, this);
@@ -25,7 +28,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     m_addGroup = new AjoutGroupe (m_model, this);
     m_addEvent = new AjoutEvent (m_model, this);
 
-
+    // Insertion des interfaces dans la collection de la fenêtre principale
     ui->pages->insertWidget(LAUNCH, m_launch);
     ui->pages->insertWidget(CONNECT, m_connection);
     ui->pages->insertWidget(INSCRIPTION, m_inscription);
@@ -35,6 +38,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     ui->pages->insertWidget(ADDEVENT, m_addEvent);
 
 
+    // Signaux / slots permettant de changer d'interface
     connect(m_launch, SIGNAL(inscrire()), this, SLOT(afficherInscription()));
     connect(m_launch, SIGNAL(connecter()), this, SLOT(afficherConnection()));
     connect(m_inscription, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
@@ -45,7 +49,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     connect(m_events, SIGNAL(addEvent()), this, SLOT(afficherAjoutEvent()));
     connect(m_addEvent, SIGNAL(groupes()), this, SLOT(afficherEvenement()));
 
-
+    // Afficher le choix entre se connecter et s'inscrire
     changerPage(LAUNCH);
 }
 
@@ -115,5 +119,6 @@ void MainWindow::afficherEvenement(){
 void MainWindow::afficherAjoutEvent(){
     changerPage(ADDEVENT);
 }
+
 
 

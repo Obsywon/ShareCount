@@ -8,6 +8,13 @@ class GestionnaireGroupes;
 
 class Utilisateur {
 private:
+
+    /**
+     * @brief Identifiant de l'utilisateur dans la base de données
+     * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
+    * @version v9 (Dernière modification)
+     */
+    int m_id;
 /**
  * @brief Nom de l'utilisateur
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
@@ -61,8 +68,13 @@ public:
     * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    Utilisateur(const std::string pseudo, const std::string email, const std::string mdp, GestionnaireGroupes* gg);
+    Utilisateur(const int& id, const std::string& pseudo, const std::string& email, const std::string& mdp, GestionnaireGroupes* gg);
     ~Utilisateur();
+
+    void setId(int& id);
+
+
+    int getId() const;
 
     /**
      * Donne un nom à l'utilisateur
@@ -70,7 +82,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    void setNom(std::string n);
+    void setNom(const std::string& n);
 
     /**
      * Donne un prénom à l'utilisateur
@@ -78,7 +90,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    void setPrenom(std::string p);
+    void setPrenom(const std::string& p);
 
     /**
      * Modifie le pseudo de l'utilisateur
@@ -86,7 +98,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    void setPseudo (std::string pseudo);
+    void setPseudo (const std::string& pseudo);
 
     /**
      * Modifie le mot de passe de l'utilisateur
@@ -94,7 +106,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
      * @version v6 (Dernière modification)
      */
-    void setMdp (std::string mdp);
+    void setMdp (const std::string& mdp);
 
     /**
      * @return string nom de l'utilisateur
