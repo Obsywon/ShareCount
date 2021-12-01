@@ -22,6 +22,13 @@ public:
     explicit GestionEvents(Model* m, QWidget *parent = nullptr);
     ~GestionEvents();
 
+    /**
+     * @brief Affiche les evenements d'un groupe
+     * @authors Louis Jacques
+     * @version v9 (Dernière modification)
+     */
+    void afficherEvent(Model* m);
+
 private slots:
 /**
  * @brief Réaction à un clique pour ajouter un événement :

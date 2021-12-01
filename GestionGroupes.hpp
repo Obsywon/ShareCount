@@ -22,6 +22,13 @@ public:
     explicit GestionGroupes(Model* m, QWidget *parent = nullptr);
     ~GestionGroupes();
 
+    /**
+     * @brief Affiche les Groupes d'un Utilisateur
+     * @author Guillaume Vautrin , Louis Jacques
+     * @version v9 (Dernière modification)
+     */
+    void afficherGroupe(Model* m);
+
 private slots:
     /**
      * @brief Réaction au bouton d'ajout d'un groupe
@@ -36,6 +43,7 @@ private slots:
      * @version v8 (Dernière modification)
      */
     void on_b_groupes_clicked();
+
 
 signals:
 /**
@@ -52,6 +60,7 @@ signals:
  * @version v8 (Dernière modification)
  */
     void evenement();
+
 
 private:
     Ui::GestionGroupes *ui;

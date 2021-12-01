@@ -45,3 +45,13 @@ std::string GestionnaireEvenement::toString() const {
     }
     return s;
 }
+
+/**
+ * @brief Récupère l'ensemble des evenements connus
+ * @return unordered_map <ID, Evenement>
+ * @authors Louis Jacques
+ * @version v9 (Dernière modification)
+ */
+std::unordered_map<int, Evenement> * GestionnaireEvenement::getTousLesEvenementsConnus(){
+    return &m_evenement;
+}

@@ -77,3 +77,14 @@ void Groupe::setId(const int& id) {
     m_id = id;
 }
 
+/**
+ * @brief Récupère l'ensemble des evenements connus
+ * @return unordered_map <ID, Evenement>
+ * @authors Louis Jacques
+ * @version v9 (Dernière modification)
+ */
+std::unordered_map<int, Evenement> * Groupe::getTousLesEvenementsConnus() {
+
+    return ges.getTousLesEvenementsConnus();
+}
+

@@ -16,7 +16,7 @@
   <widget class="QListWidget" name="groupes">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>30</y>
      <width>256</width>
      <height>261</height>

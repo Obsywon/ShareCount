@@ -86,10 +86,11 @@ void MainWindow::afficherConnection(){
 }
     /**
      * @brief Affiche les groupes
-     * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
+     * @author Guillaume Vautrin , Louis Jacques
+     * @version v9 (Dernière modification)
      */
 void MainWindow::afficherGroupes(){
+    m_groupes->afficherGroupe(m_model);
     changerPage(GROUPES);
 }
 
@@ -104,10 +105,11 @@ void MainWindow::afficherAjoutGroupe(){
 
     /**
      * @brief Affiche les événements
-     * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
+     * @author Guillaume Vautrin , Louis Jacques
+     * @version v9 (Dernière modification)
      */
 void MainWindow::afficherEvenement(){
+    m_events->afficherEvent(m_model);
     changerPage(EVENTS);
 }
 

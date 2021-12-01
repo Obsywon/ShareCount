@@ -54,13 +54,13 @@
     <string>Ajout événement</string>
    </property>
   </widget>
-  <widget class="QListView" name="gr_events">
+  <widget class="QListWidget" name="listEvent">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>301</width>
-     <height>261</height>
+     <x>40</x>
+     <y>50</y>
+     <width>261</width>
+     <height>251</height>
     </rect>
    </property>
   </widget>

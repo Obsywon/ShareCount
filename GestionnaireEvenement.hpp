@@ -62,6 +62,14 @@ public:
     * @version v9 (Dernière modification)  : Récupère événement
     */
     Evenement getEvenement(const int& indice);
+
+    /**
+     * @brief Récupère l'ensemble des evenements connus
+     * @return unordered_map <ID, Evenement>
+     * @authors Louis Jacques
+     * @version v9 (Dernière modification)
+     */
+    std::unordered_map<int, Evenement>* getTousLesEvenementsConnus();
 };
 
 
