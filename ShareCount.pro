@@ -45,7 +45,6 @@ SOURCES += \
 
 HEADERS += \
     Database.hpp \
-        main.hpp \
     Model.hpp \
     Groupe.hpp \
     Launch.hpp \

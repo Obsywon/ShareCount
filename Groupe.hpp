@@ -6,15 +6,14 @@
 #include "FabriqueID.hpp"
 
 
-
 class Groupe {
 private:
 /**
- * @brief Identifiant du groupe
+* @brief Identifiant du groupe
 * @authors Guillaume Vautrin, Louis Jacques
-* @version v6 (Dernière modification)
- */
-    std::string m_id;
+* @version v9 (Dernière modification)  : changement de type
+*/
+    int m_id;
     /**
  * @brief Nom du groupe
 * @authors Guillaume Vautrin, Louis Jacques
@@ -49,12 +48,13 @@ public:
     /**
      * Créer un événement lié à un groupe d'utilisateurs
      * @param nom Nom de l'événement
+     * @param id identifiant de l'évenement
      * @param dateDeb Date de début de l'évenement
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-   * @version v8 (Dernière modification)  : const ajouté
+     * @version v8 (Dernière modification)  : const ajouté
      */
-    void creerEvenement(const std::string& nom,const std::string& dateDeb,const std::string& dateFin);
+void creerEvenement(const int& id, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
     /**
      * Ajoute un membre à un groupe
@@ -75,9 +75,9 @@ public:
     /**
      * @return Id d'un groupe
      * @authors Guillaume Vautrin, Louis Jacques
-   * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : changement de type
      */
-    std::string getId() const;
+    int getId() const;
 
     /**
      * @return Nom d'un groupe
@@ -90,9 +90,9 @@ public:
      * Ajoute un identifiant au groupe
      * @param id string
      * @authors Guillaume Vautrin, Louis Jacques
-   * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : changement de type
      */
-    void setId(const std::string& id);
+    void setId(const int& id);
 };
 
 

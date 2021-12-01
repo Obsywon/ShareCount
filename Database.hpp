@@ -74,11 +74,13 @@ public:
  * Ajoute un événement à la base de données
  * @param id_groupe identifiant du groupe
  * @param nom Nom de l'événement
+ * @param dateDeb date de début de l'événement
+ * @param dateFin date de fin de l'événement
  * @return identifiant de l'événement
  * @authors Guillaume Vautrin
  * @version v9 (Dernière modification)
  */
-    int ajouterEvenement (const int& id_groupe, const std::string& nom);
+    int ajouterEvenement (const int& id_groupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
 /**
 * Vérifie si un utilisateur existe basé sur son identifiant

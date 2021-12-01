@@ -5,28 +5,29 @@
  * @version v6 (Dernière modification)
  */
 GestionnaireEvenement::GestionnaireEvenement() {
-    m_evenement = std::vector<Evenement>();
+    m_evenement = std::unordered_map <int, Evenement>();
 }
     /**
      * @brief Génère un événement lié à un groupe de clients
+     * @param id identifiant
      * @param nom nom de l'évenement
      * @param dateDebut Date de début
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification) : const ajouté
+     * @version v9 (Dernière modification)  : ajout identifiant
      */
-void GestionnaireEvenement::creerEvenement(const std::string& nom, const std::string& dateDebut, const std::string &dateFin) {
-    Evenement e = Evenement(nom, dateDebut, dateFin);
-    m_evenement.push_back(e);
+void GestionnaireEvenement::creerEvenement(const int& id, const std::string& nom, const std::string& dateDebut, const std::string &dateFin) {
+    Evenement e = Evenement(id, nom, dateDebut, dateFin);
+    m_evenement[id] = e;
 }
-    /**
-     * @brief Détaille les événements connus par le gestionnaire
-     * @return String
-     * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification) : const ajouté
-     */
-GestionnaireEvenement& GestionnaireEvenement::getEvenement(const int& indice){
-    return reinterpret_cast<GestionnaireEvenement &>(m_evenement.at(indice));
+/**
+* @brief Détaille les événements connus par le gestionnaire
+* @return Evenement
+* @authors Guillaume Vautrin, Louis Jacques
+* @version v9 (Dernière modification)  : Récupère événement
+*/
+Evenement GestionnaireEvenement::getEvenement(const int& indice){
+    return m_evenement[indice];
 }
     /**
      * @brief Récupère l'evenement indiqué
@@ -37,10 +38,10 @@ GestionnaireEvenement& GestionnaireEvenement::getEvenement(const int& indice){
      */
 std::string GestionnaireEvenement::toString() const {
     std::string s = "Gestionnaire événements : \n";
-    for (Evenement e: m_evenement){
-        s += "- ";
-        s += e.toString();
-        s += "\n";
+    for (auto const& key : m_evenement){
+        s+= "- ";
+        s+= key.second.toString();
+        s+= "\n";
     }
     return s;
 }

@@ -138,21 +138,22 @@ void Model::creerGroupe(const std::string& nom) {
 * @param dateDeb Date de début
 * @param dateFin Date de fin
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+* @version v9 (Dernière modification)  : type modifé
 */
-void Model::creerEvenement(const std::string& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
-    m_groupes.ajouterEvenemenent(IDgroupe, nom, dateDeb, dateFin);
+void Model::creerEvenement(const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
+    // A RETRAVAILLER POUR L'AJOUT D'EVENEMENT
+    m_groupes.ajouterEvenemenent(0, IDgroupe, nom, dateDeb, dateFin);
 }
 
 
 /**
- * Ajoute un utilisateur à un groupe
- * @param idGroupe Identifiant du groupe visé
- * @param u Utilisateur à inscrire au groupe
- * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
- */
-void Model::ajouterMembreAGroupe(const std::string& idGroupe, const Utilisateur *u){
+* Ajoute un utilisateur à un groupe
+* @param idGroupe Identifiant du groupe visé
+* @param u Utilisateur à inscrire au groupe
+* @authors Guillaume Vautrin, Louis Jacques, David Borgondo
+* @version v9 (Dernière modification)  : type modifé
+*/
+void Model::ajouterMembreAGroupe(const int& idGroupe, const Utilisateur *u){
     m_groupes.ajoutMembreAGroupe(idGroupe,u);
 }
 
@@ -173,9 +174,9 @@ std::string Model::toString() const{
 * @brief Liste des ids du gstionnaire de groupe
 * @return vector
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)  : const ajouté
+* @version v9 (Dernière modification)  : type modifé
 */
-std::vector <std::string> Model::listeIDs() const{
+std::vector <int> Model::listeIDs() const{
     return m_groupes.listeIDs();
 }
 
@@ -193,9 +194,9 @@ std::vector <std::string> Model::listeNoms() const{
 * Récupère tous les groupes connus
 * @return Groupes (hashmap)
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v8 (Dernière modification)
+* @version v9 (Dernière modification)  : type modifé
 */
-std::unordered_map<std::string, Groupe> *Model::getTousLesGroupesConnus() {
+std::unordered_map<int, Groupe> *Model::getTousLesGroupesConnus() {
     return m_groupes.getTousLesGroupesConnus();
 }
 

@@ -8,7 +8,7 @@
 /**
  * @brief Gestionnaire de groupe
  * @authors Guillaume Vautrin, Louis Jacques
- * @version v6 (Dernière modification)
+ * @version v9 (Dernière modification)  : type modifé
  */
 class GestionnaireGroupes {
 private:
@@ -17,7 +17,7 @@ private:
 * @authors Guillaume Vautrin, Louis Jacques
 * @version v6 (Dernière modification)
  */
-    std::unordered_map<std::string, Groupe> m_groupes;
+    std::unordered_map<int, Groupe> m_groupes;
 
 public:
     /**
@@ -36,24 +36,25 @@ public:
      */
     void ajouterGroupe(const std::string& nom, const Utilisateur *u);
 
-/**
- * @brief Ajoute un événement à un groupe précis
- * @param idGroupe Identifiant du groupe, déjà connu par l'utilisateur
- * @param nom Nom de l'événement
- * @param dateDeb Date de début
- * @param dateFin Date de fin
-* @authors Guillaume Vautrin, Louis Jacques
- * @version v8 (Dernière modification)  : const ajouté
-*/
-    void ajouterEvenemenent(const std::string& idGroupe, const std::string& nom, const std::string& dateDeb, const std::string &dateFin);
+    /**
+     * @brief Ajoute un événement à un groupe précis
+     * @param idGroupe Identifiant du groupe, déjà connu par l'utilisateur
+     * @param idEvent identifiant du nouvel événement
+     * @param nom Nom de l'événement
+     * @param dateDeb Date de début
+     * @param dateFin Date de fin
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : id event ajouté
+    */
+    void ajouterEvenemenent(const int& idGroupe, const int& idEvent, const std::string& nom, const std::string& dateDeb, const std::string &dateFin);
 
     /**
      * Ajout d'un membre à un groupe connu
      * @param idGroupe string identifiant du groupe
      * @param u Utilisateur à ajouter au groupe
-     * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : type modifé
      */
-    void ajoutMembreAGroupe(const std::string& idGroupe, const Utilisateur *u);
+    void ajoutMembreAGroupe(const int& idGroupe, const Utilisateur *u);
 
     /**
      * Nombre de groupes auxquel l'utilisateur appartient
@@ -77,23 +78,23 @@ public:
      * @param indice string identifiant
      * @return référence à Groupe
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : type modifé
      */
-    GestionnaireGroupes &getGroupe(const std::string& idGroupe);
+    GestionnaireGroupes &getGroupe(const int& idGroupe);
 
     /**
      * @brief liste IDs
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : type modifié
      */
-    std::vector<std::string> listeIDs() const;
+    std::vector<int> listeIDs() const;
 
     /**
      * @brief liste des noms de groupes
      * @return Vector
      * @authors Guillaume Vautrin, Louis Jacques
-* @version v8 (Dernière modification) : const ajouté
+     * @version v8 (Dernière modification) : const ajouté
      */
     std::vector<std::string> listeNoms() const;
 
@@ -101,9 +102,9 @@ public:
      * Récupère l'ensemble des groupes connus
      * @return unordered_map <ID, Groupe>
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : type modifé
      */
-    std::unordered_map<std::string, Groupe> * getTousLesGroupesConnus();
+    std::unordered_map<int, Groupe> * getTousLesGroupesConnus();
 
 };
 

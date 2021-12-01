@@ -256,3 +256,35 @@ bool Database::existeUtilisateur(const std::string& email, const std::string& ps
     return existe;
 }
 
+
+/**
+ * Ajoute un événement à la base de données
+ * @param id_groupe identifiant du groupe
+ * @param nom Nom de l'événement
+ * @return identifiant de l'événement
+ * @authors Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
+int Database::ajouterEvenement (const int& id_groupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin)
+{
+    if (!m_dbb.open()){ // ouverture de la connexion à la base de données
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO evenement(id_group) VALUES (:id, :deb, :fin)");
+    query.bindValue(":groupe_nom", QString::fromStdString(nom));
+    query.exec();
+    qWarning() << query.lastError();
+
+    // Récupère la clé du groupe
+    int id = query.lastInsertId().toInt();
+    qWarning() << query.lastError() << id;
+
+
+    // Nettoie les requêtes et ferme la base de donnée
+    query.clear();
+    m_dbb.close();
+    return id;  // Retourne l'identifiant de l'utilisateur (permet de le donner à l'utilisateur)
+}
+

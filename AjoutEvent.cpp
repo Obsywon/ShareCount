@@ -30,6 +30,11 @@ AjoutEvent::~AjoutEvent()
  */
 void AjoutEvent::on_ok_event_clicked()
 {
+    QDate deb = ui->dateDeb_2->date();
+    QDate fin = ui->dateFin_2->date();
+    QString dateDeb = deb.toString("yyyy-MM-dd hh:mm:ss");
+    QString dateFin = fin.toString("yyyy-MM-dd hh:mm:ss");
+    //m_model->creerEvenement();
     emit groupes();
 }
 

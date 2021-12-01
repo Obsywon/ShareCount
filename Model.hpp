@@ -118,24 +118,24 @@ std::string  groupesToString() const;
 void creerGroupe (const std::string& nom);
 
 /**
- * Créer un événement dans un groupe particulier
- * @param IDgroupe string identifiant du groupe visé
- * @param nom Nom de l'événement
- * @param dateDeb Date de début
- * @param dateFin Date de fin
- * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-   * @version v8 (Dernière modification)  : const ajouté
- */
-void creerEvenement (const std::string& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
+* Créer un événement dans un groupe particulier
+* @param IDgroupe identifiant du groupe visé
+* @param nom Nom de l'événement
+* @param dateDeb Date de début
+* @param dateFin Date de fin
+* @authors Guillaume Vautrin, Louis Jacques, David Borgondo
+* @version v9 (Dernière modification)  : type modifé
+*/
+void creerEvenement (const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
 /**
  * Ajoute un utilisateur à un groupe
  * @param idGroupe Identifiant du groupe visé
  * @param u Utilisateur à inscrire au groupe
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-   * @version v8 (Dernière modification)  : const ajouté
+* @version v9 (Dernière modification)  : type modifé
  */
-void ajouterMembreAGroupe(const std::string& idGroupe, const Utilisateur* u);
+void ajouterMembreAGroupe(const int& idGroupe, const Utilisateur* u);
 
 
 /**
@@ -150,9 +150,9 @@ std::string toString() const;
  * @brief Liste des ids du gstionnaire de groupe
  * @return vector
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-     * @version v8 (Dernière modification)  : const ajouté
+* @version v9 (Dernière modification)  : type modifé
  */
-std::vector <std::string> listeIDs() const;
+std::vector <int> listeIDs() const;
 
 /**
  * @brief Liste des noms du gstionnaire de groupe
@@ -167,9 +167,9 @@ std::vector <std::string> listeNoms() const;
  * Récupère tous les groupes connus
  * @return Groupes (hashmap)
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v7 (Dernière modification)
+* @version v9 (Dernière modification)  : type modifé
  */
-std::unordered_map<std::string, Groupe> *getTousLesGroupesConnus();
+std::unordered_map<int, Groupe> *getTousLesGroupesConnus();
 
 };
 

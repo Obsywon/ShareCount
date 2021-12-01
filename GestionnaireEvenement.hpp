@@ -1,7 +1,7 @@
 #ifndef SHARECOUNT_GESTIONNAIREEVENEMENT_HPP
 #define SHARECOUNT_GESTIONNAIREEVENEMENT_HPP
 
-#include <vector>
+#include <unordered_map>
 #include "Evenement.hpp"
 
 class Utilisateur;
@@ -15,11 +15,11 @@ class Utilisateur;
 class GestionnaireEvenement {
 private:
 /**
- * @brief Collection d'événemetns
+ * @brief Collection d'événements identifiés
  * @authors Guillaume Vautrin, Louis Jacques
- * @version v6 (Dernière modification)
+ * @version v9 (Dernière modification)
  */
-    std::vector<Evenement> m_evenement;
+    std::unordered_map<int, Evenement> m_evenement;
 /**
  * @brief Utilisateur 
  * @authors Guillaume Vautrin, Louis Jacques
@@ -31,19 +31,20 @@ public:
 /**
  * @brief Constructeur de gestionnaire d'événements connus par un groupe
  * @authors Guillaume Vautrin, Louis Jacques
- * @version v6 (Dernière modification)
+ * @version v9 (Dernière modification) génère une map
  */
     GestionnaireEvenement();
 
     /**
      * @brief Génère un événement lié à un groupe de clients
+     * @param id identifiant
      * @param nom nom de l'évenement
      * @param dateDebut Date de début
      * @param dateFin Date de fin
      * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification) : const ajouté
+     * @version v9 (Dernière modification)  : ajout identifiant
      */
-    void creerEvenement (const std::string& nom, const std::string& dateDebut, const std::string& dateFin) ;
+    void creerEvenement(const int& id, const std::string& nom, const std::string& dateDebut, const std::string &dateFin);
 
     /**
      * @brief Détaille les événements connus par le gestionnaire
@@ -54,13 +55,13 @@ public:
     std::string toString() const;
 
     /**
-     * @brief Récupère l'evenement indiqué
-     * @param indice int
-     * @return référence à Evenement
-     * @authors Guillaume Vautrin, Louis Jacques
-     * @version v8 (Dernière modification) : const ajouté
-     */
-    GestionnaireEvenement& getEvenement(const int& indice);
+    * @brief Détaille les événements connus par le gestionnaire
+    * @param id
+    * @return Evenement
+    * @authors Guillaume Vautrin, Louis Jacques
+    * @version v9 (Dernière modification)  : Récupère événement
+    */
+    Evenement getEvenement(const int& indice);
 };
 
 
