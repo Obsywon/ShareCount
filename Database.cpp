@@ -272,19 +272,23 @@ int Database::ajouterEvenement (const int& id_groupe, const std::string& nom, co
     if (!m_dbb.open()){ // ouverture de la connexion à la base de données
         qWarning() << "Erreur : " << m_dbb.lastError();
     }
+    QString n, d, f;
+    n = QString::fromStdString(nom);
+    d = QString::fromStdString(dateDeb);
+    f = QString::fromStdString(dateFin);
 
     QSqlQuery query;
-    query.prepare("INSERT INTO evenement(id_group, nom, date_deb, date_fin) VALUES (:id, :nom, :deb, :fin)");
-    query.bindValue(":id", id_groupe);
-    query.bindValue(":nom", QString::fromStdString(nom));
-    query.bindValue(":deb", QString::fromStdString(dateDeb));
-    query.bindValue(":fin", QString::fromStdString(dateFin));
+    query.clear();
+    query.prepare("INSERT INTO evenement(group_id, event_nom, date_deb, date_fin) VALUES (?, ?, ?, ?)");
+
+    query.addBindValue(id_groupe);
+    query.addBindValue(n);
+    query.addBindValue(d);
+    query.addBindValue(f);
     query.exec();
-    qWarning() << query.lastError();
 
     // Récupère la clé du groupe
     int id = query.lastInsertId().toInt();
-    qWarning() << query.lastError() << id;
 
 
     // Nettoie les requêtes et ferme la base de donnée
