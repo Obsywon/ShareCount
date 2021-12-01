@@ -64,8 +64,10 @@ void Database::initialisation(){
     // Création de la table événement, qui détaille les contenus d'un événement
     query.prepare("CREATE TABLE IF NOT EXISTS evenement ("
                   "event_id integer PRIMARY KEY AUTOINCREMENT, "
-                  "group_id integer NOT NULL UNIQUE, "
+                  "group_id integer NOT NULL, "
                   "event_nom VARCHAR(50) NOT NULL, "
+                  "date_deb DATETIME default current_timestamp NOT NULL, "
+                  "date_fin DATETIME default current_timestamp NOT NULL, "
                   "FOREIGN KEY(group_id) REFERENCES groupe(group_id))");
     query.exec();
     //qWarning() << query.lastError();
@@ -272,8 +274,11 @@ int Database::ajouterEvenement (const int& id_groupe, const std::string& nom, co
     }
 
     QSqlQuery query;
-    query.prepare("INSERT INTO evenement(id_group) VALUES (:id, :deb, :fin)");
-    query.bindValue(":groupe_nom", QString::fromStdString(nom));
+    query.prepare("INSERT INTO evenement(id_group, nom, date_deb, date_fin) VALUES (:id, :nom, :deb, :fin)");
+    query.bindValue(":id", id_groupe);
+    query.bindValue(":nom", QString::fromStdString(nom));
+    query.bindValue(":deb", QString::fromStdString(dateDeb));
+    query.bindValue(":fin", QString::fromStdString(dateFin));
     query.exec();
     qWarning() << query.lastError();
 

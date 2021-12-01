@@ -138,11 +138,11 @@ void Model::creerGroupe(const std::string& nom) {
 * @param dateDeb Date de début
 * @param dateFin Date de fin
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v9 (Dernière modification)  : type modifé
+* @version v9 (Dernière modification)  : type modifé + ajout database
 */
 void Model::creerEvenement(const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
-    // A RETRAVAILLER POUR L'AJOUT D'EVENEMENT
-    m_groupes.ajouterEvenemenent(14, IDgroupe, nom, dateDeb, dateFin);
+    int idEvent = m_db.ajouterEvenement(IDgroupe, nom, dateDeb, dateFin);
+    m_groupes.ajouterEvenemenent(IDgroupe, idEvent, nom, dateDeb, dateFin);
 }
 
 
