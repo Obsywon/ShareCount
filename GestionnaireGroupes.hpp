@@ -107,6 +107,14 @@ public:
      */
     std::unordered_map<int, Groupe> * getTousLesGroupesConnus();
 
+    /**
+     * Récupère l'ensemble des groupes connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(int identifiant);
+
 };
 
 #endif //SHARECOUNT_GESTIONNAIREGROUPES_HPP

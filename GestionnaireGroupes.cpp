@@ -42,6 +42,16 @@ std::unordered_map<int, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus()
 }
 
 /**
+ * Récupère l'ensemble des groupes connus
+ * @return unordered_map <ID, Groupe>
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)  : type modifé
+ */
+std::unordered_map<int, Evenement> * GestionnaireGroupes::getTousLesEvenementsConnus(int identifiant){
+    return m_groupes[identifiant].getTousLesEvenementsConnus();
+}
+
+/**
  * Détaille tous les groupes dans lequel l'utilisateur est inscrit
  * @return String
  * @authors Guillaume Vautrin, Louis Jacques

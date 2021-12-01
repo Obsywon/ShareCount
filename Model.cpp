@@ -142,7 +142,7 @@ void Model::creerGroupe(const std::string& nom) {
 */
 void Model::creerEvenement(const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
     // A RETRAVAILLER POUR L'AJOUT D'EVENEMENT
-    m_groupes.ajouterEvenemenent(0, IDgroupe, nom, dateDeb, dateFin);
+    m_groupes.ajouterEvenemenent(14, IDgroupe, nom, dateDeb, dateFin);
 }
 
 
@@ -200,4 +200,13 @@ std::unordered_map<int, Groupe> *Model::getTousLesGroupesConnus() {
     return m_groupes.getTousLesGroupesConnus();
 }
 
+/**
+ * Récupère l'ensemble des groupes connus
+ * @return unordered_map <ID, Groupe>
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)  : type modifé
+ */
+std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int identifiant){
+    return m_groupes.getTousLesEvenementsConnus(identifiant);
+}
 

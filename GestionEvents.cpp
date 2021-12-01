@@ -29,7 +29,7 @@ GestionEvents::~GestionEvents()
  * @version v9 (Dernière modification)
  */
 void GestionEvents::afficherEvent(Model* m){
-    std::unordered_map<int, Evenement> * hashMap = m->getTousLesEvenementsConnus(11);
+    std::unordered_map<int, Evenement> * hashMap = m->getTousLesEvenementsConnus(14);
         for(auto const& key : *hashMap){
             std::cout << key.first;
             std::string nom = key.second.getNom();
