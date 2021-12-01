@@ -4,15 +4,16 @@
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v6 (Dernière modification)
      */
-Groupe::Groupe() : m_nom(""){
+Groupe::Groupe() : m_id(0), m_nom(""){
 }
     /**
      * Groupe regroupant l'ensemble de participants, d'événements et diverses informations les concernant
+     * @param id identifiant du groupe
      * @param nom Nom du groupe
      * @authors Guillaume Vautrin, Louis Jacques
-   * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : identifiant ajouté
      */
-Groupe::Groupe(const std::string& nom):m_nom(nom) {
+Groupe::Groupe(const int& id, const std::string& nom):m_id(id), m_nom(nom) {
 }
     /**
      * Créer un événement lié à un groupe d'utilisateurs

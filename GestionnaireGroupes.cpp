@@ -9,13 +9,15 @@ GestionnaireGroupes::GestionnaireGroupes() {
 }
 /**
 * Ajoute un groupe à la collection : l'utilisateur local est ajouté à ce groupe
+* @param id identifiant du groupe
 * @param nom Nom du groupe
 * @param u Utilisateur à ajouter
 * * @authors Guillaume Vautrin, Louis Jacques
-* @version v8 (Dernière modification)  : const ajouté
+* @version v9 (Dernière modification)  : ajout identifiant
 */
-void GestionnaireGroupes::ajouterGroupe(const std::string &nom, const Utilisateur* u) {
-    Groupe g = Groupe(nom);
+void GestionnaireGroupes::ajouterGroupe(const int& id, const std::string &nom, const Utilisateur* u) {
+    Groupe g = Groupe(id, nom);
+    g.setId(id);
     m_groupes[g.getId()] = g;
 }
 /**

@@ -39,11 +39,12 @@ public:
 
     /**
      * Groupe regroupant l'ensemble de participants, d'événements et diverses informations les concernant
+     * @param id identifiant
      * @param nom Nom du groupe
      * @authors Guillaume Vautrin, Louis Jacques
-   * @version v8 (Dernière modification)  : const ajouté
+     * @version v9 (Dernière modification)  : identifiant ajouté
      */
-    explicit Groupe(const std::string& nom);
+    explicit Groupe(const int& id, const std::string& nom);
 
     /**
      * Créer un événement lié à un groupe d'utilisateurs

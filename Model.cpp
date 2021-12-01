@@ -127,8 +127,8 @@ std::string Model::groupesToString() const {
 * @version v9 (dernière modification) : Ajout de fonctionnalité BDD
 */
 void Model::creerGroupe(const std::string& nom) {
-    m_db.ajouterGroupe(m_user.getId(), nom);
-    m_groupes.ajouterGroupe(nom, &m_user);
+    int id = m_db.ajouterGroupe(m_user.getId(), nom);
+    m_groupes.ajouterGroupe(id, nom, &m_user);
 }
 
 /**
