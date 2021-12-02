@@ -53,6 +53,13 @@ private slots:
  */
     void on_retour_groupes_clicked();
 
+    /**
+     * Permet l'acces aux participants
+     * @author Louis Jacques
+     * @version v12 (Ajout)
+     */
+    void on_participants_4_clicked();
+
 signals:
 /**
  * @brief Signal permettant de changer de fenêtre
@@ -64,6 +71,12 @@ signals:
  * Passage à la fenêtre des événements d'un groupe
  */
     void groupes();
+
+/**
+ * @brief Signal permettant de changer de fenêtre
+ * Passage à la fenêtre des comptes liée à un groupe
+ */
+    void vueCompte(int id);
 
 private:
     Ui::GestionEvents *ui;
