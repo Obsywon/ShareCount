@@ -46,7 +46,7 @@ public:
 * @version v9 (Dernière modification)
 */
     Database();
-
+void deconnecter();
 /**
 * @brief Charge le contenu d'un groupe
 * @param groupe pointeur vers le groupe

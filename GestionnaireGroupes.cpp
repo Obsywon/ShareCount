@@ -1,4 +1,5 @@
 #include "GestionnaireGroupes.hpp"
+#include <QtDebug>
 /**
 * Gère et donne l'accès aux groupes connus par l'utilisateur local
 * @authors Guillaume Vautrin, Louis Jacques
@@ -36,16 +37,16 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (const int& idGroupe){
 * @authors Guillaume Vautrin
 * @version v12 (Dernière modification)
 */
-void GestionnaireGroupes::loadGroupes (Database& db, const int& id){
+void GestionnaireGroupes::loadGroupes (const int& id){
+    Database db;
     std::vector <int> liste = db.listeIdentifiantGroupe(id);
-    m_groupes.clear();
-    m_groupes.reserve(liste.size());
-
+    qWarning() << liste.size();
     for (const int ident : liste){
         m_groupes[ident] = Groupe();
         m_groupes[ident].setId(ident);
-        db.load_groupe(&m_groupes[id]);
+        db.load_groupe(&m_groupes[ident]);
     }
+    db.deconnecter();
 }
 
 /**

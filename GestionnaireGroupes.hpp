@@ -122,7 +122,7 @@ public:
     * @authors Guillaume Vautrin
     * @version v12 (Dernière modification)
     */
-    void loadGroupes (Database& db, const int& id);
+    void loadGroupes (const int& id);
 
 };
 

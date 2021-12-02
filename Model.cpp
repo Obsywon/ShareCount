@@ -99,6 +99,7 @@ bool Model::connecterUtilisateur(const std::string& pseudo, const std::string& e
         id = m_db.getUserID(pseudo, mdp);
         m_user = Utilisateur(id, pseudo, email, mdp, &m_groupes);
         existe = true;
+        updateGroupes();
     }
     return existe;
 }
@@ -220,6 +221,6 @@ std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int ident
  * @version v12 (Dernière modification) : charger groupe
  */
 void Model::updateGroupes(){
-    m_groupes.loadGroupes(m_db, m_user.getId());
+    m_groupes.loadGroupes(m_user.getId());
 }
 

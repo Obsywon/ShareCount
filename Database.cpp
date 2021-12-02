@@ -94,17 +94,16 @@ std::vector<int> Database::listeIdentifiantGroupe (const int& user_id){
     query.prepare("SELECT group_id FROM participation WHERE user_id = :id)");
     query.bindValue(":id", user_id);
     query.exec();
-    qWarning() << "Erreur : " << m_dbb.lastError();
 
-    if (query.size() > 0){ // Si il existe un résultat
-        while (query.next()) {// Ajout de chaque id à la liste
-             liste.push_back(query.value(0).toInt());
-         }
-    }
+    while (query.next()) {// Ajout de chaque id à la liste
+         liste.push_back(query.value(0).toInt());
+         qWarning() << liste.at(0);
+     }
+
 
     // Nettoie les requêtes et ferme la base de donnée
     query.clear();
-    m_dbb.close();
+
     return liste;  // Retourne la liste d'identifiants
 }
 
@@ -115,18 +114,12 @@ std::vector<int> Database::listeIdentifiantGroupe (const int& user_id){
 * @version v12 (Dernière modification)
 */
 void Database::load_groupe (Groupe* groupe){
-
-    if (!m_dbb.open()){
-        qWarning() << "Erreur : " << m_dbb.lastError();
-    }
-
-
     // Récupération du nom du groupe
     QSqlQuery query;
     query.prepare("SELECT group_nom FROM participation WHERE group_id = :id)");
     query.bindValue(":id", groupe->getId());
     query.exec();
-    qWarning() << "Erreur : " << query.size();
+    qWarning() << "Erreur : load_groupe";
 
     std::string nom;
     if (query.size() > 0){ // Si il existe un résultat
@@ -139,6 +132,11 @@ void Database::load_groupe (Groupe* groupe){
 
     // Nettoie les requêtes et ferme la base de donnée
     query.clear();
+    m_dbb.close();
+}
+
+
+void Database::deconnecter(){
     m_dbb.close();
 }
 
