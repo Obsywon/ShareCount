@@ -126,7 +126,7 @@ void Database::load_groupe (Groupe* groupe){
     query.prepare("SELECT group_nom FROM participation WHERE group_id = :id)");
     query.bindValue(":id", groupe->getId());
     query.exec();
-    qWarning() << "Erreur : " << m_dbb.lastError() << query.size();
+    qWarning() << "Erreur : " << query.size();
 
     std::string nom;
     if (query.size() > 0){ // Si il existe un résultat

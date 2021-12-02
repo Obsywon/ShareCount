@@ -95,7 +95,6 @@ void MainWindow::afficherConnection(){
      * @version v9 (Dernière modification)
      */
 void MainWindow::afficherGroupes(){
-    m_model->updateGroupes();
     m_groupes->afficherGroupe(m_model);
     changerPage(GROUPES);
 }
