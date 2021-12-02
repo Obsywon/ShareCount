@@ -29,7 +29,7 @@
   <widget class="QPushButton" name="inscrire">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>180</x>
      <y>280</y>
      <width>121</width>
      <height>41</height>
@@ -138,6 +138,19 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connecter">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Se connecter</string>
    </property>
   </widget>
  </widget>

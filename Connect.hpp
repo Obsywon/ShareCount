@@ -39,6 +39,13 @@ signals:
  * @version v8 (Dernière modification)
  */
     void groupes();
+    /**
+     * @brief Signal envoyant vers l'interface d'inscription
+     * @author Guillaume Vautrin
+     * @version v9 (Dernière modification)
+     */
+    void inscrire();
+
 private slots:
 /**
  * @brief Récepteur de signal : déclenche la validation de connection
@@ -46,6 +53,13 @@ private slots:
  * @version v8 (Dernière modification)
  */
     void on_connecter_clicked();
+
+/**
+* @brief Passe à l'écran d'inscription en vidant les champs locaux au préalable
+* @author Guillaume Vautrin
+* @version v9 (Dernière modification)
+*/
+    void on_inscrire_clicked();
 };
 
 #endif // CONNECT_HPP

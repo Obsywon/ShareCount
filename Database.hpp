@@ -109,8 +109,16 @@ public:
 * @version v9 (Dernière modification)
 */
     bool existeGroupe(const int& id);
-
-
+/**
+* Récupère l'identifiant d'un utilisateur
+* @param email peut-être vide
+* @param pseudo
+* @param mdp
+* @return id
+* @authors Guillaume Vautrin
+* @version v9 (Dernière modification)
+*/
+    int getUserID(const std::string& pseudo, const std::string& mdp);
 
 };
 

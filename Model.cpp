@@ -85,18 +85,22 @@ bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
 * @param pseudo string
 * @param email string
 * @param mdp string
+* @return boolean
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
 * @version v9 (Dernière modification)  : ajout connection à base de données
 */
-void Model::connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
-    // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
+bool Model::connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
+    bool existe = false;
     if (m_db.existeUtilisateur(email, pseudo, mdp)){
-        int id = 0; // FAUX ATTENTION A RETRAVAILLER
+        int id = 0;
         if (m_groupes.taille() > 0){
             m_groupes = GestionnaireGroupes();
         }
+        id = m_db.getUserID(pseudo, mdp);
         m_user = Utilisateur(id, pseudo, email, mdp, &m_groupes);
+        existe = true;
     }
+    return existe;
 }
 
 /**
@@ -128,7 +132,7 @@ std::string Model::groupesToString() const {
 */
 void Model::creerGroupe(const std::string& nom) {
     int id = m_db.ajouterGroupe(m_user.getId(), nom);
-    m_groupes.ajouterGroupe(id, nom, &m_user);
+    m_groupes.ajouterGroupe(id, nom);
 }
 
 /**

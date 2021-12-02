@@ -40,6 +40,13 @@ signals:
  */
     void groupes();
 
+/**
+* @brief Signale demandant l'affichage de l'écran de connection
+* @author Guillaume Vautrin
+* @version v9 (Dernière modification)
+*/
+    void connecter();
+
 private slots:
 /**
  * @brief réaction au bouton 'inscription'
@@ -47,6 +54,13 @@ private slots:
  * @version v8 (Dernière modification)
  */
     void on_inscrire_clicked();
+
+/**
+* @brief Passe à l'écran de connexion en vidant les champs locaux au préalable
+* @author Guillaume Vautrin
+* @version v9 (Dernière modification)
+*/
+    void on_connecter_clicked();
 };
 
 #endif // INSCRIPTION_HPP

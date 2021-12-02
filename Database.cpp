@@ -94,18 +94,15 @@ int Database::ajouterGroupe(const int& id_user, const std::string& nom){
     query.prepare("INSERT INTO groupe(group_nom) VALUES (:groupe_nom)");
     query.bindValue(":groupe_nom", QString::fromStdString(nom));
     query.exec();
-    qWarning() << query.lastError();
 
     // Récupère la clé du groupe
     int id = query.lastInsertId().toInt();
-    qWarning() << query.lastError() << id;
 
     // Actualise la table de participation pour connaître quel groupe connaît quel utilisateur
     query2.prepare("INSERT INTO participation(group_id, user_id) VALUES (:g, :u)");
     query2.bindValue(":u", id_user);
     query2.bindValue(":g", id);
     query2.exec();
-    qWarning() << query2.lastError();
 
     // Nettoie les requêtes et ferme la base de donnée
     query.clear();
@@ -139,7 +136,6 @@ int Database::ajouterUtilisateur(const std::string& pseudo, const std::string& e
 
     // Récupère la clé de l'utilisateur
     int id = query.lastInsertId().toInt();
-    qWarning() << query.lastError();
     query.clear(); // Nettoie la requête
     m_dbb.close();
     return id;  // Retourne l'identifiant de l'utilisateur (permet de le donner à l'utilisateur)
@@ -177,7 +173,6 @@ bool Database::existe (const int& id, const QString& table, const QString& key){
         existe = false;
     }
 
-    qWarning() << query.lastError();
     query.clear(); // Nettoie la requête
     m_dbb.close();
     return existe;
@@ -241,7 +236,7 @@ bool Database::existeUtilisateur(const std::string& email, const std::string& ps
 
     query.exec();
 
-    // Parcours des réponses¨
+    // Parcours des réponses
     while (query.next()) {
          nbExistant = query.value(0).toInt();
      }
@@ -251,11 +246,39 @@ bool Database::existeUtilisateur(const std::string& email, const std::string& ps
         existe = false;
     }
 
-    qWarning() << query.lastError() ;
     query.clear(); // Nettoie la requête
     m_dbb.close();
 
     return existe;
+}
+
+/**
+ * Récupère l'identifiant d'un utilisateur
+ * @param email peut-être vide
+ * @param pseudo
+ * @param mdp
+ * @return id
+ * @authors Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
+int Database::getUserID(const std::string& pseudo, const std::string& mdp){
+    if (!m_dbb.open()){
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT user_id FROM utilisateur WHERE pseudo = :pseudo AND password = :mdp");
+    query.bindValue(":pseudo", QString::fromStdString(pseudo));
+    query.bindValue(":mdp", QString::fromStdString(mdp));
+    query.exec();
+    int id = 0;
+    // Parcours des réponses
+    while (query.next()) {
+         id = query.value(0).toInt();
+     }
+    query.clear(); // Nettoie la requête
+    m_dbb.close();
+    return id;
 }
 
 

@@ -12,7 +12,8 @@
 GestionEvents::GestionEvents(Model* m, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GestionEvents),
-    m_model(m)
+    m_model(m),
+    m_groupeId(-1)
 {
     ui->setupUi(this);
 }
@@ -20,6 +21,16 @@ GestionEvents::GestionEvents(Model* m, QWidget *parent) :
 GestionEvents::~GestionEvents()
 {
     delete ui;
+}
+
+/**
+ * Attribue l'identifiant d'un groupe
+ * @param id identifiant
+ * @author Guillaume Vautrin
+ * @version v9 (Ajout)
+ */
+void GestionEvents::setIdGroupe(const int& id){
+    m_groupeId = id;
 }
 
 
@@ -43,10 +54,20 @@ void GestionEvents::afficherEvent(Model* m){
  * Déclenche l'envoi d'un signal vers la fenêtre principale 
  * pour afficher l'écran d'ajout d'événement
  * @author Guillaume Vautrin
- * @version v8 (Dernière modification)
+ * @version v9 (Dernière modification)
  */
 void GestionEvents::on_ajout_event_clicked()
 {
-    emit addEvent();
+    emit addEvent(m_groupeId);
+}
+
+/**
+ * Permet le retour aux groupes groupe
+ * @author Guillaume Vautrin
+ * @version v9 (Ajout)
+ */
+void GestionEvents::on_retour_groupes_clicked()
+{
+    emit groupes();
 }
 

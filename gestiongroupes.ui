@@ -35,11 +35,6 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <widget class="QPushButton" name="b_groupes">
-    <property name="text">
-     <string>Mes événements</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="b_depenses">
     <property name="text">
      <string>Mes dépenses</string>

@@ -42,12 +42,17 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     connect(m_launch, SIGNAL(inscrire()), this, SLOT(afficherInscription()));
     connect(m_launch, SIGNAL(connecter()), this, SLOT(afficherConnection()));
     connect(m_inscription, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_inscription, SIGNAL(connecter()), this, SLOT(afficherConnection()));
     connect(m_connection, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_connection, SIGNAL(inscrire()), this, SLOT(afficherInscription()));
     connect(m_groupes, SIGNAL(ajoutGroupe()), this, SLOT(afficherAjoutGroupe()));
-    connect(m_groupes, SIGNAL(evenement()), this, SLOT(afficherEvenement()));
+    connect(m_groupes, SIGNAL(evenements(int)), this, SLOT(afficherEvenement(int)));
     connect(m_addGroup, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
-    connect(m_events, SIGNAL(addEvent()), this, SLOT(afficherAjoutEvent()));
-    connect(m_addEvent, SIGNAL(groupes()), this, SLOT(afficherEvenement()));
+    connect(m_events, SIGNAL(addEvent(int)), this, SLOT(afficherAjoutEvent(int)));
+    connect(m_events, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
+    connect(m_addEvent, SIGNAL(evenements(int)), this, SLOT(afficherEvenement(int)));
+
+
 
     // Afficher le choix entre se connecter et s'inscrire
     changerPage(LAUNCH);
@@ -103,22 +108,26 @@ void MainWindow::afficherAjoutGroupe(){
     changerPage(ADDGROUP);
 }
 
-    /**
-     * @brief Affiche les événements
-     * @author Guillaume Vautrin , Louis Jacques
-     * @version v9 (Dernière modification)
-     */
-void MainWindow::afficherEvenement(){
+/**
+ * @brief Affiche les événements
+ * @param id du groupe auquel appartient l'événement
+ * @author Guillaume Vautrin , Louis Jacques
+ * @version v9 (Dernière modification)
+ */
+void MainWindow::afficherEvenement(int id){
+    m_events->setIdGroupe(id);
     m_events->afficherEvent(m_model);
     changerPage(EVENTS);
 }
 
-    /**
-     * @brief Affiche l'ajout d'événements
-     * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
-     */
-void MainWindow::afficherAjoutEvent(){
+
+/**
+ * @brief Affiche l'ajout d'événements
+ * @author Guillaume Vautrin
+ * @version v8 (Dernière modification)
+ */
+void MainWindow::afficherAjoutEvent(int id){
+    m_addEvent->setIdGroupe(id);
     changerPage(ADDEVENT);
 }
 

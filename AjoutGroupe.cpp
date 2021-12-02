@@ -31,6 +31,19 @@ void AjoutGroupe::on_ok_clicked()
 {
     QString nom = ui->nom_groupe->text();
     m_model->creerGroupe(nom.toStdString());
+    ui->nom_groupe->setText("");
     emit groupes();
+}
+
+/**
+* @brief déclenche l'annulation et le retour vers la gestion des groupes
+* @authors Guillaume Vautrin
+* @version v9 (Dernière modification)
+*/
+void AjoutGroupe::on_annuler_clicked()
+{
+    ui->nom_groupe->setText("");
+    emit groupes();
+
 }
 

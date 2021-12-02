@@ -37,6 +37,13 @@ private slots:
      */
     void on_ok_clicked();
 
+    /**
+    * @brief déclenche l'annulation et le retour vers la gestion des groupes
+    * @authors Guillaume Vautrin
+    * @version v9 (Dernière modification)
+    */
+    void on_annuler_clicked();
+
 signals:
     /**
      * @brief Signal envoyé à la fenêtre principale

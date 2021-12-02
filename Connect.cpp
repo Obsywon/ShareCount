@@ -46,7 +46,6 @@ void Connect::on_connecter_clicked()
         bool connect = m_model->compteExiste(QPseudo.toStdString(), QMdp.toStdString());
         if (connect){
             m_model->connecterUtilisateur(QPseudo.toStdString(), "" ,QMdp.toStdString());
-            //print2(m_model->toString());
             emit groupes();
 
         }else{
@@ -56,5 +55,18 @@ void Connect::on_connecter_clicked()
         }
     }
 
+}
+
+/**
+ * @brief Passe à l'écran d'inscription en vidant les champs locaux au préalable
+ * @author Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
+void Connect::on_inscrire_clicked()
+{
+    ui->co_err->setText("");
+    ui->co_mdp->setText("");
+    ui->co_pseudo->setText("");
+    emit inscrire();
 }
 

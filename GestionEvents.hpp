@@ -23,6 +23,14 @@ public:
     ~GestionEvents();
 
     /**
+ * Attribue l'identifiant d'un groupe
+ * @param id identifiant
+ * @author Guillaume Vautrin
+ * @version v9 (ajout)
+ */
+    void setIdGroupe(const int& id);
+
+    /**
      * @brief Affiche les evenements d'un groupe
      * @authors Louis Jacques
      * @version v9 (Dernière modification)
@@ -38,17 +46,29 @@ private slots:
  * @version v8 (Dernière modification)
  */
     void on_ajout_event_clicked();
+/**
+ * Permet le retour aux groupes groupe
+ * @author Guillaume Vautrin
+ * @version v9 (Ajout)
+ */
+    void on_retour_groupes_clicked();
 
 signals:
 /**
  * @brief Signal permettant de changer de fenêtre
- * Passage à l'ajout d'un événement
+ * Passage à la fenêtre des événements d'un ajout d'événements
  */
-    void addEvent();
+    void addEvent(int id);
+/**
+ * @brief Signal permettant de changer de fenêtre
+ * Passage à la fenêtre des événements d'un groupe
+ */
+    void groupes();
 
 private:
     Ui::GestionEvents *ui;
     Model* m_model;
+    int m_groupeId;
 };
 
 #endif // GESTIONEVENTS_HPP

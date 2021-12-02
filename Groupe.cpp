@@ -84,7 +84,6 @@ void Groupe::setId(const int& id) {
  * @version v9 (Dernière modification)
  */
 std::unordered_map<int, Evenement> * Groupe::getTousLesEvenementsConnus() {
-
     return ges.getTousLesEvenementsConnus();
 }
 

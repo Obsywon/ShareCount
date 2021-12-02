@@ -11,13 +11,11 @@ GestionnaireGroupes::GestionnaireGroupes() {
 * Ajoute un groupe à la collection : l'utilisateur local est ajouté à ce groupe
 * @param id identifiant du groupe
 * @param nom Nom du groupe
-* @param u Utilisateur à ajouter
-* * @authors Guillaume Vautrin, Louis Jacques
+* @authors Guillaume Vautrin, Louis Jacques
 * @version v9 (Dernière modification)  : ajout identifiant
 */
-void GestionnaireGroupes::ajouterGroupe(const int& id, const std::string &nom, const Utilisateur* u) {
+void GestionnaireGroupes::ajouterGroupe(const int& id, const std::string &nom) {
     Groupe g = Groupe(id, nom);
-    g.setId(id);
     m_groupes[g.getId()] = g;
 }
 /**
@@ -37,7 +35,7 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (const int& idGroupe){
  * @authors Guillaume Vautrin, Louis Jacques
  * @version v9 (Dernière modification)  : type modifé
  */
-std::unordered_map<int, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus() {
+std::unordered_map<int, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus(){
     return &m_groupes;
 }
 
@@ -47,7 +45,7 @@ std::unordered_map<int, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus()
  * @authors Guillaume Vautrin, Louis Jacques
  * @version v9 (Dernière modification)  : type modifé
  */
-std::unordered_map<int, Evenement> * GestionnaireGroupes::getTousLesEvenementsConnus(int identifiant){
+std::unordered_map<int, Evenement> * GestionnaireGroupes::getTousLesEvenementsConnus(const int& identifiant){
     return m_groupes[identifiant].getTousLesEvenementsConnus();
 }
 

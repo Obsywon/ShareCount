@@ -44,7 +44,7 @@
   <widget class="QPushButton" name="ajout_event">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>320</y>
      <width>131</width>
      <height>25</height>
@@ -62,6 +62,19 @@
      <width>261</width>
      <height>251</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="retour_groupes">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>320</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Retour vers groupes</string>
    </property>
   </widget>
  </widget>

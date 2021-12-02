@@ -69,3 +69,17 @@ void Inscription::on_inscrire_clicked()
 
 }
 
+/**
+ * @brief Passe à l'écran de connexion en vidant les champs locaux au préalable
+ * @author Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
+void Inscription::on_connecter_clicked()
+{
+    ui->in_email->setText("");
+    ui->in_erreur->setText("");
+    ui->in_mdp->setText("");
+    ui->in_pseudo->setText("");
+    emit connecter();
+}
+

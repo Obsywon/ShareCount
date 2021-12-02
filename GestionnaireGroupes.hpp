@@ -31,11 +31,10 @@ public:
     * Ajoute un groupe à la collection : l'utilisateur local est ajouté à ce groupe
     * @param id identifiant du groupe
     * @param nom Nom du groupe
-    * @param u Utilisateur à ajouter
-    * * @authors Guillaume Vautrin, Louis Jacques
+    * @authors Guillaume Vautrin, Louis Jacques
     * @version v9 (Dernière modification)  : ajout identifiant
     */
-    void ajouterGroupe(const int& id, const std::string &nom, const Utilisateur* u);
+    void ajouterGroupe(const int& id, const std::string &nom);
 
     /**
      * @brief Ajoute un événement à un groupe précis
@@ -113,7 +112,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v9 (Dernière modification)  : type modifé
      */
-    std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(int identifiant);
+    std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
 
 };
 

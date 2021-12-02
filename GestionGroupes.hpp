@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "Model.hpp"
+#include <QListWidgetItem>
+#include <vector>
 
 namespace Ui {
 class GestionGroupes;
@@ -11,8 +13,8 @@ class GestionGroupes;
 /**
  * @brief Logique derrière l'interface de gestion de groupes
  * connu d'un compte utilisateur
- * @authors Guillaume Vautrin
- * @version v8 (Dernière modification)
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)
  */
 class GestionGroupes : public QWidget
 {
@@ -23,8 +25,8 @@ public:
     ~GestionGroupes();
 
     /**
-     * @brief Affiche les Groupes d'un Utilisateur
-     * @author Guillaume Vautrin , Louis Jacques
+     * @brief Affiche les groupes d'un Utilisateur
+     * @authors Guillaume Vautrin , Louis Jacques
      * @version v9 (Dernière modification)
      */
     void afficherGroupe(Model* m);
@@ -36,14 +38,12 @@ private slots:
      * @version v8 (Dernière modification)
      */
     void on_ajout_groupe_clicked();
-
-    /**
-     * @brief Réaction au bouton pour créer un événement
-     * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
-     */
-    void on_b_groupes_clicked();
-
+/**
+ * @brief Permet d'accéder à la page d'un groupe et d'en afficher les événements
+ * @author Guillaume Vautrin
+ * @version v9 (Dernière modification)
+ */
+    void on_groupes_itemClicked(QListWidgetItem *item);
 
 signals:
 /**
@@ -53,18 +53,21 @@ signals:
  * @version v8 (Dernière modification)
  */
     void ajoutGroupe();
+
 /**
  * @brief Signale à la fenêtre principale d'afficher l'interface
  * d'un événement sélectionné par l'utilisateur
+ * @param id du groupe sélectionnée auparavant
  * @author Guillaume Vautrin
- * @version v8 (Dernière modification)
+ * @version v9 (Dernière modification)
  */
-    void evenement();
+    void evenements(int idGroupe);
 
 
 private:
     Ui::GestionGroupes *ui;
     Model* m_model;
+    std::vector<int> m_listIDs;
 };
 
 #endif // GESTIONGROUPES_HPP

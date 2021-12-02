@@ -26,13 +26,16 @@ public:
      */
     explicit AjoutEvent(Model* m, QWidget *parent = nullptr);
     ~AjoutEvent();
+
+    void setIdGroupe(int id);
 signals:
     /**
      * @brief Signal envoyé à la fenêtre principale
+     * affiche les événement d'un groupe identifié
      * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
+     * @version v* (Dernière modification)
      */
-    void groupes();
+    void evenements(int id);
 
 private slots:
     /**
@@ -43,9 +46,19 @@ private slots:
      */
     void on_ok_event_clicked();
 
+    void on_annuler_clicked();
+
 private:
     Ui::AjoutEvent *ui;
     Model* m_model{};
+    int m_idGroupe;
+
+    /**
+     * @brief Remet à zéro les champs
+     * @author Guillaume Vautrin
+     * @version v9 (Dernière modification)
+     */
+    void reset();
 };
 
 #endif // AJOUTEVENT_HPP

@@ -83,15 +83,15 @@ bool inscrireUtilisateur (const std::string& seudo, const std::string& email, co
 bool compteExiste (const std::string& pseudo, const std::string& mdp);
 
 /**
- * Connecte et charge le compte utilisateur indiqué (A RETRAVAILLER!!!
- * lorsqu'un moyen d'enregistrer les données sera implémenté)
- * @param pseudo string
- * @param email string
- * @param mdp string
- * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-   * @version v8 (Dernière modification)  : const ajouté
- */
-void connecterUtilisateur (const std::string& pseudo, const std::string& email, const std::string& mdp);
+* Connecte et charge le compte utilisateur indiqué si il existe
+* @param pseudo string
+* @param email string
+* @param mdp string
+* @return boolean
+* @authors Guillaume Vautrin, Louis Jacques, David Borgondo
+* @version v9 (Dernière modification)  : ajout connection à base de données
+*/
+bool connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp);
 
 /**
  * Détaille les informations connus (sans le mdp) de l'utilisateur local

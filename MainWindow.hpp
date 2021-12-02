@@ -120,18 +120,20 @@ public slots:
      * @version v8 (Dernière modification)
      */
     void afficherAjoutGroupe();
-        /**
+    /**
      * @brief Affiche les événements
-     * @author Guillaume Vautrin
-     * @version v8 (Dernière modification)
+     * @param id du groupe auquel appartient l'événement
+     * @author Guillaume Vautrin , Louis Jacques
+     * @version v9 (Dernière modification)
      */
-    void afficherEvenement();
+    void afficherEvenement(int id);
+
         /**
      * @brief Affiche l'ajout d'événements
      * @author Guillaume Vautrin
      * @version v8 (Dernière modification)
      */
-    void afficherAjoutEvent();
+    void afficherAjoutEvent(int id);
 
 };
 #endif // MAINWINDOW_H
