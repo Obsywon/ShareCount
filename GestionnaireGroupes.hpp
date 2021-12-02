@@ -123,15 +123,6 @@ public:
      */
     std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
 
-    /**
-    * Récupère le groupe indiqué par l'identifiant
-    * @param db base de données
-    * @param id utilisateur
-    * @authors Guillaume Vautrin
-    * @version v12 (Dernière modification)
-    */
-    void loadGroupes (const int& id);
-
 };
 
 #endif //SHARECOUNT_GESTIONNAIREGROUPES_HPP

@@ -27,6 +27,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     m_events = new GestionEvents(m_model, this);
     m_addGroup = new AjoutGroupe (m_model, this);
     m_addEvent = new AjoutEvent (m_model, this);
+    m_comptes = new gestionComptes(m_model,this);
 
     // Insertion des interfaces dans la collection de la fenêtre principale
     ui->pages->insertWidget(LAUNCH, m_launch);
@@ -36,6 +37,7 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     ui->pages->insertWidget(EVENTS, m_events);
     ui->pages->insertWidget(ADDGROUP, m_addGroup);
     ui->pages->insertWidget(ADDEVENT, m_addEvent);
+    ui->pages->insertWidget(COMPTES, m_comptes);
 
 
     // Signaux / slots permettant de changer d'interface
@@ -51,6 +53,10 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     connect(m_events, SIGNAL(addEvent(int)), this, SLOT(afficherAjoutEvent(int)));
     connect(m_events, SIGNAL(groupes()), this, SLOT(afficherGroupes()));
     connect(m_addEvent, SIGNAL(evenements(int)), this, SLOT(afficherEvenement(int)));
+    connect(m_events, SIGNAL(vueCompte(int)),this,SLOT(afficherComptes(int)));
+    connect(m_comptes,SIGNAL(vueEvent(int)), this, SLOT(afficherEvenement(int)));
+    connect(m_comptes,SIGNAL(vueGroupe()), this, SLOT(afficherGroupes()));
+
 
 
 
@@ -118,6 +124,18 @@ void MainWindow::afficherEvenement(int id){
     m_events->setIdGroupe(id);
     m_events->afficherEvent(m_model);
     changerPage(EVENTS);
+}
+
+/**
+ * @brief Affiche les Comptes
+ * @param id du groupe auquel appartient l'événement
+ * @author Louis Jacques
+ * @version v12 (Dernière modification)
+ */
+void MainWindow::afficherComptes(int id){
+    m_comptes->setIDGroupe(id);
+    m_comptes->afficherComptes(m_model);
+    changerPage(COMPTES);
 }
 
 

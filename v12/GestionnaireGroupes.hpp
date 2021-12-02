@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include "Groupe.hpp"
+#include "Database.hpp"
 
 /**
  * @brief Gestionnaire de groupe
@@ -113,6 +114,14 @@ public:
      * @version v9 (Dernière modification)  : type modifé
      */
     std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
+
+    /**
+     * Récupère l'ensemble des participants connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
 
 };
 

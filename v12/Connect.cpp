@@ -46,6 +46,7 @@ void Connect::on_connecter_clicked()
         bool connect = m_model->compteExiste(QPseudo.toStdString(), QMdp.toStdString());
         if (connect){
             m_model->connecterUtilisateur(QPseudo.toStdString(), "" ,QMdp.toStdString());
+            m_model->updateGroupes();
             emit groupes();
 
         }else{

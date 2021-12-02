@@ -5,7 +5,6 @@
 #include "regex"
 #include <cctype>
 #include <utility>
-#include "Database.hpp"
 
 /**
  * Créer le modèle, classe facade et initialise la base de données
@@ -178,6 +177,22 @@ std::unordered_map<int, Groupe> *getTousLesGroupesConnus();
  * @version v9 (Dernière modification)  : type modifé
  */
 std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(int identifiant);
+
+
+/**
+ * Récupère l'ensemble des groupes connus
+ * @return unordered_map <ID, Groupe>
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)  : type modifé
+ */
+std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
+
+/**
+ * Charge l'ensemble des groupes connus par la base de données
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v12 (Dernière modification) : charger groupe
+ */
+void updateGroupes();
 };
 
 

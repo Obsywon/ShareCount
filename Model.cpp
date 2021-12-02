@@ -231,6 +231,6 @@ std::vector<Utilisateur> * Model::getTousLesParticipantsConnus(const int& identi
  * @version v12 (Dernière modification) : charger groupe
  */
 void Model::updateGroupes(){
-    m_groupes.loadGroupes(m_user.getId());
+
 }
 

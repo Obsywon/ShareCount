@@ -1,4 +1,5 @@
 #include "GestionnaireGroupes.hpp"
+#include <QtDebug>
 /**
 * Gère et donne l'accès aux groupes connus par l'utilisateur local
 * @authors Guillaume Vautrin, Louis Jacques
@@ -37,6 +38,16 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (const int& idGroupe){
  */
 std::unordered_map<int, Groupe> * GestionnaireGroupes::getTousLesGroupesConnus(){
     return &m_groupes;
+}
+
+/**
+ * Récupère l'ensemble des groupes connus
+ * @return unordered_map <ID, Groupe>
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)  : type modifé
+ */
+std::vector<Utilisateur> * GestionnaireGroupes::getTousLesParticipantsConnus(const int& identifiant){
+    return m_groupes[identifiant].getTousLesParticipantsConnus();
 }
 
 /**

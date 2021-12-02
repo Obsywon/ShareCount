@@ -72,3 +72,9 @@ void GestionEvents::on_retour_groupes_clicked()
     emit groupes();
 }
 
+
+void GestionEvents::on_participants_4_clicked()
+{
+    emit vueCompte(m_groupeId);
+}
+

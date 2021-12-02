@@ -31,25 +31,6 @@ GestionnaireGroupes& GestionnaireGroupes::getGroupe (const int& idGroupe){
 }
 
 /**
-* Récupère le groupe indiqué par l'identifiant
-* @param db base de données
-* @param id utilisateur
-* @authors Guillaume Vautrin
-* @version v12 (Dernière modification)
-*/
-void GestionnaireGroupes::loadGroupes (const int& id){
-    Database db;
-    std::vector <int> liste = db.listeIdentifiantGroupe(id);
-    qWarning() << liste.size();
-    for (const int ident : liste){
-        m_groupes[ident] = Groupe();
-        m_groupes[ident].setId(ident);
-        db.load_groupe(&m_groupes[ident]);
-    }
-    db.deconnecter();
-}
-
-/**
  * Récupère l'ensemble des groupes connus
  * @return unordered_map <ID, Groupe>
  * @authors Guillaume Vautrin, Louis Jacques

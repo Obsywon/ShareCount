@@ -99,6 +99,7 @@ bool Model::connecterUtilisateur(const std::string& pseudo, const std::string& e
         id = m_db.getUserID(pseudo, mdp);
         m_user = Utilisateur(id, pseudo, email, mdp, &m_groupes);
         existe = true;
+        updateGroupes();
     }
     return existe;
 }
@@ -212,5 +213,24 @@ std::unordered_map<int, Groupe> *Model::getTousLesGroupesConnus() {
  */
 std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int identifiant){
     return m_groupes.getTousLesEvenementsConnus(identifiant);
+}
+
+/**
+ * Récupère l'ensemble des groupes connus
+ * @return vector<Utilisateur>
+ * @authors  Louis Jacques
+ * @version v13 (Dernière modification)  : type modifé
+ */
+std::vector<Utilisateur> * Model::getTousLesParticipantsConnus(const int& identifiant){
+    return m_groupes.getTousLesParticipantsConnus(identifiant);
+}
+
+/**
+ * Charge l'ensemble des groupes connus par la base de données
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v12 (Dernière modification) : charger groupe
+ */
+void Model::updateGroupes(){
+
 }
 

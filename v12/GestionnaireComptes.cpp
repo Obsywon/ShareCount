@@ -67,4 +67,8 @@ std::vector<std::string> GestionnaireComptes::listMails() {
     return list;
 }
 
+std::vector<Utilisateur> * GestionnaireComptes::getTousLesParticipantsConnus(){
+    return &m_comptes;
+}
+
 

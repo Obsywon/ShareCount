@@ -69,12 +69,22 @@ std::string Groupe::getNom() const {
 }
     /**
      * Ajoute un identifiant au groupe
-     * @param id string
+     * @param id
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v9 (Dernière modification)  : changement de type
      */
 void Groupe::setId(const int& id) {
     m_id = id;
+}
+
+/**
+ * Ajoute un nom au groupe
+ * @param id string
+ * @authors Guillaume Vautrin
+ * @version v12 (Dernière modification)
+ */
+void Groupe::setNom(const std::string& nom){
+    m_nom = nom;
 }
 
 /**
@@ -86,4 +96,15 @@ void Groupe::setId(const int& id) {
 std::unordered_map<int, Evenement> * Groupe::getTousLesEvenementsConnus() {
     return ges.getTousLesEvenementsConnus();
 }
+
+/**
+ * @brief Récupère l'ensemble des participants connus
+ * @return unordered_map <ID, Evenement>
+ * @authors Louis Jacques
+ * @version v9 (Dernière modification)
+ */
+std::vector<Utilisateur> * Groupe::getTousLesParticipantsConnus() {
+    return gesCom.getTousLesParticipantsConnus();
+}
+
 

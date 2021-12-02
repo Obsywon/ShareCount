@@ -56,8 +56,6 @@ void Database::initialisation(){
                   "FOREIGN KEY(user_id) REFERENCES utilisateur(user_id),"
                   "FOREIGN KEY(group_id) REFERENCES groupe(group_id))");
 
-
-                  //"PRIMARY KEY (user_id, group_id))");
     query.exec();
     //qWarning() << query.lastError();
 
@@ -75,6 +73,79 @@ void Database::initialisation(){
     query.clear(); // Nettoie la requête
     m_dbb.close(); // Termine la connection avec la base de donnée
 }
+
+
+/**
+* @brief Récupère la liste des identifiants de groupes connus par un utilisateur
+* @param user_id identifiant de l'utilisateur
+* @authors Guillaume Vautrin
+* @version v12 (Dernière modification)
+*/
+std::vector<int> Database::listeIdentifiantGroupe (const int& user_id){
+    std::vector<int> liste;
+
+    if (!m_dbb.open()){
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+
+
+    // Récupération de la liste d'identifiants des groupes connus par l'utilisateur
+    QSqlQuery query;
+    query.prepare("SELECT group_id FROM participation WHERE user_id = :id)");
+    query.bindValue(":id", user_id);
+    query.exec();
+
+    while (query.next()) {// Ajout de chaque id à la liste
+         liste.push_back(query.value(0).toInt());
+         qWarning() << liste.at(0);
+     }
+
+
+    // Nettoie les requêtes et ferme la base de donnée
+    query.clear();
+
+    return liste;  // Retourne la liste d'identifiants
+}
+
+/**
+* @brief Charge le contenu d'un groupe
+* @param groupe pointeur vers le groupe
+* @authors Guillaume Vautrin
+* @version v12 (Dernière modification)
+*/
+void Database::load_groupe (Groupe* groupe){
+    // Récupération du nom du groupe
+    QSqlQuery query;
+    query.prepare("SELECT group_nom FROM participation WHERE group_id = :id)");
+    query.bindValue(":id", groupe->getId());
+    query.exec();
+    qWarning() << "Erreur : load_groupe";
+
+    std::string nom;
+    if (query.size() > 0){ // Si il existe un résultat
+        while (query.next()) { // Récupération des données
+             nom = query.value(0).toString().toStdString();
+             qWarning() << QString::fromStdString(nom);
+         }
+        groupe->setNom(nom);
+    }
+
+    // Nettoie les requêtes et ferme la base de donnée
+    query.clear();
+    m_dbb.close();
+}
+
+
+void Database::deconnecter(){
+    m_dbb.close();
+}
+
+
+
+
+
+
+
 
 /**
 * @brief Ajoute un groupe à la base de donnée sur les tables groupe et participations

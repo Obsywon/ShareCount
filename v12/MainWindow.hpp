@@ -9,6 +9,7 @@
 #include "GestionEvents.hpp"
 #include "AjoutGroupe.hpp"
 #include "AjoutEvent.hpp"
+#include "gestioncomptes.hpp"
 
 
 QT_BEGIN_NAMESPACE
@@ -20,7 +21,7 @@ QT_END_NAMESPACE
 * @author Guillaume Vautrin
 * @version v8 (Dernière modification)
  */
-enum pages {LAUNCH, CONNECT, INSCRIPTION, GROUPES, EVENTS, ADDGROUP, ADDEVENT};
+enum pages {LAUNCH, CONNECT, INSCRIPTION, GROUPES, EVENTS, ADDGROUP, ADDEVENT, COMPTES};
 
 /**
  * @brief Fenêtre principale sur laquelle est instantiée toutes
@@ -89,7 +90,14 @@ private:
     AjoutEvent* m_addEvent;
 
     /**
-     * @brief Affiche l'interface indiqué
+     * @brief Interface de gestion de comptes
+     * @author Guillaume Vautrin
+     * @version v8 (Dernière modification)
+     */
+    gestionComptes* m_comptes;
+
+        /**
+     * @brief Interface d'ajout de groupes
      * @author Guillaume Vautrin
      * @version v8 (Dernière modification)
      */
@@ -134,6 +142,13 @@ public slots:
      * @version v8 (Dernière modification)
      */
     void afficherAjoutEvent(int id);
+
+        /**
+     * @brief Affiche les Comptes
+     * @author Louis Jacques
+     * @version v12 (Dernière modification)
+     */
+    void afficherComptes(int id);
 
 };
 #endif // MAINWINDOW_H
