@@ -116,6 +116,14 @@ public:
     std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
 
     /**
+     * Récupère l'ensemble des participants connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
+
+    /**
     * Récupère le groupe indiqué par l'identifiant
     * @param db base de données
     * @param id utilisateur

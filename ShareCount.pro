@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Database.cpp \
+    gestioncomptes.cpp \
     main.cpp \
     Model.cpp \
     Groupe.cpp \
@@ -60,9 +61,11 @@ HEADERS += \
     GestionnaireComptes.hpp \
     GestionnaireGroupes.hpp \
     GestionnaireEvenement.hpp \
-    Evenement.hpp
+    Evenement.hpp \
+    gestioncomptes.hpp
 
 FORMS += \
+        gestioncomptes.ui \
         mainwindow.ui \
         launch.ui \
         connect.ui \

@@ -111,6 +111,14 @@ void creerEvenement(const int& id, const std::string& nom, const std::string& da
      * @version v9 (Dernière modification)
      */
     std::unordered_map<int, Evenement> * getTousLesEvenementsConnus();
+
+    /**
+     * @brief Récupère l'ensemble des evenements connus
+     * @return unordered_map <ID, Evenement>
+     * @authors Louis Jacques
+     * @version v9 (Dernière modification)
+     */
+    std::vector<Utilisateur> * getTousLesParticipantsConnus();
 };
 
 

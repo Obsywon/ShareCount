@@ -97,3 +97,14 @@ std::unordered_map<int, Evenement> * Groupe::getTousLesEvenementsConnus() {
     return ges.getTousLesEvenementsConnus();
 }
 
+/**
+ * @brief Récupère l'ensemble des participants connus
+ * @return unordered_map <ID, Evenement>
+ * @authors Louis Jacques
+ * @version v9 (Dernière modification)
+ */
+std::vector<Utilisateur> * Groupe::getTousLesParticipantsConnus() {
+    return gesCom.getTousLesParticipantsConnus();
+}
+
+
