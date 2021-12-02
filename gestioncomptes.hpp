@@ -32,9 +32,36 @@ public:
 
 
 private slots:
-    void on_ajout_event_clicked();
+    /**
+     * Permet l'acces aux evenements
+     * @author Louis Jacques
+     * @version v12 (Ajout)
+     */
+    void on_events_4_clicked();
+
+    /**
+     * Permet le retour aux groupes groupe
+     * @author Louis Jacques
+     * @version v12 (Ajout)
+     */
+    void on_retour_groupes_clicked();
+
 signals:
-    void addEvent(int id);
+    /**
+     * @brief Signal permettant de changer de fenêtre
+     * @author Louis Jacques
+     * @version v12 (Ajout)
+     * Passage à la fenêtre des evenements liée à un groupe
+     */
+    void vueEvent(int id);
+
+    /**
+     * @brief Signal permettant de changer de fenêtre
+     * @author Louis Jacques
+     * @version v12 (Ajout)
+     * Passage à la fenêtre des événements d'un groupe
+     */
+    void vueGroupe();
 
 private:
     Ui::gestionComptes *ui;

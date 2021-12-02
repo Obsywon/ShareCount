@@ -94,7 +94,7 @@ private:
      * @author Guillaume Vautrin
      * @version v8 (Dernière modification)
      */
-    //gestionComptes* m_comptes;
+    gestionComptes* m_comptes;
 
         /**
      * @brief Interface d'ajout de groupes
@@ -148,7 +148,7 @@ public slots:
      * @author Louis Jacques
      * @version v12 (Dernière modification)
      */
-    //void afficherComptes(int id);
+    void afficherComptes(int id);
 
 };
 #endif // MAINWINDOW_H
