@@ -215,6 +215,16 @@ std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int ident
 }
 
 /**
+ * Récupère l'ensemble des groupes connus
+ * @return vector<Utilisateur>
+ * @authors  Louis Jacques
+ * @version v13 (Dernière modification)  : type modifé
+ */
+std::vector<Utilisateur> * Model::getTousLesParticipantsConnus(const int& identifiant){
+    return m_groupes.getTousLesParticipantsConnus(identifiant);
+}
+
+/**
  * Charge l'ensemble des groupes connus par la base de données
  * @authors Guillaume Vautrin, Louis Jacques
  * @version v12 (Dernière modification) : charger groupe

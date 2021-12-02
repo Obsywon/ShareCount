@@ -58,6 +58,8 @@ public:
      * @version v6 (Dernière modification)
      */
     std::vector<std::string> listMails();
+
+    std::vector<Utilisateur>* getTousLesParticipantsConnus();
 };
 
 #endif // GESTIONNAIRECOMPTES_HPP
