@@ -51,21 +51,11 @@ bool Model::estValideEmail(const std::string& email) {
 */
 bool Model::inscrireUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
     // Vérifie l'existence d'un utilisateur dans la base de données
-    bool existe = m_db.existeUtilisateur(email, pseudo, mdp);
-
-    // Si l'utilisateur n'existe pas, on le crée
-    if (!existe){
-        int id_user;
-
-        // Ajout l'utilisateur dans la base de données & récupère son id
-        id_user = m_db.ajouterUtilisateur(pseudo, email, mdp);
-        if (m_groupes.taille() > 0){
-            m_groupes = GestionnaireGroupes();
-        }
-        // Crée localement l'utilisateur
-        m_user = Utilisateur(id_user, pseudo, email, mdp, &m_groupes);
+    if (m_groupes.taille() > 0){
+        m_groupes = GestionnaireGroupes();
     }
-    return existe;
+    m_user = Utilisateur(0, pseudo, email, mdp, &m_groupes);
+    return true;
 }
 
 /**
@@ -77,7 +67,7 @@ bool Model::inscrireUtilisateur(const std::string& pseudo, const std::string& em
 * @version v8 (Dernière modification)  : const ajouté
 */
 bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
-    return m_db.existeUtilisateur("", pseudo, mdp);
+    return true;
 }
 
 /**
@@ -90,17 +80,12 @@ bool Model::compteExiste(const std::string &pseudo, const std::string &mdp) {
 * @version v9 (Dernière modification)  : ajout connection à base de données
 */
 bool Model::connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp) {
-    bool existe = false;
-    if (m_db.existeUtilisateur(email, pseudo, mdp)){
-        int id = 0;
-        if (m_groupes.taille() > 0){
-            m_groupes = GestionnaireGroupes();
-        }
-        id = m_db.getUserID(pseudo, mdp);
-        m_user = Utilisateur(id, pseudo, email, mdp, &m_groupes);
-        existe = true;
+    // A RETRAVAILLER lorsqu'un moyen d'enregistrer les données sera implémenter
+    if (m_groupes.taille() > 0){
+        m_groupes = GestionnaireGroupes();
     }
-    return existe;
+    m_user = Utilisateur(0,pseudo, email, mdp, &m_groupes);
+    return true;
 }
 
 /**
@@ -131,7 +116,7 @@ std::string Model::groupesToString() const {
 * @version v9 (dernière modification) : Ajout de fonctionnalité BDD
 */
 void Model::creerGroupe(const std::string& nom) {
-    int id = m_db.ajouterGroupe(m_user.getId(), nom);
+    int id = 0;
     m_groupes.ajouterGroupe(id, nom);
 }
 
@@ -145,7 +130,7 @@ void Model::creerGroupe(const std::string& nom) {
 * @version v9 (Dernière modification)  : type modifé + ajout database
 */
 void Model::creerEvenement(const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin) {
-    int idEvent = m_db.ajouterEvenement(IDgroupe, nom, dateDeb, dateFin);
+    int idEvent = 0;
     m_groupes.ajouterEvenemenent(IDgroupe, idEvent, nom, dateDeb, dateFin);
 }
 

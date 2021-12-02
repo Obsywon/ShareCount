@@ -89,7 +89,7 @@ bool compteExiste (const std::string& pseudo, const std::string& mdp);
 * @param mdp string
 * @return boolean
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v9 (Dernière modification)  : ajout connection à base de données
+* @version v8 (Dernière modification)
 */
 bool connecterUtilisateur(const std::string& pseudo, const std::string& email, const std::string& mdp);
 
@@ -113,7 +113,7 @@ std::string  groupesToString() const;
  * Créer un nouveau groupe
  * @param nom string nom du groupe
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-   * @version v8 (Dernière modification)  : const ajouté
+ * @version v8 (Dernière modification)  : const ajouté
  */
 void creerGroupe (const std::string& nom);
 
@@ -124,7 +124,7 @@ void creerGroupe (const std::string& nom);
 * @param dateDeb Date de début
 * @param dateFin Date de fin
 * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v9 (Dernière modification)  : type modifé
+* @version v9 (Dernière modification)
 */
 void creerEvenement (const int& IDgroupe, const std::string& nom, const std::string& dateDeb, const std::string& dateFin);
 
@@ -133,7 +133,7 @@ void creerEvenement (const int& IDgroupe, const std::string& nom, const std::str
  * @param idGroupe Identifiant du groupe visé
  * @param u Utilisateur à inscrire au groupe
  * @authors Guillaume Vautrin, Louis Jacques, David Borgondo
-* @version v9 (Dernière modification)  : type modifé
+* @version v9 (Dernière modification)
  */
 void ajouterMembreAGroupe(const int& idGroupe, const Utilisateur* u);
 

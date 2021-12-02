@@ -60,12 +60,6 @@ void GestionGroupes::afficherGroupe(Model* m){
  * @version v9 (Dernière modification)
  */
 void GestionGroupes::on_groupes_itemClicked(QListWidgetItem *item){
-    for (unsigned long i = 0; i<m_listIDs.size(); i++){
-        if (item == ui->groupes->item(i)){
-            emit evenements(m_listIDs.at(i));
-        }
-    }
-
-
+    emit evenements(1);
 }
 
