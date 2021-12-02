@@ -6,7 +6,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
+#include <vector>
+#include "Groupe.hpp"
 
+
+class Groupe;
 
 /**
  * Classe contrôlant la base de données
@@ -42,6 +46,22 @@ public:
 * @version v9 (Dernière modification)
 */
     Database();
+
+/**
+* @brief Charge le contenu d'un groupe
+* @param groupe pointeur vers le groupe
+* @authors Guillaume Vautrin
+* @version v12 (Dernière modification)
+*/
+    void load_groupe (Groupe* groupe);
+
+/**
+* @brief Récupère la liste des identifiants de groupes connus par un utilisateur
+* @param user_id identifiant de l'utilisateur
+* @authors Guillaume Vautrin
+* @version v12 (Dernière modification)
+*/
+    std::vector<int> listeIdentifiantGroupe (const int& user_id);
 
 /**
 * @brief Initialise la base de données avec les tables relationnelles

@@ -15,7 +15,6 @@ GestionGroupes::GestionGroupes(Model* m, QWidget *parent) :
     m_model(m)
 {
     ui->setupUi(this);
-
 }
 
 GestionGroupes::~GestionGroupes()

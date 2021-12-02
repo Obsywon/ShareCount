@@ -69,12 +69,22 @@ std::string Groupe::getNom() const {
 }
     /**
      * Ajoute un identifiant au groupe
-     * @param id string
+     * @param id
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v9 (Dernière modification)  : changement de type
      */
 void Groupe::setId(const int& id) {
     m_id = id;
+}
+
+/**
+ * Ajoute un nom au groupe
+ * @param id string
+ * @authors Guillaume Vautrin
+ * @version v12 (Dernière modification)
+ */
+void Groupe::setNom(const std::string& nom){
+    m_nom = nom;
 }
 
 /**

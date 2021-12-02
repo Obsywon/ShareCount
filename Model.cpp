@@ -214,3 +214,12 @@ std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int ident
     return m_groupes.getTousLesEvenementsConnus(identifiant);
 }
 
+/**
+ * Charge l'ensemble des groupes connus par la base de données
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v12 (Dernière modification) : charger groupe
+ */
+void Model::updateGroupes(){
+    m_groupes.loadGroupes(m_db, m_user.getId());
+}
+

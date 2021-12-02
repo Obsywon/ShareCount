@@ -89,11 +89,19 @@ void creerEvenement(const int& id, const std::string& nom, const std::string& da
 
     /**
      * Ajoute un identifiant au groupe
-     * @param id string
+     * @param id
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v9 (Dernière modification)  : changement de type
      */
     void setId(const int& id);
+
+    /**
+     * Ajoute un nom au groupe
+     * @param id string
+     * @authors Guillaume Vautrin
+     * @version v12 (Dernière modification)
+     */
+    void setNom(const std::string& nom);
 
 
     /**

@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include "Groupe.hpp"
+#include "Database.hpp"
 
 /**
  * @brief Gestionnaire de groupe
@@ -113,6 +114,15 @@ public:
      * @version v9 (Dernière modification)  : type modifé
      */
     std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
+
+    /**
+    * Récupère le groupe indiqué par l'identifiant
+    * @param db base de données
+    * @param id utilisateur
+    * @authors Guillaume Vautrin
+    * @version v12 (Dernière modification)
+    */
+    void loadGroupes (Database& db, const int& id);
 
 };
 
