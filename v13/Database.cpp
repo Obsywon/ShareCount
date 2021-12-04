@@ -76,44 +76,6 @@ void Database::initialisation(){
 
 
 /**
-* @brief Charge les caractéristiques de bases des événements liés à un groupe
-* @param group_id identifiant du groupe sélectionné
-* @authors Guillaume Vautrin
-* @version v14 (Dernière modification)
-*/
-const std::unordered_map <int, std::string> Database::load_events(const int& group_id){
-    std::unordered_map <int, std::string[]> events;
-
-    if (!m_dbb.open()){
-        qWarning() << "Erreur : " << m_dbb.lastError();
-    }
-
-    QSqlQuery query;
-    query.prepare("SELECT e.event_id, e.event_nom, e.date_deb, e.date_fin FROM groupe g, evenement e WHERE g.group_id = e.group_id AND g.group_id = :id");
-    query.bindValue(":id", group_id);
-    query.exec();
-
-    int id;
-    std::string content[3];
-
-    // Construit la map contenant les données nominatives du groupes
-    while (query.next()) {
-         id = query.value(0).toInt();
-         content[0] = query.value(1).toString().toStdString();
-         content[1] = query.value(2).toString().toStdString();
-         content[2] = query.value(3).toString().toStdString();
-         events[id] = content;
-     }
-
-
-    query.clear();
-    m_dbb.close();
-
-    return events;
-
-}
-
-/**
 * @brief Charge les caractéristiques de bases des groupes connus pas l'utilisateur
 * @param user_id identifiant de l'utilisateur connecté
 * @authors Guillaume Vautrin

@@ -56,14 +56,6 @@ public:
 
 
 /**
-* @brief Charge les caractéristiques de bases des événements liés à un groupe
-* @param group_id identifiant du groupe sélectionné
-* @authors Guillaume Vautrin
-* @version v14 (Dernière modification)
-*/
-    const std::unordered_map <int, std::string> load_events(const int& group_id);
-
-/**
 * @brief Initialise la base de données avec les tables relationnelles
 * @authors Guillaume Vautrin
 * @version v9 (Dernière modification)
