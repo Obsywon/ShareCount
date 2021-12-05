@@ -81,7 +81,7 @@ public:
      * @authors Guillaume Vautrin, Louis Jacques
      * @version v9 (Dernière modification)  : type modifé
      */
-    GestionnaireGroupes &getGroupe(const int& idGroupe);
+    Groupe getGroupe(const int& idGroupe);
 
 
     /**
@@ -115,6 +115,15 @@ public:
     * @version v13 (Dernière modification)
     */
     void chargeGroupes (const std::unordered_map <int, std::string>& groupes);
+
+    /**
+    * @brief Charge les caractéristiques de bases des événements connus pas un groupe
+    * @param id groupe
+    * @param collections d'information sur les événements
+    * @authors Guillaume Vautrin
+    * @version v14 (Dernière modification)
+    */
+    void chargeEvents(const int& group_id, const std::unordered_map <int, std::vector<std::string>>& events);
 
 };
 

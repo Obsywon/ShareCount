@@ -26,8 +26,8 @@ void GestionnaireGroupes::ajouterGroupe(const int& id, const std::string &nom) {
 * @authors Guillaume Vautrin, Louis Jacques
 * @version v8 (Dernière modification)  : const ajouté
 */
-GestionnaireGroupes& GestionnaireGroupes::getGroupe (const int& idGroupe){
-    return reinterpret_cast<GestionnaireGroupes &>(m_groupes.at(idGroupe));
+Groupe GestionnaireGroupes::getGroupe (const int& idGroupe){
+    return m_groupes.at(idGroupe);
 }
 
 /**
@@ -112,11 +112,26 @@ unsigned long GestionnaireGroupes::taille() {
 * @brief Charge les caractéristiques de bases des groupes connus pas l'utilisateur
 * @param groupes
 * @authors Guillaume Vautrin
-* @version v13 (Dernière modification)
+* @version v14 (Dernière modification) : évite de recréer un objet
 */
 void GestionnaireGroupes::chargeGroupes (const std::unordered_map <int, std::string>& groupes){
     for(auto const& key : groupes){
-        m_groupes[key.first] = Groupe(key.first, key.second);
+        if (m_groupes.count(key.first) > 0){
+            m_groupes[key.first].setNom(key.second);
+        }else{
+            m_groupes[key.first] = Groupe(key.first, key.second);
+        }
     }
+}
+
+/**
+* @brief Charge les caractéristiques de bases des événements connus pas un groupe
+* @param id groupe
+* @param collections d'information sur les événements
+* @authors Guillaume Vautrin
+* @version v14 (Dernière modification)
+*/
+void GestionnaireGroupes::chargeEvents(const int& group_id, const std::unordered_map <int, std::vector<std::string>>& events){
+    m_groupes[group_id].chargeEvents(events);
 }
 

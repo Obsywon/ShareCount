@@ -160,7 +160,7 @@ std::unordered_map<int, Groupe> *getTousLesGroupesConnus();
  * @authors Guillaume Vautrin, Louis Jacques
  * @version v9 (Dernière modification)  : type modifé
  */
-std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(int identifiant);
+std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
 
 
 /**
@@ -177,6 +177,15 @@ std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
  * @version v13 (Dernière modification) : charger groupe
  */
 void updateGroupes();
+
+
+/**
+ * @brief Met à jour les événements présents dans un groupe
+ * @param group_id
+ * @authors Guillaume Vautrin
+ * @version v14 (Dernière modification) : charger groupe
+ */
+void updateEvents(const int& group_id);
 };
 
 

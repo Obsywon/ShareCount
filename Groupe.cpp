@@ -107,4 +107,12 @@ std::vector<Utilisateur> * Groupe::getTousLesParticipantsConnus() {
     return gesCom.getTousLesParticipantsConnus();
 }
 
-
+/**
+* @brief Charge les événements disponibles
+* @param events
+* @authors Guillaume Vautrin
+* @version v14 (Dernière modification)
+ */
+void Groupe::chargeEvents(const std::unordered_map <int, std::vector<std::string>>& events){
+    ges.chargeEvents(events);
+}

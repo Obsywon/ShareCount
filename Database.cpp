@@ -81,28 +81,34 @@ void Database::initialisation(){
 * @authors Guillaume Vautrin
 * @version v14 (Dernière modification)
 */
-const std::unordered_map <int, std::string> Database::load_events(const int& group_id){
-    std::unordered_map <int, std::string[]> events;
+const std::unordered_map <int, std::vector<std::string>> Database::load_events(const int& group_id){
+    std::unordered_map <int, std::vector<std::string>> events;
+
 
     if (!m_dbb.open()){
         qWarning() << "Erreur : " << m_dbb.lastError();
     }
 
     QSqlQuery query;
-    query.prepare("SELECT e.event_id, e.event_nom, e.date_deb, e.date_fin FROM groupe g, evenement e WHERE g.group_id = e.group_id AND g.group_id = :id");
+    query.prepare("SELECT e.event_id, e.event_nom, e.date_deb, e.date_fin FROM groupe g, evenement e"
+                  " WHERE g.group_id = e.group_id AND g.group_id = :id");
     query.bindValue(":id", group_id);
     query.exec();
 
     int id;
-    std::string content[3];
+    //std::string content[3];
 
     // Construit la map contenant les données nominatives du groupes
     while (query.next()) {
+        std::vector <std::string> content;
          id = query.value(0).toInt();
-         content[0] = query.value(1).toString().toStdString();
-         content[1] = query.value(2).toString().toStdString();
-         content[2] = query.value(3).toString().toStdString();
+         content.push_back(query.value(1).toString().toStdString());
+         content.push_back(query.value(2).toString().toStdString());
+         content.push_back(query.value(3).toString().toStdString());
+         events[id] = std::vector<std::string> ();
          events[id] = content;
+
+         //qWarning() <<  QString::fromStdString(content.at(1));
      }
 
 

@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include "Evenement.hpp"
+#include <vector>
 
 class Utilisateur;
 
@@ -70,6 +71,14 @@ public:
      * @version v9 (Dernière modification)
      */
     std::unordered_map<int, Evenement>* getTousLesEvenementsConnus();
+
+    /**
+    * @brief Charge les événements disponibles
+    * @param events
+    * @authors Guillaume Vautrin
+    * @version v14 (Dernière modification)
+     */
+    void chargeEvents(const std::unordered_map <int, std::vector<std::string>>& events);
 };
 
 

@@ -1,4 +1,6 @@
 #include "GestionnaireEvenement.hpp"
+#include <QDebug>
+
 /**
  * @brief Constructeur de gestionnaire d'événements connus par un groupe
  * @authors Guillaume Vautrin, Louis Jacques
@@ -54,4 +56,17 @@ std::string GestionnaireEvenement::toString() const {
  */
 std::unordered_map<int, Evenement> * GestionnaireEvenement::getTousLesEvenementsConnus(){
     return &m_evenement;
+}
+
+
+/**
+* @brief Charge les événements disponibles
+* @param events
+* @authors Guillaume Vautrin
+* @version v14 (Dernière modification)
+ */
+void GestionnaireEvenement::chargeEvents(const std::unordered_map <int, std::vector<std::string>>& events){
+    for(auto const& key : events){
+        creerEvenement(key.first, key.second[0],  key.second[1], key.second[2]);
+    }
 }

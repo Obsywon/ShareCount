@@ -101,6 +101,7 @@ void MainWindow::afficherConnection(){
      * @version v9 (Dernière modification)
      */
 void MainWindow::afficherGroupes(){
+    m_model->updateGroupes();
     m_groupes->afficherGroupe(m_model);
     changerPage(GROUPES);
 }
@@ -122,7 +123,7 @@ void MainWindow::afficherAjoutGroupe(){
  */
 void MainWindow::afficherEvenement(int id){
     m_events->setIdGroupe(id);
-    m_events->afficherEvent(m_model);
+    m_events->afficherEvent();
     changerPage(EVENTS);
 }
 

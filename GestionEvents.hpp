@@ -35,7 +35,7 @@ public:
      * @authors Louis Jacques
      * @version v9 (Dernière modification)
      */
-    void afficherEvent(Model* m);
+    void afficherEvent();
 
 private slots:
 /**

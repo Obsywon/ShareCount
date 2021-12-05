@@ -119,6 +119,14 @@ void creerEvenement(const int& id, const std::string& nom, const std::string& da
      * @version v9 (Dernière modification)
      */
     std::vector<Utilisateur> * getTousLesParticipantsConnus();
+
+    /**
+    * @brief Charge les événements disponibles
+    * @param events
+    * @authors Guillaume Vautrin
+    * @version v14 (Dernière modification)
+     */
+    void chargeEvents(const std::unordered_map <int, std::vector<std::string>>& events);
 };
 
 

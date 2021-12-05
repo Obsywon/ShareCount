@@ -99,7 +99,6 @@ bool Model::connecterUtilisateur(const std::string& pseudo, const std::string& e
         id = m_db.getUserID(pseudo, mdp);
         m_user = Utilisateur(id, pseudo, email, mdp, &m_groupes);
         existe = true;
-        updateGroupes();
     }
     return existe;
 }
@@ -191,7 +190,7 @@ std::unordered_map<int, Groupe> *Model::getTousLesGroupesConnus() {
  * @authors Guillaume Vautrin, Louis Jacques
  * @version v9 (Dernière modification)  : type modifé
  */
-std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(int identifiant){
+std::unordered_map<int, Evenement> * Model::getTousLesEvenementsConnus(const int& identifiant){
     return m_groupes.getTousLesEvenementsConnus(identifiant);
 }
 
@@ -213,10 +212,27 @@ std::vector<Utilisateur> * Model::getTousLesParticipantsConnus(const int& identi
 void Model::updateGroupes(){
     std::unordered_map <int, std::string> groupes;
     groupes = m_db.load_groupes(m_user.getId());
-
+    m_db.load_events(1);
     // Si il existe des données :
     if (groupes.size() > 0){
         m_groupes.chargeGroupes(groupes);
+        for (const auto& key: groupes){
+            updateEvents(key.first);
+        }
+    }
+}
+
+/**
+ * @brief Met à jour les événements présents dans un groupe
+ * @param group_id
+ * @authors Guillaume Vautrin
+ * @version v13 (Dernière modification) : charger groupe
+ */
+void Model::updateEvents(const int& group_id){
+    std::unordered_map <int, std::vector<std::string>> events;
+    events = m_db.load_events(group_id);
+    if (events.size() > 0){
+        m_groupes.chargeEvents(group_id, events);
     }
 }
 

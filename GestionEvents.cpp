@@ -39,15 +39,15 @@ void GestionEvents::setIdGroupe(const int& id){
  * @authors Louis Jacques
  * @version v9 (Dernière modification)
  */
-void GestionEvents::afficherEvent(Model* m){
+void GestionEvents::afficherEvent(){
     ui->listEvent->clear();
-    std::unordered_map<int, Evenement> * hashMap = m->getTousLesEvenementsConnus(m_groupeId);
-        for(auto const& key : *hashMap){
-            std::cout << key.first;
-            std::string nom = key.second.getNom();
-            QString qString = QString::fromStdString(nom);
-            ui->listEvent->addItem(qString);
-        }
+    std::unordered_map<int, Evenement> * hashMap = m_model->getTousLesEvenementsConnus(1);
+
+    for(auto const& key : *hashMap){
+        std::string nom = key.second.getNom();
+        QString qString = QString::fromStdString(nom);
+        ui->listEvent->addItem(qString);
+    }
 }
 
 /**

@@ -61,7 +61,7 @@ public:
 * @authors Guillaume Vautrin
 * @version v14 (Dernière modification)
 */
-    const std::unordered_map <int, std::string> load_events(const int& group_id);
+    const std::unordered_map <int, std::vector<std::string>> load_events(const int& group_id);
 
 /**
 * @brief Initialise la base de données avec les tables relationnelles
