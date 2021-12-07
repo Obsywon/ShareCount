@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>gestionComptes</class>
+ <widget class="QWidget" name="gestionComptes">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>377</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QListWidget" name="listParticipants">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>261</width>
+     <height>251</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cagnotte_4">
+   <property name="geometry">
+    <rect>
+     <x>211</x>
+     <y>10</y>
+     <width>86</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cagnotte</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="events_4">
+   <property name="geometry">
+    <rect>
+     <x>121</x>
+     <y>10</y>
+     <width>85</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Evénements</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="participants_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>86</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Participants</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="retour_groupes">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>320</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Retour vers groupes</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
