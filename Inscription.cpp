@@ -50,7 +50,7 @@ void Inscription::on_inscrire_clicked()
         }
 
         // Texte à afficher si le mdp est invalide
-        if (!m_model->estValideMdP(mdp.toStdString())){
+        if (!m_model->estValideMdP(mdp.toStdString()) || ui->in_mdp->text() != ui->in_mdp_2->text()){
             err.append("Mot de passe invalide.");
             error = true;
         }
@@ -59,10 +59,9 @@ void Inscription::on_inscrire_clicked()
     // Affichage du message d'erreur
     ui->in_erreur->setVisible(error);
     if (error){
-        ui->in_erreur->setText("Erreur : adresse e-mail invalide.");
+        ui->in_erreur->setText(err);
     }else{
         m_model->inscrireUtilisateur(p.toStdString(), email.toStdString(), mdp.toStdString());
-        //print2(m_model->toString());
         emit groupes();
 
     }
@@ -79,6 +78,7 @@ void Inscription::on_connecter_clicked()
     ui->in_email->setText("");
     ui->in_erreur->setText("");
     ui->in_mdp->setText("");
+    ui->in_mdp_2->setText("");
     ui->in_pseudo->setText("");
     emit connecter();
 }
