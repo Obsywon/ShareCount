@@ -112,23 +112,23 @@ void Database::initialisation(){
 * @authors Guillaume Vautrin
 * @version v16 (Dernière modification)
 */
-const std::unordered_map <int, double> Database::historiqueTransfertsCagnotte (const int& id_group){
+const std::unordered_map <std::string, double> Database::historiqueTransfertsCagnotte (const int& id_group){
     if (!m_dbb.open()){
         qWarning() << "Erreur : " << m_dbb.lastError();
     }
 
-    std::unordered_map <int, double> historique;
+    std::unordered_map <std::string, double> historique;
 
     // Récupère la somme total d'une cagnotte
     QSqlQuery query;
-    query.prepare("SELECT u.user_id, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND group_id = ?");
+    query.prepare("SELECT u.pseudo, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND group_id = ?");
     query.addBindValue(id_group);
     query.exec();
 
     double montant = 0;
-    int id = 0;
+    std::string id;
     while (query.next()) {
-        id = query.value(0).toInt();
+        id = query.value(0).toString().toStdString();
          montant = query.value(1).toDouble();
          historique[id] = montant;
      }

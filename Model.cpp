@@ -254,7 +254,7 @@ bool Model::addMember (const int& group_id, std::string pseudo){
     return success;
 }
 /**
- * Met à jour les données cincernant les comptes liées à un groupe
+ * Met à jour les données concernant les comptes liées à un groupe
  * @param id identifiant de groupe
  * @authors Guillaume Vautrin
  * @version v15 (Dernière modification)
@@ -267,3 +267,33 @@ void Model::updateMembers(const int& group_id){
     }
 }
 
+/**
+ * Met à jour l'historique des transferts
+ * @param id identifiant de groupe
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+std::unordered_map <std::string, double> Model::updateHistorique(const int& id_group){
+    return m_db.historiqueTransfertsCagnotte(id_group);
+}
+
+/**
+ * @brief Récupère la somme totale de la cagnotte
+ * @param id identifiant de groupe
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+double Model::getTotalCagnotte (const int& group_id){
+    return m_db.getSommeGroupe(group_id);
+}
+
+/**
+ * @brief effectue un transfert
+ * @param id identifiant de groupe
+ * @param montant de transferts
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+bool Model::transfert(const int& group_id, const double& montant){
+    return m_db.effectueTransfert(group_id, m_user.getId(), montant);
+}

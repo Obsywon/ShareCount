@@ -64,14 +64,14 @@ public:
 */
     double getSommeGroupe (const int& group_id);
 
-/**
-* @brief Récupère l'historique des transferts des utilisateurs d'une cagnotte
-* @param group_id identifiant du groupe sélectionné
-* @return hashmap
-* @authors Guillaume Vautrin
-* @version v16 (Dernière modification)
-*/
-const std::unordered_map <int, double> historiqueTransfertsCagnotte (const int& id_group);
+    /**
+    * @brief Récupère l'historique des transferts des utilisateurs d'une cagnotte
+    * @param group_id identifiant du groupe sélectionné
+    * @return hashmap
+    * @authors Guillaume Vautrin
+    * @version v16 (Dernière modification)
+    */
+    const std::unordered_map <std::string, double> historiqueTransfertsCagnotte (const int& id_group);
 
 /**
 * @brief Ajoute une transaction

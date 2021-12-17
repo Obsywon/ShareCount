@@ -29,7 +29,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget">
+  <widget class="QListWidget" name="historique">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -39,13 +39,13 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="txtsum">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>360</y>
-     <width>311</width>
-     <height>61</height>
+     <y>380</y>
+     <width>241</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -86,7 +86,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="participants_4">
+  <widget class="QPushButton" name="participants">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -99,7 +99,7 @@
     <string>Participants</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="events_4">
+  <widget class="QPushButton" name="events">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -112,7 +112,7 @@
     <string>Evénements</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="cagnotte_4">
+  <widget class="QPushButton" name="cagnotte_2">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -138,7 +138,7 @@
     <string>Retour vers groupes</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ajout_event">
+  <widget class="QPushButton" name="ajout_transfert">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -148,7 +148,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Ajout dépense</string>
+    <string>Ajout transfert</string>
    </property>
   </widget>
  </widget>

@@ -1,17 +1,6 @@
 #include "MainWindow.hpp"
 #include "ui_mainwindow.h"
 
-/**
- * Affiche un message sur la console
- * @param msg string à afficher
- */
-/*
-void print2(const std::string &msg) {
-    QString ps = QString();
-    ps = QString::fromStdString(msg);
-    qDebug("%s", qUtf8Printable(ps));
-
-}*/
 
 MainWindow::MainWindow(Model* m, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), m_model(m)
@@ -29,6 +18,9 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     m_addEvent = new AjoutEvent (m_model, this);
     m_comptes = new gestionComptes(m_model,this);
     m_invit = new inviter(m_model, this);
+    m_cagnotte = new cagnotte(m_model, this);
+    m_transfert = new transfert(m_model, this);
+
 
     // Insertion des interfaces dans la collection de la fenêtre principale
     ui->pages->insertWidget(LAUNCH, m_launch);
@@ -40,6 +32,8 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     ui->pages->insertWidget(ADDEVENT, m_addEvent);
     ui->pages->insertWidget(COMPTES, m_comptes);
     ui->pages->insertWidget(INVITER, m_invit);
+    ui->pages->insertWidget(CAGNOTTE, m_cagnotte);
+    ui->pages->insertWidget(TRANSFERT, m_transfert);
 
 
     // Signaux / slots permettant de changer d'interface
@@ -63,9 +57,15 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     connect (m_invit, SIGNAL(annuler()), this, SLOT(afficherComptes()));
     connect (m_invit, SIGNAL(comptes()), this, SLOT(afficherComptes()));
 
+    connect (m_comptes, SIGNAL(vueCagnotte()), this, SLOT(afficherCagnotte()));
+    connect (m_events, SIGNAL(vueCagnotte()), this, SLOT(afficherCagnotte()));
+    connect (m_cagnotte, SIGNAL(vueTransfert()), this, SLOT(afficherTransaction()));
 
+    connect (m_cagnotte, SIGNAL(vueComptes()), this, SLOT(afficherComptes()));
+    connect (m_cagnotte, SIGNAL(vueEvent()), this, SLOT(afficherEvenement()));
+    connect (m_cagnotte, SIGNAL(vueGroupes()), this, SLOT(afficherGroupes()));
 
-
+    connect (m_transfert, SIGNAL(vueCagnotte()), this, SLOT(afficherCagnotte()));
 
     // Afficher le choix entre se connecter et s'inscrire
     changerPage(LAUNCH);
@@ -126,7 +126,7 @@ void MainWindow::afficherAjoutGroupe(){
  * @brief Affiche les événements
  * @param id du groupe auquel appartient l'événement
  * @author Guillaume Vautrin , Louis Jacques
- * @version v15 (Dernière modification) - centralisation de la mise en place de l'id groupe pour toutes les interfaces
+ * @version v16 (Dernière modification) - ajout transfert / cagnotte
  */
 void MainWindow::afficherEvenement(int id){
     // Paramètre toutes les interfaces suivantes avec cet identifiant
@@ -134,7 +134,8 @@ void MainWindow::afficherEvenement(int id){
     m_comptes->setIDGroupe(id);
     m_invit->setGroupe(id);
     m_addEvent->setIdGroupe(id);
-    m_addEvent->setIdGroupe(id);
+    m_cagnotte->setGroupeId(id);
+    m_transfert->setGroupeId(id);
     // affiche les événements connus
     m_events->afficherEvent();
     changerPage(EVENTS);
@@ -179,6 +180,27 @@ void MainWindow::afficherAjoutEvent(){
  */
 void MainWindow::afficherInvit (){
     changerPage(INVITER);
+}
+
+/**
+ * @brief Affiche la fenêtre de cagnotte
+ * @author Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+void MainWindow::afficherCagnotte (){
+    m_cagnotte->updateHistorique();
+    changerPage(CAGNOTTE);
+
+}
+
+/**
+ * @brief Affiche la fenêtre de transaction
+ * @author Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+void MainWindow::afficherTransaction(){
+    changerPage(TRANSFERT);
+
 }
 
 

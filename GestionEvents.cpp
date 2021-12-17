@@ -82,3 +82,13 @@ void GestionEvents::on_participants_4_clicked()
     emit vueCompte();
 }
 
+/**
+ * @brief Demande la page cagnotte
+ * @author Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+void GestionEvents::on_cagnotte_4_clicked()
+{
+    emit vueCagnotte();
+}
+

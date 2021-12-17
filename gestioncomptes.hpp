@@ -56,6 +56,13 @@ private slots:
      */
     void on_inviter_clicked();
 
+    /**
+     * @brief Demande la page cagnotte
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void on_cagnotte_4_clicked();
+
 signals:
     /**
      * @brief Signal permettant de changer de fenêtre
@@ -78,6 +85,13 @@ signals:
      * @version v15 (Dernière modification)
      */
     void vueInvit();
+
+    /**
+     * @brief Demande la page cagnotte
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void vueCagnotte();
 
 private:
     Ui::gestionComptes *ui;

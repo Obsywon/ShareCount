@@ -206,6 +206,31 @@ bool addMember (const int& group_id, std::string pseudo);
  */
 void updateMembers(const int& group_id);
 
+/**
+ * Met à jour l'historique des transferts
+ * @param id identifiant de groupe
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+std::unordered_map <std::string, double> updateHistorique(const int& id_group);
+
+
+/**
+ * @brief Récupère la somme totale de la cagnotte
+ * @param id identifiant de groupe
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+double getTotalCagnotte (const int& group_id);
+
+/**
+ * @brief effectue un transfert
+ * @param id identifiant de groupe
+ * @param montant de transferts
+ * @authors Guillaume Vautrin
+ * @version v16 (Dernière modification)
+ */
+bool transfert(const int& group_id, const double& montant);
 
 };
 

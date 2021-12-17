@@ -60,6 +60,13 @@ private slots:
      */
     void on_participants_4_clicked();
 
+    /**
+     * @brief Demande la page cagnotte
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void on_cagnotte_4_clicked();
+
 signals:
 /**
  * @brief Signal permettant de changer de fenêtre
@@ -78,6 +85,13 @@ signals:
  * Passage à la fenêtre des comptes liée à un groupe
  */
     void vueCompte();
+
+    /**
+     * @brief Demande la page cagnotte
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void vueCagnotte();
 
 private:
     Ui::GestionEvents *ui;

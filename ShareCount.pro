@@ -44,6 +44,7 @@ SOURCES += \
     GestionnaireComptes.cpp \
     GestionnaireGroupes.cpp \
     GestionnaireEvenement.cpp \
+    transfert.cpp \
     Evenement.cpp
 
 HEADERS += \
@@ -66,6 +67,7 @@ HEADERS += \
     Evenement.hpp \
     cagnotte.hpp \
     gestioncomptes.hpp \
+    transfert.hpp \
     inviter.hpp
 
 FORMS += \
@@ -79,5 +81,6 @@ FORMS += \
         ajoutgroupe.ui \
         inscription.ui \
         gestionevents.ui \
+        transfert.ui \
         gestiongroupes.ui
         

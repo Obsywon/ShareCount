@@ -11,6 +11,9 @@
 #include "AjoutEvent.hpp"
 #include "gestioncomptes.hpp"
 #include "inviter.hpp"
+#include "cagnotte.hpp"
+#include "transfert.hpp"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,16 +22,17 @@ QT_END_NAMESPACE
 /**
  * @brief Enumération donnant l'indice de chaque interface
 * @author Guillaume Vautrin
-* @version v8 (Dernière modification)
+* @version v16 (Dernière modification) ajout transaction cagnotte
  */
-enum pages {LAUNCH, CONNECT, INSCRIPTION, GROUPES, EVENTS, ADDGROUP, ADDEVENT, COMPTES, INVITER};
+enum pages {LAUNCH, CONNECT, INSCRIPTION, GROUPES, EVENTS, ADDGROUP, ADDEVENT, COMPTES, INVITER,
+           CAGNOTTE, TRANSFERT};
 
 /**
  * @brief Fenêtre principale sur laquelle est instantiée toutes
  * les interfaces. Les interfaces demandent à cette classe pour faire
  * apparaître la suivante.
 * @author Guillaume Vautrin
-* @version v8 (Dernière modification)
+* @version v16 (Dernière modification) - ajout transaction  cagnotte
  */
 class MainWindow : public QMainWindow
 {
@@ -103,6 +107,20 @@ private:
      */
     inviter* m_invit;
 
+    /**
+     * @brief Page de cagnotte
+     * @author Guillaume Vautrin
+     * @version v16
+     */
+    cagnotte* m_cagnotte;
+
+    /**
+     * @brief Page de transfert
+     * @author Guillaume Vautrin
+     * @version v16
+     */
+    transfert* m_transfert;
+
         /**
      * @brief Interface d'ajout de groupes
      * @author Guillaume Vautrin
@@ -139,7 +157,7 @@ public slots:
      * @brief Affiche les événements
      * @param id du groupe auquel appartient l'événement
      * @author Guillaume Vautrin , Louis Jacques
-     * @version v15 (Dernière modification) centralisation des setters id groupe
+     * @version v16 (Dernière modification) - ajout transfert / cagnotte
      */
     void afficherEvenement(int id);
 
@@ -170,6 +188,20 @@ public slots:
      * @version v15 (Dernière modification)
      */
     void afficherInvit ();
+
+    /**
+     * @brief Affiche la fenêtre de cagnotte
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void afficherCagnotte ();
+
+    /**
+     * @brief Affiche la fenêtre de transaction
+     * @author Guillaume Vautrin
+     * @version v16 (Dernière modification)
+     */
+    void afficherTransaction();
 
 };
 #endif // MAINWINDOW_H
