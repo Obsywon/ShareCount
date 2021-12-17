@@ -47,7 +47,6 @@ void Database::initialisation(){
                   "group_id integer PRIMARY KEY AUTOINCREMENT, "
                   "group_nom VARCHAR(50) NOT NULL)");
     query.exec();
-    //qWarning() << query.lastError();
 
     // Création de la table participation, qui relie chaque utilisateurs aux groupes auxquels ils participent.
     query.prepare("CREATE TABLE IF NOT EXISTS participation ("
@@ -70,9 +69,41 @@ void Database::initialisation(){
                   "FOREIGN KEY(group_id) REFERENCES groupe(group_id))");
     query.exec();
 
+    // Création de la table cagnotte
+    query.prepare("CREATE TABLE IF NOT EXISTS cagnotte ("
+                  "cagnotte_id integer PRIMARY KEY AUTOINCREMENT, "
+                  "group_id integer NOT NULL UNIQUE, "
+                  "objectif integer DEFAULT 0.00, "
+                  "FOREIGN KEY(group_id) REFERENCES groupe(group_id))");
+
+    query.exec();
+    // Création de la table transaction
+    query.prepare("CREATE TABLE IF NOT EXISTS transac ("
+                  "transaction_id integer PRIMARY KEY AUTOINCREMENT, "
+                  "cagnotte_id integer NOT NULL, "
+                  "user_id integer NOT NULL, "
+                  "montant integer DEFAULT 0.00, "
+                  "FOREIGN KEY(cagnotte_id) REFERENCES cagnotte(cagnotte_id), "
+                  "FOREIGN KEY(user_id) REFERENCES utilisateur(user_id))");
+
+    query.exec();
+
+    // Création d'une vue représentant la somme totale de la cagnotte
+    query.prepare("CREATE VIEW IF NOT EXISTS total_cagnotte as "
+                  "SELECT t.cagnotte_id, SUM(t.montant) as somme_cagnotte "
+                   "FROM transac t, cagnotte c "
+                   "WHERE c.cagnotte_id = t.cagnotte_id "
+                   "GROUP BY t.cagnotte_id");
+    query.exec();
+    //qWarning() << query.lastError();
+
+
+
+
     query.clear(); // Nettoie la requête
     m_dbb.close(); // Termine la connection avec la base de donnée
 }
+
 
 
 /**
@@ -159,7 +190,7 @@ const std::unordered_map <int, std::string> Database::load_groupes(const int& us
 * @param nom nom du groupe
 * @return int entier correspondant à l'identifiant du nouveau groupe
 * @authors Guillaume Vautrin
-* @version v11 (Dernière modification)
+* @version v16 (Dernière modification) : ajout cagnotte
 */
 int Database::ajouterGroupe(const int& id_user, const std::string& nom){
     if (!m_dbb.open()){
@@ -167,13 +198,20 @@ int Database::ajouterGroupe(const int& id_user, const std::string& nom){
     }
     //m_dbb.open(); // Ouvre la connection à la base de données
 
-    QSqlQuery query, query2;
+    QSqlQuery query, query2, query3;
     query.prepare("INSERT INTO groupe(group_nom) VALUES (:groupe_nom)");
     query.bindValue(":groupe_nom", QString::fromStdString(nom));
     query.exec();
 
     // Récupère la clé du groupe
     int id = query.lastInsertId().toInt();
+
+
+    // Génère une cagnotte sans objectif
+    query3.prepare ("INSERT INTO cagnotte(group_id) VALUES (:id)");
+    query3.bindValue(":id", id);
+    query3.exec();
+
 
     // Actualise la table de participation pour connaître quel groupe connaît quel utilisateur
     query2.prepare("INSERT INTO participation(group_id, user_id) VALUES (:g, :u)");

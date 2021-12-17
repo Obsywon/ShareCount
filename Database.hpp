@@ -76,7 +76,7 @@ public:
 * @param nom nom du groupe
 * @return int entier correspondant à l'identifiant du nouveau groupe
 * @authors Guillaume Vautrin
-* @version v11 (Dernière modification)
+* @version v16 (Dernière modification) : ajout cagnotte
 */
     int ajouterGroupe(const int& id_user, const std::string& nom);
 

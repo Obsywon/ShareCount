@@ -50,7 +50,7 @@ void GestionGroupes::afficherGroupe(Model* m){
     for(auto const& key : *hashMap){
         m_listIDs.push_back(key.first);
         std::string nom = key.second.getNom();
-        QString qString = QString::fromStdString(nom.append(std::to_string(key.first)));
+        QString qString = QString::fromStdString(nom);
         ui->groupes->addItem(qString);
     }
 
