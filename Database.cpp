@@ -90,7 +90,7 @@ void Database::initialisation(){
 
     // Création d'une vue représentant la somme totale de la cagnotte
     query.prepare("CREATE VIEW IF NOT EXISTS total_cagnotte as "
-                  "SELECT t.cagnotte_id, SUM(t.montant) as somme_cagnotte "
+                  "SELECT t.cagnotte_id, SUM(t.montant) as somme_cagnotte DEFAULT 0.00 "
                    "FROM transac t, cagnotte c "
                    "WHERE c.cagnotte_id = t.cagnotte_id "
                    "GROUP BY t.cagnotte_id");
@@ -105,6 +105,124 @@ void Database::initialisation(){
 }
 
 
+/**
+* @brief Récupère l'historique des transferts des utilisateurs d'une cagnotte
+* @param group_id identifiant du groupe sélectionné
+* @return hashmap
+* @authors Guillaume Vautrin
+* @version v16 (Dernière modification)
+*/
+const std::unordered_map <int, double> Database::historiqueTransfertsCagnotte (const int& id_group){
+    if (!m_dbb.open()){
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+
+    std::unordered_map <int, double> historique;
+
+    // Récupère la somme total d'une cagnotte
+    QSqlQuery query;
+    query.prepare("SELECT u.user_id, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND group_id = ?");
+    query.addBindValue(id_group);
+    query.exec();
+
+    double montant = 0;
+    int id = 0;
+    while (query.next()) {
+        id = query.value(0).toInt();
+         montant = query.value(1).toDouble();
+         historique[id] = montant;
+     }
+
+
+    query.clear();
+    m_dbb.close();
+    return historique;
+}
+
+/**
+* @brief Ajoute une transaction
+* @param group_id identifiant du groupe sélectionné
+* @return somme total de la cagnotte du groupe
+* @authors Guillaume Vautrin
+* @version v16 (Dernière modification)
+*/
+bool Database::effectueTransfert (const int& group_id, const int& user_id, const double& montant){
+    if (!m_dbb.open()){
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+    bool success = false;
+
+    // Sélectionne la cagnotte
+    QSqlQuery query, query2;
+    query.prepare("SELECT cagnotte_id FROM cagnotte WHERE group_id = ?");
+    query.addBindValue(group_id);
+    query.exec();
+
+    // Récupère l'id de la cagnotte
+    int cagnotte_id = -1;
+    while (query.next()) {
+         cagnotte_id = query.value(0).toDouble();
+     }
+
+
+    if (cagnotte_id > -1){ // Si valide, vérifie
+        query.prepare("SELECT somme_cagnotte FROM total_cagnotte "
+                      " WHERE cagnotte_id = ?");
+        query.addBindValue(cagnotte_id);
+        query.exec();
+
+        // Par défaut cette valeur est 0
+        double somme = 0;
+        while (query.next()) {
+             somme = query.value(0).toDouble();
+         }
+
+        if ((somme + montant) > 0){     // Ajoute une transaction
+            success = true;
+            query2.prepare("INSERT INTO transac(cagnotte_id, user_id, montant) "
+                          "VALUES (?, ?, ?)");
+            query2.addBindValue(cagnotte_id);
+            query2.addBindValue(user_id);
+            query2.addBindValue(montant);
+            query2.exec();
+        }
+    }
+    query.clear();
+    query2.clear();
+    m_dbb.close();
+    return success;
+}
+
+/**
+* @brief Récupère la somme de la cagnotte
+* @param group_id identifiant du groupe sélectionné
+* @return somme total de la cagnotte du groupe
+* @authors Guillaume Vautrin
+* @version v16 (Dernière modification)
+*/
+double Database::getSommeGroupe (const int& group_id) {
+    if (!m_dbb.open()){
+        qWarning() << "Erreur : " << m_dbb.lastError();
+    }
+
+    // Récupère la somme total d'une cagnotte
+    QSqlQuery query;
+    query.prepare("SELECT tg.somme_cagnotte FROM total_cagnotte tg, cagnotte g "
+                  " WHERE tg.cagnotte_id = g.cagnotte_id AND g.group_id = ?");
+    query.addBindValue(group_id);
+    query.exec();
+
+    // Par défaut cette valeur est 0
+    double montant = 0;
+    while (query.next()) {
+         montant = query.value(0).toDouble();
+     }
+
+
+    query.clear();
+    m_dbb.close();
+    return montant;
+}
 
 /**
 * @brief Charge les caractéristiques de bases des événements liés à un groupe
