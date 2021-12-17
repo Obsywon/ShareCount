@@ -41,7 +41,7 @@ void GestionEvents::setIdGroupe(const int& id){
  */
 void GestionEvents::afficherEvent(){
     ui->listEvent->clear();
-    std::unordered_map<int, Evenement> * hashMap = m_model->getTousLesEvenementsConnus(1);
+    std::unordered_map<int, Evenement> * hashMap = m_model->getTousLesEvenementsConnus(m_groupeId);
 
     for(auto const& key : *hashMap){
         std::string nom = key.second.getNom();
