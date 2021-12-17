@@ -16,9 +16,9 @@
   <widget class="QListWidget" name="listParticipants">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>50</y>
-     <width>261</width>
+     <x>0</x>
+     <y>90</y>
+     <width>331</width>
      <height>251</height>
     </rect>
    </property>
@@ -26,10 +26,10 @@
   <widget class="QPushButton" name="cagnotte_4">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>10</y>
-     <width>86</width>
-     <height>25</height>
+     <x>220</x>
+     <y>50</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -39,10 +39,10 @@
   <widget class="QPushButton" name="events_4">
    <property name="geometry">
     <rect>
-     <x>121</x>
-     <y>10</y>
-     <width>85</width>
-     <height>25</height>
+     <x>110</x>
+     <y>50</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -52,10 +52,10 @@
   <widget class="QPushButton" name="participants_4">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>86</width>
-     <height>25</height>
+     <x>0</x>
+     <y>50</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -65,9 +65,9 @@
   <widget class="QPushButton" name="retour_groupes">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>320</y>
-     <width>151</width>
+     <x>0</x>
+     <y>340</y>
+     <width>191</width>
      <height>25</height>
     </rect>
    </property>
@@ -78,9 +78,9 @@
   <widget class="QPushButton" name="inviter">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>320</y>
-     <width>101</width>
+     <x>190</x>
+     <y>340</y>
+     <width>141</width>
      <height>25</height>
     </rect>
    </property>
@@ -88,6 +88,55 @@
     <string>Inviter</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>351</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(78, 168, 193, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>SHARECOUNT</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>label_6</zorder>
+  <zorder>listParticipants</zorder>
+  <zorder>cagnotte_4</zorder>
+  <zorder>events_4</zorder>
+  <zorder>participants_4</zorder>
+  <zorder>retour_groupes</zorder>
+  <zorder>inviter</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

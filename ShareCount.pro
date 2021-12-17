@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Database.cpp \
+    cagnotte.cpp \
     gestioncomptes.cpp \
     inviter.cpp \
     main.cpp \
@@ -63,10 +64,12 @@ HEADERS += \
     GestionnaireGroupes.hpp \
     GestionnaireEvenement.hpp \
     Evenement.hpp \
+    cagnotte.hpp \
     gestioncomptes.hpp \
     inviter.hpp
 
 FORMS += \
+        cagnotte.ui \
         gestioncomptes.ui \
         inviter.ui \
         mainwindow.ui \
