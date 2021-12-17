@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>281</width>
-    <height>257</height>
+    <width>325</width>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QSplitter" name="splitter_4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>50</x>
+     <y>80</y>
      <width>211</width>
      <height>51</height>
     </rect>
@@ -26,8 +26,16 @@
     <enum>Qt::Vertical</enum>
    </property>
    <widget class="QLabel" name="label_10">
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Nom de l'événement :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="nom_event_2"/>
@@ -35,10 +43,10 @@
   <widget class="QPushButton" name="ok_event">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>190</y>
-     <width>89</width>
-     <height>25</height>
+     <x>170</x>
+     <y>230</y>
+     <width>111</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -48,8 +56,8 @@
   <widget class="QSplitter" name="splitter_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>90</y>
+     <x>40</x>
+     <y>160</y>
      <width>242</width>
      <height>26</height>
     </rect>
@@ -58,14 +66,24 @@
     <enum>Qt::Horizontal</enum>
    </property>
    <widget class="QLabel" name="label_11">
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Du</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dateDeb_2"/>
    <widget class="QLabel" name="label_12">
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>à</string>
+     <string>au</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dateFin_2"/>
@@ -74,9 +92,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>190</y>
-     <width>89</width>
-     <height>25</height>
+     <y>230</y>
+     <width>111</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -96,6 +114,54 @@
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>0</y>
+     <width>351</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(78, 168, 193, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>SHARECOUNT</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>label_6</zorder>
+  <zorder>splitter_4</zorder>
+  <zorder>ok_event</zorder>
+  <zorder>splitter_3</zorder>
+  <zorder>annuler</zorder>
+  <zorder>erreur</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

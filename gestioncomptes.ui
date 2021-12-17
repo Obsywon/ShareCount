@@ -18,17 +18,17 @@
     <rect>
      <x>0</x>
      <y>90</y>
-     <width>331</width>
-     <height>251</height>
+     <width>301</width>
+     <height>211</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="cagnotte_4">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>200</x>
      <y>50</y>
-     <width>111</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -39,9 +39,9 @@
   <widget class="QPushButton" name="events_4">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>100</x>
      <y>50</y>
-     <width>111</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -54,7 +54,7 @@
     <rect>
      <x>0</x>
      <y>50</y>
-     <width>111</width>
+     <width>101</width>
      <height>41</height>
     </rect>
    </property>
@@ -66,8 +66,8 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>340</y>
-     <width>191</width>
+     <y>300</y>
+     <width>161</width>
      <height>25</height>
     </rect>
    </property>
@@ -78,8 +78,8 @@
   <widget class="QPushButton" name="inviter">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>340</y>
+     <x>160</x>
+     <y>300</y>
      <width>141</width>
      <height>25</height>
     </rect>
@@ -109,7 +109,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>331</width>
+     <width>301</width>
      <height>41</height>
     </rect>
    </property>
