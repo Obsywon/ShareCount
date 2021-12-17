@@ -270,10 +270,11 @@ void Model::updateMembers(const int& group_id){
 /**
  * Met à jour l'historique des transferts
  * @param id identifiant de groupe
+ * @return liste
  * @authors Guillaume Vautrin
  * @version v16 (Dernière modification)
  */
-std::unordered_map <std::string, double> Model::updateHistorique(const int& id_group){
+std::vector <std::pair <std::string, double>> Model::updateHistorique(const int& id_group){
     return m_db.historiqueTransfertsCagnotte(id_group);
 }
 

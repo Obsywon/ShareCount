@@ -108,16 +108,16 @@ void Database::initialisation(){
 /**
 * @brief Récupère l'historique des transferts des utilisateurs d'une cagnotte
 * @param group_id identifiant du groupe sélectionné
-* @return hashmap
+* @return liste
 * @authors Guillaume Vautrin
 * @version v16 (Dernière modification)
 */
-const std::unordered_map <std::string, double> Database::historiqueTransfertsCagnotte (const int& id_group){
+const std::vector <std::pair <std::string, double>> Database::historiqueTransfertsCagnotte (const int& id_group){
     if (!m_dbb.open()){
         qWarning() << "Erreur : " << m_dbb.lastError();
     }
+    std::vector <std::pair <std::string, double> > historique;
 
-    std::unordered_map <std::string, double> historique;
 
     // Récupère la somme total d'une cagnotte
     QSqlQuery query;
@@ -127,10 +127,16 @@ const std::unordered_map <std::string, double> Database::historiqueTransfertsCag
 
     double montant = 0;
     std::string id;
+    std::pair <std::string, double> pair;
+
     while (query.next()) {
         id = query.value(0).toString().toStdString();
          montant = query.value(1).toDouble();
-         historique[id] = montant;
+
+         // Vector
+         pair.first = id;
+         pair.second = montant;
+         historique.push_back(pair);
      }
 
 

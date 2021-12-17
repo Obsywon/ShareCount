@@ -30,8 +30,15 @@ void cagnotte::setGroupeId(const int& id){
  * @version v16
  */
 void cagnotte::updateHistorique(){
-    const std::unordered_map <std::string, double> historique = m_model->updateHistorique(m_id);
+    const std::vector <std::pair <std::string, double>> historique = m_model->updateHistorique(m_id);
     ui->historique->clear();
+
+    double sommeActu = m_model->getTotalCagnotte(m_id);
+    QString texte = "Votre cagnotte s'élève à ";
+    texte.append(QString::number(sommeActu));
+    texte.append("€");
+    ui->txtsum->setText(texte);
+
 
     if (historique.size() > 0){
         std::string pseudo;
