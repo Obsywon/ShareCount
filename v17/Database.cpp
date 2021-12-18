@@ -14,7 +14,7 @@ Database::Database()
         exit(EXIT_FAILURE);
     }
     m_dbb = QSqlDatabase::addDatabase(DRIVER);
-    m_dbb.setDatabaseName("ShareCount.db");
+    m_dbb.setDatabaseName("../database/ShareCount.db");
 
     if (!m_dbb.open()){
         qWarning() << "Erreur : " << m_dbb.lastError();
@@ -26,7 +26,7 @@ Database::Database()
 /**
 * @brief Initialise la base de données avec les tables relationnelles
 * @authors Guillaume Vautrin
-* @version v9 (Dernière modification)
+* @version v17 (Dernière modification)
 */
 void Database::initialisation(){
     QSqlQuery query; // Génère les requêtes
@@ -90,15 +90,11 @@ void Database::initialisation(){
 
     // Création d'une vue représentant la somme totale de la cagnotte
     query.prepare("CREATE VIEW IF NOT EXISTS total_cagnotte as "
-                  "SELECT t.cagnotte_id, SUM(t.montant) as somme_cagnotte DEFAULT 0.00 "
+                  "SELECT t.cagnotte_id, SUM(t.montant) as somme_cagnotte "
                    "FROM transac t, cagnotte c "
                    "WHERE c.cagnotte_id = t.cagnotte_id "
                    "GROUP BY t.cagnotte_id");
     query.exec();
-    //qWarning() << query.lastError();
-
-
-
 
     query.clear(); // Nettoie la requête
     m_dbb.close(); // Termine la connection avec la base de donnée
@@ -110,7 +106,7 @@ void Database::initialisation(){
 * @param group_id identifiant du groupe sélectionné
 * @return liste
 * @authors Guillaume Vautrin
-* @version v16 (Dernière modification)
+* @version v17 (Dernière modification) - Correction requête
 */
 const std::vector <std::pair <std::string, double>> Database::historiqueTransfertsCagnotte (const int& id_group){
     if (!m_dbb.open()){
@@ -121,7 +117,7 @@ const std::vector <std::pair <std::string, double>> Database::historiqueTransfer
 
     // Récupère la somme total d'une cagnotte
     QSqlQuery query;
-    query.prepare("SELECT u.pseudo, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND group_id = ?");
+    query.prepare("SELECT u.pseudo, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND t.cagnotte_id = c.cagnotte_id AND c.group_id = ?");
     query.addBindValue(id_group);
     query.exec();
 
@@ -581,7 +577,7 @@ bool Database::inviterMembre(const int& id_groupe, const std::string& pseudo){
 
     // Recherche de l'identifiant de l'utilisateur correspondant à ce pseudo
     int cmpt=0;
-    int id_user;
+    int id_user = -1;
     while (query.next()){
         id_user = query.value(0).toInt();
         cmpt++;

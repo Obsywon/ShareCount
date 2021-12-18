@@ -16,4 +16,4 @@ v13 : Actualisation des données du modèle/interface graphique à partir de la 
 v14 : Actualisation des données du modèle/UI à partir de la base de données pour les événements.
 v15 : Implémentation d'invitation d'autres individus (via pseudo) dans un groupe + affichage des participants
 v16 : Implémentation de la cagnotte (+ transferts d'argent)
-v17 : refactorisation interface (Toutes les interfaces héritent de Page)
+v17 : refactorisation interface (Toutes les interfaces héritent de Page) + correction requêtes bdd

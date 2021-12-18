@@ -14,7 +14,7 @@ Database::Database()
         exit(EXIT_FAILURE);
     }
     m_dbb = QSqlDatabase::addDatabase(DRIVER);
-    m_dbb.setDatabaseName("ShareCount.db");
+    m_dbb.setDatabaseName("../database/ShareCount.db");
 
     if (!m_dbb.open()){
         qWarning() << "Erreur : " << m_dbb.lastError();

@@ -29,21 +29,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QListWidget" name="historique">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>100</y>
-     <width>301</width>
-     <height>251</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="txtsum">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>380</y>
+     <y>330</y>
      <width>241</width>
      <height>21</height>
     </rect>
@@ -129,7 +119,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>350</y>
+     <y>290</y>
      <width>161</width>
      <height>25</height>
     </rect>
@@ -142,7 +132,7 @@
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>350</y>
+     <y>290</y>
      <width>141</width>
      <height>25</height>
     </rect>
@@ -150,6 +140,38 @@
    <property name="text">
     <string>Ajout transfert</string>
    </property>
+  </widget>
+  <widget class="QTableWidget" name="historique">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>301</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>2</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="rowCount">
+    <number>0</number>
+   </property>
+   <property name="columnCount">
+    <number>2</number>
+   </property>
+   <column>
+    <property name="text">
+     <string>Pseudo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Montant</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

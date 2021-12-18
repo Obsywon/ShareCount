@@ -14,7 +14,8 @@ MainWindow::MainWindow(Model* m, QWidget *parent)
     ui->setupUi(this);
 
 
-    // Génération des interfaces
+    // Génération des interfaces - elles sont automatiquements effacées de la mémoire lorsque
+    // l'application sera fermée
     m_launch = new Launch(m_model, this);
     m_connection = new Connect(m_model, this);
     m_inscription = new Inscription(m_model, this);

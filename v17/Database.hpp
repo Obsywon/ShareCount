@@ -15,7 +15,7 @@ class Groupe;
 /**
  * Classe contrôlant la base de données
 * @authors Guillaume Vautrin
-* @version v12 (Dernière modification)
+* @version v17 (Dernière modification)
  */
 class Database
 {
@@ -43,7 +43,7 @@ public:
 /**
 * @brief Vérifie la possibilité de se connecter à une base de donnée et prépare celle-ci
 * @authors Guillaume Vautrin
-* @version v9 (Dernière modification)
+* @version v17 (Dernière modification)
 */
     Database();
 /**
@@ -69,7 +69,7 @@ public:
 * @param group_id identifiant du groupe sélectionné
 * @return liste
 * @authors Guillaume Vautrin
-* @version v16 (Dernière modification)
+* @version v17 (Dernière modification) - Correction requête
 */
 const std::vector <std::pair <std::string, double>> historiqueTransfertsCagnotte (const int& id_group);
 

@@ -28,28 +28,50 @@ cagnotte::~cagnotte()
  */
 void cagnotte::update(){
     const std::vector <std::pair <std::string, double>> historique = m_model->updateHistorique(m_groupeID);
-    ui->historique->clear();
+    QTableWidget *table = ui->historique; // Récupération pointeur vers table
 
+    // Reset table
+    table->clear();
+    QStringList header = QStringList(); // Prépare le header
+    header.append("Pseudo");
+    header.append("Montant");
+    table->setHorizontalHeaderLabels(header);
+
+    // Récupération de la valeur total de la cagnotte du groupe et affichage
     double sommeActu = m_model->getTotalCagnotte(m_groupeID);
     QString texte = "Votre cagnotte s'élève à ";
     texte.append(QString::number(sommeActu));
     texte.append("€");
     ui->txtsum->setText(texte);
 
+    table->setRowCount(historique.size());
 
+
+    // Remplissage de la table si possible
     if (historique.size() > 0){
         std::string pseudo;
         double montant = 0;
         QString temp, qString;
+        int cmpt = 0;
         for(auto const& key : historique){
             pseudo = key.first;
             montant = key.second;
 
-            qString = QString::fromStdString(pseudo.append("     "));
+            // Récupération des données
+            qString = QString::fromStdString(pseudo);
             temp = QString::number(montant);
-            qString.append(temp);
-            qString.append("€");
-            ui->historique->addItem(qString);
+            temp.append("€");
+
+            // Transformation élément à intégrer dans la table
+            QTableWidgetItem *pseud = new QTableWidgetItem(qString);
+            QTableWidgetItem *val = new QTableWidgetItem(temp);
+
+            // Insertion dans la table
+            //table->insertRow (1);
+            table->setItem (cmpt, 0, pseud);
+            table->setItem (cmpt, 1, val);
+
+            cmpt++;
         }
     }
 }
