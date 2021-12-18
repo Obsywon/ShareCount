@@ -69,7 +69,7 @@ public:
 * @param group_id identifiant du groupe sélectionné
 * @return liste
 * @authors Guillaume Vautrin
-* @version v16 (Dernière modification)
+* @version v17 (Dernière modification) - Correction requête
 */
 const std::vector <std::pair <std::string, double>> historiqueTransfertsCagnotte (const int& id_group);
 

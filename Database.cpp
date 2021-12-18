@@ -110,7 +110,7 @@ void Database::initialisation(){
 * @param group_id identifiant du groupe sélectionné
 * @return liste
 * @authors Guillaume Vautrin
-* @version v16 (Dernière modification)
+* @version v17 (Dernière modification) - Correction requête
 */
 const std::vector <std::pair <std::string, double>> Database::historiqueTransfertsCagnotte (const int& id_group){
     if (!m_dbb.open()){
@@ -121,7 +121,7 @@ const std::vector <std::pair <std::string, double>> Database::historiqueTransfer
 
     // Récupère la somme total d'une cagnotte
     QSqlQuery query;
-    query.prepare("SELECT u.pseudo, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND group_id = ?");
+    query.prepare("SELECT u.pseudo, t.montant FROM cagnotte c, transac t, utilisateur u WHERE u.user_id = t.user_id AND t.cagnotte_id = c.cagnotte_id AND c.group_id = ?");
     query.addBindValue(id_group);
     query.exec();
 
