@@ -16,11 +16,18 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>50</y>
-     <width>181</width>
-     <height>17</height>
+     <x>20</x>
+     <y>40</y>
+     <width>271</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <italic>true</italic>
+     <underline>true</underline>
+    </font>
    </property>
    <property name="text">
     <string>Effectuer un transfert</string>
@@ -29,10 +36,10 @@
   <widget class="QLineEdit" name="montant">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>161</width>
-     <height>25</height>
+     <x>30</x>
+     <y>140</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="inputMethodHints">
@@ -55,10 +62,10 @@
   <widget class="QPushButton" name="ok">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>140</y>
-     <width>89</width>
-     <height>25</height>
+     <x>140</x>
+     <y>220</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -68,10 +75,10 @@
   <widget class="QPushButton" name="annuler">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>140</y>
-     <width>89</width>
-     <height>25</height>
+     <x>10</x>
+     <y>220</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -81,16 +88,84 @@
   <widget class="QCheckBox" name="retirer">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>100</y>
+     <x>30</x>
+     <y>170</y>
      <width>92</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Retirer</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>401</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(78, 168, 193, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>0</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>22</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>SHARECOUNT</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>100</y>
+     <width>241</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Saisir le montant :</string>
+   </property>
+  </widget>
+  <zorder>label_6</zorder>
+  <zorder>label</zorder>
+  <zorder>montant</zorder>
+  <zorder>erreur</zorder>
+  <zorder>ok</zorder>
+  <zorder>annuler</zorder>
+  <zorder>retirer</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_2</zorder>
  </widget>
  <resources/>
  <connections/>
