@@ -12,20 +12,29 @@ private:
     std::string m_dateFin;
 
 public:
-    Evenement();
     /**
-     * Instance d'un événement d'un groupe
-     * @param nom Nom d'un groupe
-     * @param dateDeb Date de début de l'événement
-     * @param dateFin Date de fin
-     */
+ * @brief Génère un événement
+ * @version v4
+ * @author Guillaume Vautrin
+ */
+    Evenement();
+/**
+ * @brief Génère un événement
+ * @param dateFin date de fin
+ * @param dateDeb date de début
+ * @param nom nom de l'événement
+ * @version v6
+ * @author Guillaume Vautrin
+ */
     Evenement(std::string nom, std::string dateDeb, std::string dateFin);
 
 
-    /**
-     * Détaille le contenu d'un événement
-     * @return string
-     */
+/**
+ * @brief Génère une description d'un événément
+ * @return string
+ * @version v4
+ * @author Guillaume Vautrin
+ */
     std::string toString();
 };
 

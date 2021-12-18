@@ -9,13 +9,40 @@
 
 class Groupe {
 private:
+
+/**
+* @brief identifiant du groupe
+* @author Guillaume Vautrin
+* @version v6
+*/
     std::string m_id;
+/**
+* @brief nom du groupe
+* @author Guillaume Vautrin
+* @version v3
+*/
     std::string m_nom;
+
+    /**
+* @brief Evenements
+* @author Louis Jacques
+* @version v5
+*/
     GestionnaireEvenement ges;
+
+    /**
+* @brief Participants
+* @author Louis Jacques
+* @version v5
+*/
     GestionnaireComptes gesCom;
 
 public:
-
+/**
+* @brief Groupe
+* @author Guillaume Vautrin
+* @version v3
+*/
     Groupe();
 
     /**
@@ -24,40 +51,53 @@ public:
      */
     Groupe(std::string nom);
 
-    /**
-     * Créer un événement lié à un groupe d'utilisateurs
-     * @param nom Nom de l'événement
-     * @param dateDeb Date de début de l'évenement
-     * @param dateFin Date de fin
-     */
+/**
+* @brief Créer un événement
+* @param string nom
+* @param dateFin date de fin
+* @param dateDeb date de début
+* @author Guillaume Vautrin
+* @version v5
+*/
     void creerEvenement(std::string nom,std::string dateDeb,std::string dateFin);
 
-    /**
-     * Ajoute un membre à un groupe
-     * @param u Utilisateur
-     */
+/**
+* @brief décris un groupe
+* @param string
+* @author Guillaume Vautrin
+* @version v5
+*/
     void ajouterMembre(const Utilisateur* u);
 
-    /**
-     * Détails le contenu d'un groupe
-     * @return string
-     */
+/**
+* @brief décris un groupe
+* @return string
+* @author Guillaume Vautrin
+* @version v5
+*/
     std::string toString() const;
 
-    /**
-     * @return Id d'un groupe
-     */
+/**
+* @brief retourne idenfiant du groupe
+* @return string id
+* @author Guillaume Vautrin
+* @version v6
+*/
     std::string getId() const;
-
-    /**
-     * @return Nom d'un groupe
-     */
+/**
+* @brief retourne nom du groupe
+* @return string
+* @author Guillaume Vautrin
+* @version v6
+*/
     std::string getNom() const;
 
-    /**
-     * Ajoute un identifiant au groupe
-     * @param id string
-     */
+/**
+* @brief applique nouvel idenfiant du groupe
+* @return string id
+* @author Guillaume Vautrin
+* @version v6
+*/
     void setId(std::string id);
 };
 

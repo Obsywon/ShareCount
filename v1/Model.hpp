@@ -16,40 +16,49 @@ private:
 
 public:
 
-    /**
-     * Créer le modèle, classe facade
-     */
+/**
+ * @brief Classe facade en interaction avec l'interface et la base de donnée
+ * @author Guillaume Vautrin
+ * @version v1
+ */
     Model();
 
-    /**
-     * Permet de vérifier la validité du mot de passe
-     * @param mdp string
-     * @return bool
-     */
+/**
+ * @brief Vérifie si le mot de passe est valide
+ * @param mdp mot de passe
+ * @return bool
+ * @author Guillaume Vautrin
+ * @version v1
+ */
     bool estValideMdP (const std::string mdp);
 
-    /**
-     * Vérifie si l'e-mail entrée est valide
-     * @param email string
-     * @return bool
-     */
+/**
+ * @brief Vérifie si l'e-mail est valide
+ * @param email e-mail
+ * @return bool
+ * @author Guillaume Vautrin
+ * @version v1
+ */
     bool estValideEmail (const std::string email);
 
-    /**
-     * Inscrire un utilisateur
-     * @param pseudo pseudo
-     * @param email email
-     * @param mdp mdp
-     * @return bool true si utilisateur est bien inscris
-     */
+/**
+ * @brief Inscrit l'utilisateur
+ * @param pseudo pseudonyme
+ * @param email Email
+ * @param mdp Mot de passe
+ * @return bool
+ * @author Guillaume Vautrin
+ * @version v1
+ */
     bool inscrireUtilisateur (const std::string pseudo, const std::string email, const std::string mdp);
 
+    /**
+ * @brief Décris le modèle
+ * @author Guillaume Vautrin
+ * @version v1
+ * @return string
+ */
     const std::string userToString();
-
-
-
-
-
 
 };
 
