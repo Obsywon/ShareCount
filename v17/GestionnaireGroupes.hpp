@@ -1,0 +1,139 @@
+#ifndef SHARECOUNT_GESTIONNAIREGROUPES_HPP
+#define SHARECOUNT_GESTIONNAIREGROUPES_HPP
+
+#include <unordered_map>
+#include <vector>
+#include "Groupe.hpp"
+#include "Database.hpp"
+
+/**
+ * @brief Gestionnaire de groupe
+ * @authors Guillaume Vautrin, Louis Jacques
+ * @version v9 (Dernière modification)  : type modifé
+ */
+class GestionnaireGroupes {
+private:
+/**
+ * @brief Collection (hashmap) de groupes identifié par un identifiant
+* @authors Guillaume Vautrin, Louis Jacques
+* @version v6 (Dernière modification)
+ */
+    std::unordered_map<int, Groupe> m_groupes;
+
+public:
+    /**
+     * Gère et donne l'accès aux groupes connus par l'utilisateur local
+    * @authors Guillaume Vautrin, Louis Jacques
+    * @version v6 (Dernière modification)
+     */
+    GestionnaireGroupes();
+
+    /**
+    * Ajoute un groupe à la collection : l'utilisateur local est ajouté à ce groupe
+    * @param id identifiant du groupe
+    * @param nom Nom du groupe
+    * @authors Guillaume Vautrin, Louis Jacques
+    * @version v9 (Dernière modification)  : ajout identifiant
+    */
+    void ajouterGroupe(const int& id, const std::string &nom);
+
+    /**
+     * @brief Ajoute un événement à un groupe précis
+     * @param idGroupe Identifiant du groupe, déjà connu par l'utilisateur
+     * @param idEvent identifiant du nouvel événement
+     * @param nom Nom de l'événement
+     * @param dateDeb Date de début
+     * @param dateFin Date de fin
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : id event ajouté
+    */
+    void ajouterEvenemenent(const int& idGroupe, const int& idEvent, const std::string& nom, const std::string& dateDeb, const std::string &dateFin);
+
+    /**
+     * Ajout d'un membre à un groupe connu
+     * @param idGroupe string identifiant du groupe
+     * @param u Utilisateur à ajouter au groupe
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    void ajoutMembreAGroupe(const int& idGroupe, const Utilisateur *u);
+
+    /**
+     * Nombre de groupes auxquel l'utilisateur appartient
+     * @return unsigned long
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v6 (Dernière modification)
+     */
+    unsigned long taille();
+
+    /**
+     * Détaille tous les groupes dans lequel l'utilisateur est inscrit
+     * @return String
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v8 (Dernière modification)  : const ajouté
+     */
+    std::string toString() const;
+
+
+    /**
+     * Récupère le groupe indiqué par l'identifiant
+     * @param indice string identifiant
+     * @return référence à Groupe
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    Groupe getGroupe(const int& idGroupe);
+
+
+    /**
+     * Récupère l'ensemble des groupes connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::unordered_map<int, Groupe> * getTousLesGroupesConnus();
+
+    /**
+     * Récupère l'ensemble des groupes connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::unordered_map<int, Evenement> * getTousLesEvenementsConnus(const int& identifiant);
+
+    /**
+     * Récupère l'ensemble des participants connus
+     * @return unordered_map <ID, Groupe>
+     * @authors Guillaume Vautrin, Louis Jacques
+     * @version v9 (Dernière modification)  : type modifé
+     */
+    std::vector<Utilisateur> * getTousLesParticipantsConnus(const int& identifiant);
+
+    /**
+    * @brief Charge les caractéristiques de bases des groupes connus pas l'utilisateur
+    * @param groupes
+    * @authors Guillaume Vautrin
+    * @version v13 (Dernière modification)
+    */
+    void chargeGroupes (const std::unordered_map <int, std::string>& groupes);
+
+    /**
+    * @brief Charge les caractéristiques de bases des événements connus pas un groupe
+    * @param id groupe
+    * @param collections d'information sur les événements
+    * @authors Guillaume Vautrin
+    * @version v14 (Dernière modification)
+    */
+    void chargeEvents(const int& group_id, const std::unordered_map <int, std::vector<std::string>>& events);
+
+    /**
+    * @brief Charge les caractéristiques de bases des participants connus pas un groupe
+    * @param id groupe
+    * @param collections d'information sur les participants d'un groupe
+    * @authors Guillaume Vautrin
+    * @version v15 (Dernière modification)
+    */
+    void chargeParticipants(const int& group_id, const std::unordered_map <int, std::string>& membres);
+
+};
+
+#endif //SHARECOUNT_GESTIONNAIREGROUPES_HPP

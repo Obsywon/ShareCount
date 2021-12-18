@@ -1,0 +1,19 @@
+PROGRESSION via versions:
+
+v1 : Création de classe facade "Model" et base de l'utilisateur
+v2 : Ebauche de fonctions permettant la connexion au modèle
+v3 : Implémentation d'ébauche de la gestion de groupes et groupes
+v4 : Implémentation de la gestion d'événements
+v5 : Implémentation de participants à un groupe
+v6 : Début implémentation de l'interface graphique (inscription, connexion, création de groupe et d'événements) + génération d'identifiants
+v7 : Intégration du modèle dans l'interface
+v8 : Première version après 1er rendu : ajout "const" & passage par référence + séparation de l'interface graphique en plusieurs modules (logique du modèle est retirée)
+v9 : Réintégration du modèle dans l'interface graphique, centralisation des slots sur mainwindows
+v10 : Création d'une classe gérant la base de données + ébauche et implémentation de la base de données (inscription, connexion)
+v11 : Implémentation de groupes dans base de donnée
+v12 : Création d'événéments dans la base de données
+v13 : Actualisation des données du modèle/interface graphique à partir de la base de données pour les groupes connus d'un compte
+v14 : Actualisation des données du modèle/UI à partir de la base de données pour les événements.
+v15 : Implémentation d'invitation d'autres individus (via pseudo) dans un groupe + affichage des participants
+v16 : Implémentation de la cagnotte (+ transferts d'argent)
+v17 : refactorisation interface (Toutes les interfaces héritent de Page)
